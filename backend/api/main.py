@@ -40,6 +40,14 @@ try:
 except ImportError:
     from drive import drive_service
 
+@app.get("/")
+def root():
+    return {"message": "VoiceFlow Studio API is running", "docs": "/docs", "health": "/health"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "service": "voiceflow-studio-api"}
+
 # -------------------------------------------------------------------
 # Dependency: Auth verification
 # -------------------------------------------------------------------
