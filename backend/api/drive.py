@@ -18,16 +18,31 @@ class DriveStorageService:
 
     def _get_credentials(self):
         creds = None
-        token_paths = [
-            os.path.join(os.path.dirname(__file__), "..", "token.json"),
-            os.path.join(os.getcwd(), "backend", "token.json"),
-            os.path.join(os.getcwd(), "token.json"),
-            "token.json"
-        ]
-        for p in token_paths:
-            if os.path.exists(p):
-                try:
-                    creds = Credentials.from_authorized_user_file(p, SCOPES)
+        
+        # 1. Try to load from environment variable (for Render production)
+        token_env = os.getenv("GOOGLE_DRIVE_TOKEN_JSON")
+        if token_env:
+            try:
+                import json
+                token_data = json.loads(token_env)
+                creds = Credentials.from_authorized_user_info(token_data, SCOPES)
+                if creds:
+                    pass
+            except Exception as e:
+                print(f"Error loading token from environment variable: {e}")
+
+        # 2. Try to load from file (for local development)
+        if not creds:
+            token_paths = [
+                os.path.join(os.path.dirname(__file__), "..", "token.json"),
+                os.path.join(os.getcwd(), "backend", "token.json"),
+                os.path.join(os.getcwd(), "token.json"),
+                "token.json"
+            ]
+            for p in token_paths:
+                if os.path.exists(p):
+                    try:
+                        creds = Credentials.from_authorized_user_file(p, SCOPES)
                     if creds:
                         break
                 except Exception as e:
