@@ -35,7 +35,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from .drive import drive_service
+try:
+    from .drive import drive_service
+except ImportError:
+    from drive import drive_service
 
 # -------------------------------------------------------------------
 # Dependency: Auth verification
