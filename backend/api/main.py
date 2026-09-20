@@ -178,6 +178,16 @@ async def list_drive_videos_endpoint(user = Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Admin only")
     return await drive_service.list_drive_videos(page_size=100)
 
+@app.get("/api/drive/folders")
+async def list_drive_folders_endpoint(user = Depends(get_current_user)):
+    """
+    Returns folders available in Google Drive for assigning as Folder Projects.
+    """
+    profile = get_user_profile(user.id)
+    if profile.get("role") != "ADMIN":
+        raise HTTPException(status_code=403, detail="Admin only")
+    return await drive_service.list_drive_folders(page_size=100)
+
 class ProjectCreateFromDrive(BaseModel):
     title: str
     drive_file_id: str
@@ -185,6 +195,12 @@ class ProjectCreateFromDrive(BaseModel):
     assigned_user_id: Optional[str] = None
     instructions: Optional[str] = None
     file_size_bytes: Optional[int] = 0
+
+class ProjectCreateFromFolderDrive(BaseModel):
+    title: str
+    drive_folder_id: str
+    assigned_user_id: Optional[str] = None
+    instructions: Optional[str] = None
 
 @app.post("/api/projects/create-from-drive")
 async def create_project_from_drive(
@@ -279,6 +295,85 @@ async def create_project_from_drive(
         "status": "success",
         "project": project,
         "video": video_record.data[0]
+    }
+
+@app.post("/api/projects/create-folder-project")
+async def create_folder_project_from_drive(
+    payload: ProjectCreateFromFolderDrive,
+    user = Depends(get_current_user)
+):
+    """
+    Creates a new project directly from an existing Google Drive Folder.
+    """
+    profile = get_user_profile(user.id)
+    if profile.get("role") != "ADMIN":
+        raise HTTPException(status_code=403, detail="Admin only")
+        
+    # 1. Setup project folder hierarchy in Google Drive
+    try:
+        await drive_service.get_or_create_project_folders(payload.title)
+    except Exception as e:
+        print(f"Drive folder creation notice: {e}")
+        
+    # 2. Resolve target assigned profile ID
+    target_assigned_profile_id = None
+    if payload.assigned_user_id and payload.assigned_user_id != "unassigned":
+        try:
+            ap = supabase.table("profiles").select("id").or_(f"id.eq.{payload.assigned_user_id},auth_user_id.eq.{payload.assigned_user_id}").execute()
+            if ap.data:
+                target_assigned_profile_id = ap.data[0]["id"]
+        except Exception:
+            pass
+
+    # 3. Create Project Record in Supabase
+    status = "ASSIGNED" if target_assigned_profile_id else "DRAFT"
+    project_payload = {
+        "name": payload.title,
+        "is_folder_project": True,
+        "source_drive_folder_id": payload.drive_folder_id,
+        "status": status,
+        "notes": payload.instructions,
+        "created_by": profile["id"]
+    }
+    if target_assigned_profile_id:
+        project_payload["assigned_user_id"] = target_assigned_profile_id
+        
+    project_record = supabase.table("projects").insert(project_payload).execute()
+    if not project_record.data:
+        raise HTTPException(status_code=500, detail="Failed to create project record in database")
+        
+    project = project_record.data[0]
+    project_id = project["id"]
+    
+    # 4. Notify assigned talent
+    if target_assigned_profile_id:
+        try:
+            supabase.table("notifications").insert({
+                "user_id": target_assigned_profile_id,
+                "type": "PROJECT_ASSIGNED",
+                "title": "New Folder Project Assigned",
+                "message": f"You have been assigned to folder project '{payload.title}'.",
+                "entity_type": "PROJECT",
+                "entity_id": project_id,
+                "read": False
+            }).execute()
+        except Exception as e:
+            print(f"Notification error: {e}")
+
+    # 5. Activity event
+    try:
+        supabase.table("activity_events").insert({
+            "actor_id": profile["id"],
+            "action": f"Imported folder from Google Drive and created project '{payload.title}'",
+            "entity_type": "PROJECT",
+            "entity_id": project_id
+        }).execute()
+    except Exception:
+        pass
+        
+    return {
+        "status": "success",
+        "project": project
     }
 
 @app.get("/api/projects/export-all")
@@ -392,6 +487,27 @@ async def get_project_details(project_id: str, user = Depends(get_current_user))
         raise HTTPException(status_code=403, detail="You do not have access to this project")
         
     return project
+
+@app.get("/api/projects/{project_id}/folder-videos")
+async def get_project_folder_videos(project_id: str, user = Depends(get_current_user)):
+    """
+    Returns the list of videos inside the assigned Google Drive folder for this project.
+    """
+    profile = get_user_profile(user.id)
+    is_admin = profile.get("role") == "ADMIN"
+    
+    project_res = supabase.table("projects").select("*").eq("id", project_id).execute()
+    if not project_res.data:
+        raise HTTPException(status_code=404, detail="Project not found")
+        
+    project = project_res.data[0]
+    if not is_admin and project.get("assigned_user_id") != profile["id"]:
+        raise HTTPException(status_code=403, detail="You do not have access to this project")
+        
+    if not project.get("is_folder_project") or not project.get("source_drive_folder_id"):
+        return []
+        
+    return await drive_service.list_videos_in_folder(project.get("source_drive_folder_id"))
 
 @app.get("/api/projects/{project_id}/files")
 async def get_project_files(project_id: str, user = Depends(get_current_user)):
@@ -550,8 +666,12 @@ async def stream_video(drive_file_id: str, request: Request):
             resp_headers[k] = v
             
     async def generate():
-        async for chunk in response.aiter_bytes(chunk_size=1024*1024):
-            yield chunk
+        try:
+            async for chunk in response.aiter_bytes(chunk_size=1024*1024):
+                yield chunk
+        finally:
+            await response.aclose()
+            await client.aclose()
             
     return StreamingResponse(
         generate(),
@@ -566,6 +686,8 @@ async def stream_video(drive_file_id: str, request: Request):
 async def upload_project_audio(
     project_id: str,
     audio: UploadFile = File(...),
+    source_drive_file_id: Optional[str] = Form(None),
+    source_filename: Optional[str] = Form(None),
     user = Depends(get_current_user)
 ):
     """
@@ -590,6 +712,8 @@ async def upload_project_audio(
         "project_id": project_id,
         "user_id": profile["id"],
         "drive_file_id": drive_file_id,
+        "source_drive_file_id": source_drive_file_id,
+        "source_filename": source_filename,
         "mime_type": audio.content_type or "audio/webm",
         "status": "COMPLETED"
     }

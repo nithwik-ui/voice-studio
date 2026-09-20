@@ -28,6 +28,8 @@ export default function RecordingWorkspace() {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [project, setProject] = useState<any>(null);
+  const [folderVideos, setFolderVideos] = useState<any[]>([]);
+  const [activeVideo, setActiveVideo] = useState<any>(null);
   const [videoLoading, setVideoLoading] = useState(true);
   const [videoError, setVideoError] = useState(false);
   
@@ -92,6 +94,22 @@ export default function RecordingWorkspace() {
         
       if (error) throw error;
       setProject(data);
+      
+      if (data.is_folder_project) {
+        const currentSession = session || (await supabase.auth.getSession()).data.session;
+        const res = await fetch(`${apiUrl}/api/projects/${projectId}/folder-videos`, {
+          headers: {
+            'Authorization': `Bearer ${currentSession?.access_token}`
+          }
+        });
+        if (res.ok) {
+          const vids = await res.json();
+          setFolderVideos(vids || []);
+          if (vids.length > 0) setActiveVideo(vids[0]);
+        }
+      } else {
+        setActiveVideo(data.videos);
+      }
     } catch (err) {
       console.error("Project fetch error:", err);
       setVideoError(true);
@@ -325,6 +343,11 @@ export default function RecordingWorkspace() {
     try {
       const formData = new FormData();
       formData.append('audio', audioBlob, `recording_${projectId}.webm`);
+      
+      if (project?.is_folder_project && activeVideo) {
+        formData.append('source_drive_file_id', activeVideo.id);
+        formData.append('source_filename', activeVideo.name);
+      }
 
       const currentSession = session || (await supabase.auth.getSession()).data.session;
       const response = await fetch(`${apiUrl}/api/projects/${projectId}/record`, {
@@ -400,61 +423,100 @@ export default function RecordingWorkspace() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
-        {/* Left: Original Video Panel */}
-        <div className="lg:col-span-7 bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm flex flex-col">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="font-title-md font-bold text-on-surface flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-[20px]">videocam</span>
-              Original Video
-            </h2>
-            <span className="text-xs text-on-surface-variant font-medium">Google Drive Stream</span>
+        {/* Left: Original Video Panel & Folder List */}
+        <div className="lg:col-span-7 flex flex-col gap-space-lg">
+          
+          <div className="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm flex flex-col">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="font-title-md font-bold text-on-surface flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-[20px]">videocam</span>
+                Original Video {activeVideo?.name ? `- ${activeVideo.name}` : ''}
+              </h2>
+              <span className="text-xs text-on-surface-variant font-medium">Google Drive Stream</span>
+            </div>
+
+            <div className="bg-black rounded-lg aspect-video w-full overflow-hidden flex items-center justify-center relative shadow-inner">
+              {activeVideo?.drive_file_id || activeVideo?.id ? (
+                <video 
+                  key={activeVideo?.drive_file_id || activeVideo?.id}
+                  ref={videoRef}
+                  className="w-full h-full object-contain"
+                  controls={state !== 'RECORDING' && state !== 'PAUSED'} 
+                  preload="metadata"
+                  src={`${apiUrl}/api/videos/${activeVideo?.drive_file_id || activeVideo?.id}/stream`}
+                  onError={() => setVideoError(true)}
+                />
+              ) : videoLoading ? (
+                <div className="flex flex-col items-center justify-center text-on-surface-variant p-8">
+                  <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
+                  <p className="text-xs">Loading media stream from Google Drive...</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center text-on-surface-variant p-8 text-center">
+                  <span className="material-symbols-outlined text-4xl mb-2 text-outline">error</span>
+                  <p className="text-sm font-semibold">Unable to load the project video.</p>
+                  <button
+                    onClick={fetchProject}
+                    className="mt-3 px-3 py-1 bg-surface-container-high hover:bg-surface-container text-xs rounded-md font-semibold cursor-pointer"
+                  >
+                    Retry
+                  </button>
+                </div>
+              )}
+
+              {state === 'RECORDING' && (
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
+                  <span className="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+                  RECORDING
+                </div>
+              )}
+              {state === 'PAUSED' && (
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                  PAUSED
+                </div>
+              )}
+            </div>
+
+            <p className="text-xs text-on-surface-variant mt-3 leading-relaxed">
+              The video will automatically play, pause, and synchronize with your microphone controls to prevent timing drift.
+            </p>
           </div>
 
-          <div className="bg-black rounded-lg aspect-video w-full overflow-hidden flex items-center justify-center relative shadow-inner">
-            {project?.videos?.drive_file_id ? (
-              <video 
-                ref={videoRef}
-                className="w-full h-full object-contain"
-                controls={state !== 'RECORDING' && state !== 'PAUSED'} 
-                preload="metadata"
-                src={`${apiUrl}/api/videos/${project.videos.drive_file_id}/stream`}
-                onError={() => setVideoError(true)}
-              />
-            ) : videoLoading ? (
-              <div className="flex flex-col items-center justify-center text-on-surface-variant p-8">
-                <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
-                <p className="text-xs">Loading media stream from Google Drive...</p>
+          {project?.is_folder_project && folderVideos.length > 0 && (
+            <div className="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm">
+              <h3 className="font-title-sm font-bold text-on-surface mb-3 flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-[18px]">folder</span>
+                Videos in this Folder Project
+              </h3>
+              <div className="flex flex-col gap-2 max-h-60 overflow-y-auto pr-1">
+                {folderVideos.map((vid: any) => {
+                  const isSelected = activeVideo?.id === vid.id;
+                  return (
+                    <button
+                      key={vid.id}
+                      onClick={() => {
+                        if (state !== 'IDLE' && state !== 'READY') return;
+                        setActiveVideo(vid);
+                      }}
+                      disabled={state !== 'IDLE' && state !== 'READY' && state !== 'FAILED'}
+                      className={`text-left p-2.5 rounded-lg border text-sm flex items-center gap-3 transition-colors ${
+                        isSelected 
+                          ? "bg-primary/10 border-primary font-bold text-primary" 
+                          : "bg-surface-container border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-high"
+                      } disabled:opacity-50`}
+                    >
+                      <span className="material-symbols-outlined text-[20px]">
+                        {isSelected ? "play_circle" : "video_file"}
+                      </span>
+                      <span className="truncate flex-1">{vid.name}</span>
+                      <span className="text-[11px] opacity-70 shrink-0">{vid.size_formatted}</span>
+                    </button>
+                  );
+                })}
               </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center text-on-surface-variant p-8 text-center">
-                <span className="material-symbols-outlined text-4xl mb-2 text-outline">error</span>
-                <p className="text-sm font-semibold">Unable to load the project video.</p>
-                <button
-                  onClick={fetchProject}
-                  className="mt-3 px-3 py-1 bg-surface-container-high hover:bg-surface-container text-xs rounded-md font-semibold cursor-pointer"
-                >
-                  Retry
-                </button>
-              </div>
-            )}
-
-            {state === 'RECORDING' && (
-              <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
-                <span className="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
-                RECORDING
-              </div>
-            )}
-            {state === 'PAUSED' && (
-              <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-                PAUSED
-              </div>
-            )}
-          </div>
-
-          <p className="text-xs text-on-surface-variant mt-3 leading-relaxed">
-            The video will automatically play, pause, and synchronize with your microphone controls to prevent timing drift.
-          </p>
+            </div>
+          )}
         </div>
 
         {/* Right: Recording Panel & Controls */}

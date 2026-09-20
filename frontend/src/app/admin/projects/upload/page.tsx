@@ -17,7 +17,7 @@ interface DriveVideo {
 }
 
 export default function UploadVideoPage() {
-  const [sourceMode, setSourceMode] = useState<"drive" | "upload">("drive");
+  const [sourceMode, setSourceMode] = useState<"drive" | "upload" | "folder">("drive");
   const [routerPushing, setRouterPushing] = useState(false);
 
   // Form fields
@@ -36,6 +36,11 @@ export default function UploadVideoPage() {
   const [loadingDriveVideos, setLoadingDriveVideos] = useState(false);
   const [driveSearch, setDriveSearch] = useState('');
   const [selectedDriveVideo, setSelectedDriveVideo] = useState<DriveVideo | null>(null);
+
+  // Folder Import State
+  const [driveFolders, setDriveFolders] = useState<any[]>([]);
+  const [loadingDriveFolders, setLoadingDriveFolders] = useState(false);
+  const [selectedDriveFolder, setSelectedDriveFolder] = useState<any | null>(null);
 
   const router = useRouter();
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
@@ -76,11 +81,45 @@ export default function UploadVideoPage() {
     }
   };
 
+  const loadDriveFolders = async () => {
+    try {
+      setLoadingDriveFolders(true);
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) return;
+
+      const res = await fetch(`${apiUrl}/api/drive/folders`, {
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`
+        }
+      });
+
+      if (res.ok) {
+        const folders = await res.json();
+        setDriveFolders(folders || []);
+      }
+    } catch (err) {
+      console.error("Failed to load Google Drive folders:", err);
+    } finally {
+      setLoadingDriveFolders(false);
+    }
+  };
+
+  useEffect(() => {
+    if (sourceMode === 'folder' && driveFolders.length === 0) {
+      loadDriveFolders();
+    }
+  }, [sourceMode]);
+
   const handleSelectDriveVideo = (vid: DriveVideo) => {
     setSelectedDriveVideo(vid);
     // Suggest a clean project title from filename
     const cleanTitle = vid.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
     setTitle(cleanTitle);
+  };
+
+  const handleSelectDriveFolder = (folder: any) => {
+    setSelectedDriveFolder(folder);
+    setTitle(folder.name);
   };
 
   const handleCreateProjectFromDrive = async (e: React.FormEvent) => {
@@ -128,6 +167,54 @@ export default function UploadVideoPage() {
     } catch (err: any) {
       console.error("Drive project creation error:", err);
       setError(err.message || 'Error creating project from Google Drive');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateFolderProject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedDriveFolder || !title.trim()) {
+      setError("Please select a folder from Google Drive and provide a project title.");
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) {
+        throw new Error('Authentication required. Please log in as an Admin.');
+      }
+
+      const payload = {
+        title: title.trim(),
+        drive_folder_id: selectedDriveFolder.id,
+        assigned_user_id: assignedUserId || null,
+        instructions: instructions.trim() || null
+      };
+
+      const res = await fetch(`${apiUrl}/api/projects/create-folder-project`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.access_token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => null);
+        throw new Error(errJson?.detail || `Failed to create folder project (HTTP ${res.status})`);
+      }
+
+      const result = await res.json();
+      setRouterPushing(true);
+      router.push(`/admin/projects/${result.project.id}`);
+    } catch (err: any) {
+      console.error("Folder project creation error:", err);
+      setError(err.message || 'Error creating folder project');
     } finally {
       setLoading(false);
     }
@@ -184,6 +271,10 @@ export default function UploadVideoPage() {
     v.name.toLowerCase().includes(driveSearch.toLowerCase())
   );
 
+  const filteredDriveFolders = driveFolders.filter(f => 
+    f.name.toLowerCase().includes(driveSearch.toLowerCase())
+  );
+
   return (
     <div className="flex flex-col w-full max-w-4xl mx-auto space-y-space-lg pb-12">
       {/* Page Header */}
@@ -226,6 +317,19 @@ export default function UploadVideoPage() {
 
         <button
           type="button"
+          onClick={() => setSourceMode("folder")}
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-label-md text-label-md transition-all cursor-pointer ${
+            sourceMode === "folder"
+              ? "bg-surface-container-lowest text-primary shadow-sm font-bold"
+              : "font-medium text-on-surface-variant hover:text-on-surface"
+          }`}
+        >
+          <span className="material-symbols-outlined text-[18px]">folder_open</span>
+          <span>Import Folder</span>
+        </button>
+
+        <button
+          type="button"
           onClick={() => setSourceMode("upload")}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg font-label-md text-label-md transition-all cursor-pointer ${
             sourceMode === "upload"
@@ -234,7 +338,7 @@ export default function UploadVideoPage() {
           }`}
         >
           <span className="material-symbols-outlined text-[18px]">upload_file</span>
-          <span>Upload Local File to Drive</span>
+          <span>Upload Local</span>
         </button>
       </div>
 
@@ -424,6 +528,187 @@ export default function UploadVideoPage() {
                 <>
                   <span className="material-symbols-outlined text-[20px]">cloud_done</span>
                   <span>Import Video & Create Project</span>
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      )}
+
+      {/* Mode 3: Import Folder from Google Drive */}
+      {sourceMode === "folder" && (
+        <form onSubmit={handleCreateFolderProject} className="space-y-6">
+          <div className="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div>
+                <h2 className="font-title-md font-bold text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-[20px]">folder</span>
+                  Select Folder from Google Drive
+                </h2>
+                <p className="text-xs text-on-surface-variant">
+                  Assign an entire folder of videos to a talent.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="relative w-64">
+                  <span className="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[16px]">
+                    search
+                  </span>
+                  <input
+                    type="text"
+                    value={driveSearch}
+                    onChange={(e) => setDriveSearch(e.target.value)}
+                    placeholder="Search drive folders..."
+                    className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-outline-variant/40 bg-surface text-on-surface focus:outline-primary"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={loadDriveFolders}
+                  disabled={loadingDriveFolders}
+                  className="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs border border-outline-variant/30 cursor-pointer"
+                  title="Refresh Drive List"
+                >
+                  <span className={`material-symbols-outlined text-[16px] ${loadingDriveFolders ? 'animate-spin' : ''}`}>
+                    refresh
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {loadingDriveFolders ? (
+              <div className="py-12 text-center text-on-surface-variant flex flex-col items-center justify-center gap-2">
+                <div className="w-7 h-7 border-3 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-xs">Querying Google Drive API for folders...</span>
+              </div>
+            ) : filteredDriveFolders.length === 0 ? (
+              <div className="py-10 text-center text-on-surface-variant bg-surface-container-low rounded-xl border border-outline-variant/30">
+                <span className="material-symbols-outlined text-3xl text-outline mb-1">folder_off</span>
+                <p className="text-xs font-semibold">No folders found in Google Drive.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto pr-1">
+                {filteredDriveFolders.map((folder) => {
+                  const isSelected = selectedDriveFolder?.id === folder.id;
+                  return (
+                    <div
+                      key={folder.id}
+                      onClick={() => handleSelectDriveFolder(folder)}
+                      className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                        isSelected
+                          ? "bg-primary/10 border-primary ring-2 ring-primary/30"
+                          : "bg-surface-container-low/60 hover:bg-surface-container-low border-outline-variant/40"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                          isSelected ? "bg-primary text-on-primary" : "bg-primary-fixed text-primary"
+                        }`}>
+                          <span className="material-symbols-outlined text-[20px]">
+                            {isSelected ? "check" : "folder"}
+                          </span>
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-on-surface truncate" title={folder.name}>
+                            {folder.name}
+                          </p>
+                          <p className="text-[11px] text-on-surface-variant flex items-center gap-2 mt-0.5">
+                            <span>{new Date(folder.modifiedTime).toLocaleDateString()}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <a
+                        href={folder.webViewLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[11px] text-outline hover:text-primary p-1 shrink-0"
+                        title="Open in Google Drive"
+                      >
+                        <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {selectedDriveFolder && (
+              <div className="mt-4 p-3 bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-xl flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="material-symbols-outlined text-emerald-700 text-[18px]">check_circle</span>
+                  <span className="truncate">
+                    Selected Folder: <strong>{selectedDriveFolder.name}</strong>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDriveFolder(null)}
+                  className="text-emerald-700 font-semibold text-[11px] hover:underline shrink-0 ml-2"
+                >
+                  Change
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Project Details */}
+          <div className="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm space-y-4">
+            <h3 className="font-title-sm font-bold text-on-surface">Folder Project Information</h3>
+
+            <div>
+              <label className="block text-xs font-semibold text-on-surface mb-1.5">Project Title</label>
+              <input 
+                type="text" 
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required 
+                className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/50 bg-surface text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 font-medium" 
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-on-surface mb-1.5">Assign Voice Talent</label>
+              <select
+                value={assignedUserId}
+                onChange={(e) => setAssignedUserId(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/50 bg-surface text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 font-medium"
+              >
+                <option value="">Unassigned (Draft)</option>
+                {users.map(u => (
+                  <option key={u.id} value={u.id}>
+                    {u.full_name} ({u.email}) - {u.role}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-on-surface mb-1.5">Instructions for Talent (Optional)</label>
+              <textarea
+                value={instructions}
+                onChange={(e) => setInstructions(e.target.value)}
+                rows={3}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/50 bg-surface text-on-surface text-xs focus:outline-none focus:ring-2 focus:ring-primary/40 font-medium"
+              />
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={loading || !selectedDriveFolder || !title.trim()}
+              className="w-full py-3 px-4 rounded-xl bg-primary hover:bg-primary/90 text-on-primary font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50 cursor-pointer"
+            >
+              {loading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Creating Folder Project...</span>
+                </>
+              ) : (
+                <>
+                  <span className="material-symbols-outlined text-[20px]">create_new_folder</span>
+                  <span>Create Folder Project</span>
                 </>
               )}
             </button>

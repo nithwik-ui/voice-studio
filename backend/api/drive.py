@@ -232,44 +232,69 @@ class DriveStorageService:
             body=file_metadata,
             fields='id'
         )
+    async def _format_files(self, raw_files: list) -> list:
+        videos = []
+        for f in raw_files:
+            size_bytes = int(f.get('size', 0)) if f.get('size') else 0
+            if size_bytes >= 1024 * 1024 * 1024:
+                size_formatted = f"{round(size_bytes / (1024**3), 2)} GB"
+            elif size_bytes >= 1024 * 1024:
+                size_formatted = f"{round(size_bytes / (1024**2), 1)} MB"
+            elif size_bytes > 0:
+                size_formatted = f"{round(size_bytes / 1024, 1)} KB"
+            else:
+                size_formatted = "Unknown size"
+                
+            videos.append({
+                "id": f.get("id"),
+                "name": f.get("name"),
+                "mime_type": f.get("mimeType"),
+                "size_bytes": size_bytes,
+                "size_formatted": size_formatted,
+                "modified_time": f.get("modifiedTime"),
+                "web_view_link": f.get("webViewLink", f"https://drive.google.com/file/d/{f.get('id')}/view"),
+                "icon_link": f.get("iconLink"),
+                "thumbnail_link": f.get("thumbnailLink")
+            })
+        return videos
+
     async def list_drive_videos(self, page_size: int = 50) -> list:
-        """
-        Lists video files stored in Google Drive (e.g. MP4, WebM, QuickTime).
-        """
+        """Lists video files stored in Google Drive."""
         try:
             service = self.get_service()
             q = "mimeType contains 'video/' and trashed = false"
             fields = "files(id, name, mimeType, size, modifiedTime, webViewLink, iconLink, thumbnailLink)"
             req = service.files().list(q=q, spaces='drive', fields=fields, pageSize=page_size, orderBy="modifiedTime desc")
             res = await self._execute_with_retry(req)
-            raw_files = res.get('files', [])
-            
-            videos = []
-            for f in raw_files:
-                size_bytes = int(f.get('size', 0)) if f.get('size') else 0
-                if size_bytes >= 1024 * 1024 * 1024:
-                    size_formatted = f"{round(size_bytes / (1024**3), 2)} GB"
-                elif size_bytes >= 1024 * 1024:
-                    size_formatted = f"{round(size_bytes / (1024**2), 1)} MB"
-                elif size_bytes > 0:
-                    size_formatted = f"{round(size_bytes / 1024, 1)} KB"
-                else:
-                    size_formatted = "Unknown size"
-                    
-                videos.append({
-                    "id": f.get("id"),
-                    "name": f.get("name"),
-                    "mime_type": f.get("mimeType"),
-                    "size_bytes": size_bytes,
-                    "size_formatted": size_formatted,
-                    "modified_time": f.get("modifiedTime"),
-                    "web_view_link": f.get("webViewLink", f"https://drive.google.com/file/d/{f.get('id')}/view"),
-                    "icon_link": f.get("iconLink"),
-                    "thumbnail_link": f.get("thumbnailLink")
-                })
-            return videos
+            return await self._format_files(res.get('files', []))
         except Exception as e:
             print(f"Error querying Google Drive videos: {e}")
+            return []
+            
+    async def list_drive_folders(self, page_size: int = 50) -> list:
+        """Lists folders in Google Drive."""
+        try:
+            service = self.get_service()
+            q = "mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+            fields = "files(id, name, mimeType, modifiedTime, webViewLink, iconLink)"
+            req = service.files().list(q=q, spaces='drive', fields=fields, pageSize=page_size, orderBy="modifiedTime desc")
+            res = await self._execute_with_retry(req)
+            return res.get('files', [])
+        except Exception as e:
+            print(f"Error querying Google Drive folders: {e}")
+            return []
+
+    async def list_videos_in_folder(self, folder_id: str) -> list:
+        """Lists video files inside a specific Google Drive folder."""
+        try:
+            service = self.get_service()
+            q = f"'{folder_id}' in parents and mimeType contains 'video/' and trashed = false"
+            fields = "files(id, name, mimeType, size, modifiedTime, webViewLink, iconLink, thumbnailLink)"
+            req = service.files().list(q=q, spaces='drive', fields=fields, pageSize=100, orderBy="name")
+            res = await self._execute_with_retry(req)
+            return await self._format_files(res.get('files', []))
+        except Exception as e:
+            print(f"Error querying folder videos: {e}")
             return []
 
 drive_service = DriveStorageService()
