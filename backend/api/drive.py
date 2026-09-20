@@ -43,10 +43,10 @@ class DriveStorageService:
                 if os.path.exists(p):
                     try:
                         creds = Credentials.from_authorized_user_file(p, SCOPES)
-                    if creds:
-                        break
-                except Exception as e:
-                    print(f"Error loading token from {p}: {e}")
+                        if creds:
+                            break
+                    except Exception as e:
+                        print(f"Error loading token from {p}: {e}")
         if creds and creds.expired and creds.refresh_token:
             try:
                 creds.refresh(Request())
