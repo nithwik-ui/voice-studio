@@ -1,0 +1,52 @@
+# ===== Frontend (Next.js) =====
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/versions
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# ===== Backend (Python) =====
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/*.egg-info/
+backend/dist/
+backend/build/
+
+# ===== Sensitive / Secrets =====
+**/.env
+**/.env.local
+**/.env.*.local
+**/token.json
+**/client_secret.json
+backend/auth_url.txt
+
+# ===== Logs & Debug =====
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+
+# ===== OS & IDE =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.pem
+
+# ===== Vercel =====
+.vercel

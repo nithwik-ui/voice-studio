@@ -1,0 +1,928 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#516177",
+          "on-surface": "#1b1b24",
+          "surface": "#fcf8ff",
+          "on-error": "#ffffff",
+          "inverse-on-surface": "#f3effc",
+          "on-tertiary-fixed-variant": "#38485d",
+          "surface-tint": "#4d44e3",
+          "surface-variant": "#e4e1ee",
+          "secondary-fixed": "#6ffbbe",
+          "tertiary-fixed": "#d3e4fe",
+          "surface-bright": "#fcf8ff",
+          "outline-variant": "#c7c4d8",
+          "surface-dim": "#dcd8e5",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#002113",
+          "tertiary": "#3a495f",
+          "on-primary-container": "#dad7ff",
+          "surface-container-highest": "#e4e1ee",
+          "on-background": "#1b1b24",
+          "outline": "#777587",
+          "surface-container-high": "#eae6f4",
+          "secondary-fixed-dim": "#4edea3",
+          "on-primary": "#ffffff",
+          "surface-container": "#f0ecf9",
+          "surface-container-low": "#f5f2ff",
+          "secondary-container": "#6cf8bb",
+          "on-tertiary-container": "#ccdcf7",
+          "on-secondary-container": "#00714d",
+          "background": "#fcf8ff",
+          "secondary": "#006c49",
+          "on-surface-variant": "#464555",
+          "tertiary-fixed-dim": "#b7c8e1",
+          "on-secondary-fixed-variant": "#005236",
+          "on-primary-fixed": "#0f0069",
+          "inverse-surface": "#302f39",
+          "on-tertiary": "#ffffff",
+          "primary": "#3525cd",
+          "inverse-primary": "#c3c0ff",
+          "primary-fixed": "#e2dfff",
+          "primary-fixed-dim": "#c3c0ff",
+          "on-secondary": "#ffffff",
+          "on-primary-fixed-variant": "#3323cc",
+          "primary-container": "#4f46e5",
+          "on-tertiary-fixed": "#0b1c30"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "gutter-sm": "1rem",
+          "margin-mobile": "1rem",
+          "space-lg": "1.5rem",
+          "margin": "2rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-lg-mobile": [
+            "Geist"
+          ],
+          "headline-md": [
+            "Geist"
+          ],
+          "display-lg": [
+            "Geist"
+          ],
+          "label-sm": [
+            "Geist"
+          ],
+          "label-md": [
+            "Geist"
+          ],
+          "body-md": [
+            "Geist"
+          ],
+          "code-sm": [
+            "JetBrains Mono"
+          ],
+          "headline-lg": [
+            "Geist"
+          ],
+          "title-md": [
+            "Geist"
+          ],
+          "body-lg": [
+            "Geist"
+          ]
+        },
+        "fontSize": {
+          "headline-lg-mobile": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "title-md": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col pt-space-md pb-space-lg"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="VoiceFlow Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WNNQLfUtQGMuKSY9szov5vnGRda_EzUjrLSxKxoZIqPq1vD8fCcHPHWLxSPNa6_iZxZ6ZUrcAcwMY4KE21MlpMoG2NZXSx7KKyJ3w5rncKAhK3EQ7G5qLskKMwp1ndhymnISquw0Ttl8KuNNrbdLyR5-B9ufMrFGUo5Vl2vY5z3kkUDD0w3TUeXZbb1PC5RpmG3YOy8k0zEHcry7uXT73JH_oHnMbO747cDgFCdxFuLYfqDG5ZSeiW0Jg"><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold leading-tight">VoiceFlow</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Studio Admin</span></div></div><div class="px-space-md mb-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs rounded-lg bg-surface-container-low"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><span class="material-symbols-outlined text-outline text-[16px]">unfold_more</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="overview" href="#">Overview</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="users" href="#">Users</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="videos-and-projects" href="#">Videos &amp; Projects</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="submissions" href="#">Submissions</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="storage" href="#">Storage</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="settings" href="#">Settings</a></nav><div class="px-space-md mt-auto pt-space-md"><div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Engine Live</span></div><span class="font-code-sm text-code-sm text-outline">12ms</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="font-label-md text-label-md text-outline">Workspaces</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><nav class="hidden md:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="overview" href="#">Overview</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="users" href="#">Users</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="videos-and-projects" href="#">Videos &amp; Projects</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="submissions" href="#">Submissions</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="storage" href="#">Storage</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="settings" href="#">Settings</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-outline hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-md text-label-md">Quick search...</span><kbd class="font-code-sm text-code-sm bg-surface-container-highest px-1 py-0.5 rounded text-on-surface-variant">⌘K</kbd></div><button aria-label="Notifications" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT6FPjWKonKoF0zVqBaZAED4bxmu8HHsvDZufnsnRjqJlqZqq87L-HwpRb7jCSCive6SbZ8XUc4TYpYyxp1twkMcBZSdc74REGi48U-HHgQLjRXdWVO1JlC5751XTyLZwSzLuxHWeq3TYhG7OwIK8OV_QxWwLWE_ePIHrL0iQ3nkwGfj04zTna6ER6xemJ8pigokrf-wervRBZBDUINaGnnngbPxP1inAmJnh-Mh_QuKH6WDdO6lAk"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span></div><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-medium leading-none">Alex Morgan (Admin)</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight mt-0.5">Studio Lead</span></div></div></div></header><main class="relative pt-16 w-full px-space-lg py-space-lg bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- State Navigation Pill Bar (Switcher for Demo Flow) -->
+<div class="mb-space-lg flex items-center justify-between bg-surface-container-low px-space-md py-space-xs rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm overflow-x-auto py-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Interactive Prototype States:</span>
+<button class="px-space-sm py-1 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all" id="state-btn-table" onclick="setScreenView('table')">1. Table Overview</button>
+<button class="px-space-sm py-1 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="state-btn-detail" onclick="setScreenView('detail')">2. Project Details View</button>
+<button class="px-space-sm py-1 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" onclick="openModal('create-modal')">3. + Create Project Modal</button>
+<button class="px-space-sm py-1 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" onclick="openModal('assign-modal')">4. Assign User Modal</button>
+<button class="px-space-sm py-1 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="state-btn-empty" onclick="setScreenView('empty')">5. Empty State</button>
+</div>
+<div class="hidden xl:flex items-center gap-2 text-outline font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="">Sync: live</span>
+</div>
+</div>
+<!-- Toast Notification Alert (Triggerable) -->
+<div class="fixed top-20 right-8 z-50 transform translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-xl" id="status-toast">
+<div class="w-7 h-7 rounded-full bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface font-medium" id="toast-title">Success</span>
+<span class="font-body-md text-body-md text-on-surface-variant" id="toast-desc">Project assigned successfully.</span>
+</div>
+<button class="ml-space-sm text-outline hover:text-on-surface" onclick="hideToast()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- VIEW 1: PROJECTS MAIN TABLE VIEW -->
+<section class="flex flex-col w-full" id="view-table">
+<!-- Top Header Banner Section with Subtle Depth Overlay -->
+<div class="relative bg-surface-container-lowest rounded-xl shadow-sm p-space-lg mb-space-lg overflow-hidden">
+<div class="absolute -right-20 -top-24 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold bg-primary/10 px-2 py-0.5 rounded">Voice Production Hub</span>
+<span class="text-outline font-code-sm text-code-sm">• 86 Total Projects</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Projects</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Manage assigned video projects and track progress.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-title-md text-title-md font-medium transition-colors flex items-center gap-1.5 shadow-sm" onclick="exportReport()">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+<span class="">Export</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-medium transition-all shadow-md active:scale-[0.99] flex items-center gap-1.5" onclick="openModal('create-modal')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">+ Create Project</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Search & Segment Filter Tabs -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md mb-space-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Segment Filter Pills -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 lg:pb-0" id="filter-tabs"><button class="filter-btn active-filter px-3.5 py-1.5 rounded-lg font-label-md text-label-md bg-primary text-on-primary font-medium transition-colors whitespace-nowrap shadow-sm" onclick="filterTable('all', this)">All <span class="ml-1 opacity-80 text-code-sm font-code-sm">86</span></button><button class="filter-btn px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap" onclick="filterTable('in_progress', this)">In Progress <span class="ml-1 text-outline text-code-sm font-code-sm">48</span></button><button class="filter-btn px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap" onclick="filterTable('submitted', this)">Submitted <span class="ml-1 text-outline text-code-sm font-code-sm">12</span></button><button class="filter-btn px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap" onclick="filterTable('revision', this)">Revision <span class="ml-1 text-outline text-code-sm font-code-sm">8</span></button><button class="filter-btn px-3.5 py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap" onclick="filterTable('approved', this)">Approved <span class="ml-1 text-outline text-code-sm font-code-sm">4</span></button></div>
+<!-- Search Input + Sort Dropdown -->
+<div class="flex items-center gap-space-sm flex-1 max-w-md justify-end">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline pointer-events-none">search</span>
+<input class="w-full bg-surface-container-low pl-9 pr-space-md py-2 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:shadow-sm transition-all" id="project-search-input" onkeyup="searchProjects()" placeholder="Search projects..." type="text">
+</div>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant transition-colors" title="Filter Settings">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-sm text-label-sm text-outline uppercase tracking-wider">
+<th class="py-3 px-space-lg font-semibold">Project</th>
+<th class="py-3 px-space-md font-semibold">Assigned User</th>
+<th class="py-3 px-space-md font-semibold text-center">Clips</th>
+<th class="py-3 px-space-md font-semibold">Progress</th>
+<th class="py-3 px-space-md font-semibold">Status</th>
+<th class="py-3 px-space-md font-semibold">Updated</th>
+<th class="py-3 px-space-lg font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-md text-body-md text-on-surface" id="projects-table-body"><tr class="hover:bg-surface-container-low/60 transition-colors group" data-status="in_progress"><td class="py-3.5 px-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[20px]">movie</span></div><div class="flex flex-col min-w-0"><a class="font-title-md text-title-md font-semibold text-on-surface hover:text-primary transition-colors truncate" href="javascript:void(0)" onclick="openProjectDetail('Training Video Batch 04', 'John Mathews', '24', '16', '8', '68%')">Training Video Batch 04</a><span class="font-label-sm text-label-sm text-outline flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">videocam</span>training_video_batch_04.mp4 • 72m total</span></div></div></td><td class="py-3.5 px-space-md"><div class="flex items-center gap-space-sm"><div class="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 shadow-sm"><img class="w-full h-full object-cover" data-alt="John Mathews smiling in studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm9I0kCdvVE2xJC_4RuN5jRefmZYh3kTniOG3Uj-97vrdUoWkn5kzUMqeefV9I38yLgJ_IAv1quyUWQbJg6zPQZ9N-tMK2ciQ1xN2vlzmI78rqj3GKxjyJVSiaM4u6zoAA9x9fTVJNcYb_MdquZQXXWu_aIw9oZQTTi0-TK90jwgtQaExJROgVMCrka82Ax59nvV4ryoalHtlyG3lJpo2FEAi7tBheCTLqOHval4g"></div><span class="font-title-md text-title-md font-medium text-on-surface truncate">John Mathews</span></div></td><td class="py-3.5 px-space-md text-center"><span class="font-code-sm text-code-sm font-semibold bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface-variant">24 clips</span></td><td class="py-3.5 px-space-md min-w-[170px]"><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between font-label-sm text-label-sm"><span class="font-medium text-on-surface">68%</span><span class="text-outline font-code-sm text-code-sm">16 / 24 clips</span></div><div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full rounded-full bg-primary transition-all duration-500" style="width: 68%;"></div></div></div></td><td class="py-3.5 px-space-md"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm font-medium bg-primary/10 text-primary"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>In Progress</span></td><td class="py-3.5 px-space-md"><span class="font-body-md text-body-md text-on-surface-variant font-code-sm text-code-sm">10 min ago</span></td><td class="py-3.5 px-space-lg text-right"><button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors shadow-sm inline-flex items-center gap-1" onclick="openProjectDetail('Training Video Batch 04', 'John Mathews', '24', '16', '8', '68%')"><span class="">View</span><span class="material-symbols-outlined text-[15px]">arrow_forward</span></button></td></tr><tr class="hover:bg-surface-container-low/60 transition-colors group" data-status="submitted"><td class="py-3.5 px-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors"><span class="material-symbols-outlined text-[20px]">mic</span></div><div class="flex flex-col min-w-0"><a class="font-title-md text-title-md font-semibold text-on-surface hover:text-primary transition-colors truncate" href="javascript:void(0)" onclick="openProjectDetail('Product Demo 02', 'Sarah Williams', '18', '18', '0', '100%')">Product Demo 02</a><span class="font-label-sm text-label-sm text-outline flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">videocam</span>product_demo_v2_master.mp4 • 54m total</span></div></div></td><td class="py-3.5 px-space-md"><div class="flex items-center gap-space-sm"><div class="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 shadow-sm"><img class="w-full h-full object-cover" data-alt="Sarah Williams portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ4GSwD9tDH4SMeLo4x11qPWKnq91LeL8F0BYluCRLmh1wtl8DogXv8NFe5X3tmdoaB9MUl1yl0_9pgkTkt1BjIahA_58xne5IqUMHaQ32gjrYgRmnBjs-DWs_Kw61dT3IPOzaVvweRZCG0hBRJ2-spg1O722yBXlra2M_TfysusdWc5af94crUL8S8hFgzbz-Zj83zC7tMLMzJcLDyC4M_b21wYDq63UxWw3KR_Y"></div><span class="font-title-md text-title-md font-medium text-on-surface truncate">Sarah Williams</span></div></td><td class="py-3.5 px-space-md text-center"><span class="font-code-sm text-code-sm font-semibold bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface-variant">18 clips</span></td><td class="py-3.5 px-space-md min-w-[170px]"><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between font-label-sm text-label-sm"><span class="font-medium text-secondary">100%</span><span class="text-outline font-code-sm text-code-sm">18 / 18 clips</span></div><div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full rounded-full bg-secondary transition-all duration-500" style="width: 100%;"></div></div></div></td><td class="py-3.5 px-space-md"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm font-medium bg-primary-fixed text-on-primary-fixed"><span class="w-2 h-2 rounded-full bg-primary-container"></span>Submitted</span></td><td class="py-3.5 px-space-md"><span class="font-body-md text-body-md text-on-surface-variant font-code-sm text-code-sm">25 min ago</span></td><td class="py-3.5 px-space-lg text-right"><button class="px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-medium transition-colors shadow-sm inline-flex items-center gap-1 hover:bg-primary" onclick="openProjectDetail('Product Demo 02', 'Sarah Williams', '18', '18', '0', '100%')"><span class="material-symbols-outlined text-[15px]">rate_review</span><span class="">Review</span></button></td></tr><tr class="hover:bg-surface-container-low/60 transition-colors group" data-status="in_progress"><td class="py-3.5 px-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-[20px]">assignment</span></div><div class="flex flex-col min-w-0"><a class="font-title-md text-title-md font-semibold text-on-surface hover:text-primary transition-colors truncate" href="javascript:void(0)" onclick="openProjectDetail('Training Batch 03', 'Alex Kumar', '12', '5', '7', '42%')">Training Batch 03</a><span class="font-label-sm text-label-sm text-outline flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">videocam</span>batch_training_03_cut.mp4 • 36m total</span></div></div></td><td class="py-3.5 px-space-md"><div class="flex items-center gap-space-sm"><div class="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 shadow-sm"><img class="w-full h-full object-cover" data-alt="Alex Kumar headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgjzVLQE-c4qNwDELL118_T6J2-7fsMHt-6L9BRSnpSI7sFBCtXFoXX8tXp00TtBlWbRyL__dlpeS_eOBWGN1WmuskBBIV_UN0Kn94iwopQQyXNU52IECOCymLYe-GyvZ0obdkiVBhzX7VM6NkjQF2X_Se8AK1PX_bi68H509pLQ_UFPNZGdyScRsJ7oLPe_o4dFGEhr9RnB1LxY2Jq4_NjhwsQGLb2XjHnHRXlK0"></div><span class="font-title-md text-title-md font-medium text-on-surface truncate">Alex Kumar</span></div></td><td class="py-3.5 px-space-md text-center"><span class="font-code-sm text-code-sm font-semibold bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface-variant">12 clips</span></td><td class="py-3.5 px-space-md min-w-[170px]"><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between font-label-sm text-label-sm"><span class="font-medium text-on-surface">42%</span><span class="text-outline font-code-sm text-code-sm">5 / 12 clips</span></div><div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full rounded-full bg-primary transition-all duration-500" style="width: 42%;"></div></div></div></td><td class="py-3.5 px-space-md"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm font-medium bg-primary/10 text-primary"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>In Progress</span></td><td class="py-3.5 px-space-md"><span class="font-body-md text-body-md text-on-surface-variant font-code-sm text-code-sm">1 hour ago</span></td><td class="py-3.5 px-space-lg text-right"><button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors shadow-sm inline-flex items-center gap-1" onclick="openProjectDetail('Training Batch 03', 'Alex Kumar', '12', '5', '7', '42%')"><span class="">View</span><span class="material-symbols-outlined text-[15px]">arrow_forward</span></button></td></tr><tr class="hover:bg-surface-container-low/60 transition-colors group" data-status="approved"><td class="py-3.5 px-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0 group-hover:bg-secondary group-hover:text-on-secondary transition-colors"><span class="material-symbols-outlined text-[20px]">verified</span></div><div class="flex flex-col min-w-0"><a class="font-title-md text-title-md font-semibold text-on-surface hover:text-primary transition-colors truncate" href="javascript:void(0)" onclick="openProjectDetail('Product Training 04', 'David Kumar', '20', '20', '0', '100%')">Product Training 04</a><span class="font-label-sm text-label-sm text-outline flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">videocam</span>product_training_04_hd.mp4 • 60m total</span></div></div></td><td class="py-3.5 px-space-md"><div class="flex items-center gap-space-sm"><div class="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0 shadow-sm"><img class="w-full h-full object-cover" data-alt="David Kumar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNE-pmeAA_K8Bt44jUwHKjp_UVIzog2g4I5_rc94xQy2zj2E1DffG8rtRQQ1wshP5BlkIKJIAXPXdmiBfAmwEesdB2KJoSR0-E4M_AJdStMjMgAkXZna9BSJK88hnSH0_8Qy1xGY-i_2oIqYrSbxKUyrH9flwIfnC6wOW-SrTsSKIr28-tcn_IImHcH8d7felYruOI4Yn1gUR7uybuCBzPVP5Qs4mrafIg8ZgfTI4"></div><span class="font-title-md text-title-md font-medium text-on-surface truncate">David Kumar</span></div></td><td class="py-3.5 px-space-md text-center"><span class="font-code-sm text-code-sm font-semibold bg-surface-container-high px-2.5 py-1 rounded-full text-on-surface-variant">20 clips</span></td><td class="py-3.5 px-space-md min-w-[170px]"><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between font-label-sm text-label-sm"><span class="font-medium text-secondary">100%</span><span class="text-outline font-code-sm text-code-sm">20 / 20 clips</span></div><div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full rounded-full bg-secondary transition-all duration-500" style="width: 100%;"></div></div></div></td><td class="py-3.5 px-space-md"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm font-medium bg-secondary-container/40 text-on-secondary-container"><span class="w-2 h-2 rounded-full bg-secondary"></span>Approved</span></td><td class="py-3.5 px-space-md"><span class="font-body-md text-body-md text-on-surface-variant font-code-sm text-code-sm">Yesterday</span></td><td class="py-3.5 px-space-lg text-right"><button class="px-space-sm py-1.5 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors shadow-sm inline-flex items-center gap-1" onclick="openProjectDetail('Product Training 04', 'David Kumar', '20', '20', '0', '100%')"><span class="">View</span><span class="material-symbols-outlined text-[15px]">arrow_forward</span></button></td></tr></tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-lg py-3 bg-surface-container-low/70 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="font-label-md text-label-md text-outline">
+          Showing <span class="text-on-surface font-medium">1 - 5</span> of <span class="text-on-surface font-medium">86</span> projects
+        </div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded-md hover:bg-surface-container-high disabled:opacity-40 text-outline" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-7 h-7 rounded-md bg-primary text-on-primary font-label-md text-label-md font-medium">1</button>
+<button class="w-7 h-7 rounded-md hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md">2</button>
+<button class="w-7 h-7 rounded-md hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-7 h-7 rounded-md hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md">18</button>
+<button class="p-1 rounded-md hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- VIEW 2: PROJECT DETAILS VIEW -->
+<section class="hidden flex-col w-full" id="view-detail">
+<!-- Back to Projects & Details Header -->
+<div class="mb-space-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<button class="self-start inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-primary-container font-medium transition-colors mb-1" onclick="setScreenView('table')">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="">Back to Projects</span>
+</button>
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight" id="detail-title">Training Video Batch 04</h2>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-medium bg-primary/10 text-primary" id="detail-status">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            In Progress
+          </span>
+<span class="font-code-sm text-code-sm text-outline px-2 py-0.5 rounded bg-surface-container-high">ID: PRJ-84920</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Assigned Source: <code class="font-code-sm text-code-sm bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface">training_video_01.mp4</code> • Created Mar 28, 2026</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md font-medium shadow-sm transition-colors flex items-center gap-1.5" onclick="openModal('assign-modal')">
+<span class="material-symbols-outlined text-[18px] text-primary">person_add</span>
+<span class="">Reassign</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-medium shadow-md transition-all active:scale-[0.99] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span class="">Batch Listen &amp; Verify</span>
+</button>
+</div>
+</div>
+<!-- Assigned User Header Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md mb-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative w-12 h-12 rounded-full overflow-hidden shadow-sm flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="John Mathews avatar smiling in voice recording studio booth with professional audio soundboard behind" id="detail-user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD8Xec68WgnbRJ7XAu0N-1kG00VtV70n7jdjKtb_TMPN_LOXyRAqsTITUnAE9WSM93obFPqi1INeDJjUvQ5ikmKao-GEHuYfaq7MmvEUQlGDz5aikCJAQd-Bg_3xvPxwPelnFygd0n8mkP2FvH2V6n4U_gdXHvpWgMoge2N0lw7HVM7JUMsUN602DVkId_mJIPJDh-PVjM0EDVq3G_9l4F0LfGSDP_B7Z0Tl9Kr3Q">
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Assigned Lead Narrator</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface" id="detail-user-name">John Mathews</span>
+<span class="font-body-md text-body-md text-on-surface-variant">john.mathews@voiceflow.internal • Studio Booth A2</span>
+</div>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium transition-colors self-start sm:self-center flex items-center gap-1" onclick="openModal('assign-modal')">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+<span class="">Change User</span>
+</button>
+</div>
+<!-- 4 Summary Metric Cards (Bento Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider">Total Clips</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</div>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface" id="detail-metric-total">24</span>
+<span class="font-body-md text-body-md text-on-surface-variant block mt-0.5">Segmented audio slices</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider font-semibold">Completed</span>
+<div class="w-7 h-7 rounded-lg bg-secondary/15 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-secondary" id="detail-metric-completed">16</span>
+<span class="font-body-md text-body-md text-on-surface-variant block mt-0.5">Recorded &amp; noise-cleaned</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider">Remaining</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-high text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">hourglass_empty</span>
+</div>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface" id="detail-metric-remaining">8</span>
+<span class="font-body-md text-body-md text-on-surface-variant block mt-0.5">Pending user recording</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm uppercase text-primary tracking-wider font-semibold">Progress</span>
+<div class="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">timelapse</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-bold text-primary" id="detail-metric-percent">68%</span>
+<span class="font-label-sm text-label-sm text-outline">Target: 100%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500" id="detail-metric-bar" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Clips Audio Nodes List Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-lg py-space-md bg-surface-container-low/40 flex items-center justify-between border-b border-surface-container-high">
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">Segment Clips Breakdown</h3>
+<p class="font-label-md text-label-md text-outline">Individual audio chunks extracted at 03:00 minute cadences</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-outline">Bitrate: 24-bit / 48kHz WAV</span>
+</div>
+</div>
+<!-- Interactive Clips Rows -->
+<div class="divide-y divide-surface-container-high">
+<!-- Clip 01 -->
+<div class="px-space-lg py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-secondary/15 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Clip 01</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">03:00</span>
+<span class="font-label-sm text-label-sm px-2 py-0.2 rounded-full bg-secondary/15 text-secondary font-medium">Recorded</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Timestamp: 00:00 - 03:00 • Take 2 • Clean SNR 42dB</span>
+</div>
+</div>
+<!-- Waveform Display SVG -->
+<div class="hidden md:flex items-center gap-3">
+<div class="w-36 h-6 flex items-center gap-0.5">
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+<div class="w-1 h-6 bg-secondary rounded-full"></div>
+<div class="w-1 h-4 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-6 bg-secondary rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+<div class="w-1 h-4 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Play audio">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+<button class="px-space-sm py-1 rounded-md bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium">View</button>
+</div>
+</div>
+<!-- Clip 02 -->
+<div class="px-space-lg py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-secondary/15 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Clip 02</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">03:00</span>
+<span class="font-label-sm text-label-sm px-2 py-0.2 rounded-full bg-secondary/15 text-secondary font-medium">Recorded</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Timestamp: 03:00 - 06:00 • Take 1 • Clean SNR 45dB</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-3">
+<div class="w-36 h-6 flex items-center gap-0.5">
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+<div class="w-1 h-4 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-6 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+<div class="w-1 h-4 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Play audio">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+<button class="px-space-sm py-1 rounded-md bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium">View</button>
+</div>
+</div>
+<!-- Clip 03 -->
+<div class="px-space-lg py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-secondary/15 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Clip 03</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">03:00</span>
+<span class="font-label-sm text-label-sm px-2 py-0.2 rounded-full bg-secondary/15 text-secondary font-medium">Recorded</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Timestamp: 06:00 - 09:00 • Take 1 • Clean SNR 44dB</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-3">
+<div class="w-36 h-6 flex items-center gap-0.5">
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-6 bg-secondary rounded-full"></div>
+<div class="w-1 h-4 bg-secondary rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-3 bg-secondary rounded-full"></div>
+<div class="w-1 h-5 bg-secondary rounded-full"></div>
+<div class="w-1 h-6 bg-secondary rounded-full"></div>
+</div>
+<button class="p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Play audio">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+<button class="px-space-sm py-1 rounded-md bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium">View</button>
+</div>
+</div>
+<!-- Clip 17 (Active in Progress) -->
+<div class="px-space-lg py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-primary/5 hover:bg-primary/10 transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 animate-pulse">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md font-semibold text-on-surface">Clip 17</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">03:00</span>
+<span class="font-label-sm text-label-sm px-2 py-0.2 rounded-full bg-primary/20 text-primary font-semibold">In Progress</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Currently recording in Studio Booth A2 • Buffer active</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-3">
+<span class="font-code-sm text-code-sm text-primary font-semibold">12ms latency</span>
+<button class="px-space-sm py-1 rounded-md bg-primary text-on-primary font-label-md text-label-md font-medium shadow-sm">View Session</button>
+</div>
+</div>
+<!-- Clip 18 (Queued) -->
+<div class="px-space-lg py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-outline flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md font-semibold text-outline">Clip 18</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-outline">03:00</span>
+<span class="font-label-sm text-label-sm px-2 py-0.2 rounded-full bg-surface-container-high text-outline font-medium">Queued</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Scheduled script chunk: "Chapter 4: Advanced Logic Integration..."</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-3">
+<span class="font-code-sm text-code-sm text-outline">Pending previous clip</span>
+<button class="px-space-sm py-1 rounded-md bg-surface-container-low hover:bg-surface-container-high text-outline hover:text-on-surface font-label-md text-label-md font-medium">View Script</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VIEW 3: EMPTY STATE PREVIEW -->
+<section class="hidden flex-col w-full items-center justify-center py-16 px-space-md" id="view-empty">
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-md max-w-lg w-full text-center flex flex-col items-center">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-outline mb-space-md relative">
+<span class="material-symbols-outlined text-[42px] text-primary">video_library</span>
+<span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-[11px] text-on-secondary font-bold">0</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg font-semibold text-on-surface tracking-tight mb-2">No projects yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-lg">
+        Create your first video project to segment source clips, dispatch recording tasks to narrators, and track AI conversational workflows.
+      </p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-title-md text-title-md font-medium transition-colors" onclick="setScreenView('table')">
+          Reset Filter
+        </button>
+<button class="px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-medium shadow-md transition-all active:scale-[0.99] flex items-center gap-2" onclick="openModal('create-modal')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">+ Create Project</span>
+</button>
+</div>
+</div>
+</section>
+<!-- MODAL 1: + CREATE PROJECT MODAL -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4" id="create-modal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl w-full max-w-xl overflow-hidden transform transition-all">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low/60 flex items-center justify-between border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+</div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">Create Project</h3>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="closeModal('create-modal')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body / Form Fields -->
+<form class="p-space-lg flex flex-col gap-space-md" id="create-project-form" onsubmit="handleCreateProject(event)">
+<!-- Project Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface">Project Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2.5 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" id="input-proj-name" required="" type="text" value="Training Video Batch 04">
+</div>
+<!-- Source Video Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface">Source Video</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2.5 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none cursor-pointer">
+<option>Select video: training_video_01.mp4 (72m)</option>
+<option>Select video: product_walkthrough_q1.mp4 (45m)</option>
+<option>Select video: security_briefing_raw.mp4 (96m)</option>
+<option>Select video: onboarding_overview.mp4 (30m)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Clip Duration -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface">Clip Duration</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2.5 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none cursor-pointer">
+<option selected="">3 minutes (Standard)</option>
+<option>2 minutes (Rapid take)</option>
+<option>5 minutes (Extended monologue)</option>
+<option>10 minutes (Deep chapter)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Assigned User Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface">Assigned User</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2.5 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all appearance-none cursor-pointer" id="select-user-create">
+<option value="John Mathews">John Mathews (Lead Narrator)</option>
+<option value="Sarah Williams">Sarah Williams (Voice Specialist)</option>
+<option value="Alex Kumar">Alex Kumar (Audio Engineer)</option>
+<option value="David Chen">David Chen (Narration Expert)</option>
+<option value="Elena Rostova">Elena Rostova (Senior Artist)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Deadline (Optional) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface flex items-center justify-between">
+<span class="">Deadline</span>
+<span class="text-outline font-label-sm text-label-sm">Optional</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2.5 rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer" type="date" value="2026-04-15">
+</div>
+<!-- Notes (Optional) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-medium text-on-surface flex items-center justify-between">
+<span class="">Production Notes</span>
+<span class="text-outline font-label-sm text-label-sm">Optional</span>
+</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary px-space-md py-2 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Add specific pronunciation guides, tonal directions or pacing requirements..." rows="2"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container-high mt-1">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-title-md text-title-md font-medium transition-colors" onclick="closeModal('create-modal')" type="button">
+            Cancel
+          </button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-medium shadow-md transition-all active:scale-[0.99]" type="submit">
+            Create Project
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 2: ASSIGN / CHANGE USER MODAL -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4" id="assign-modal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl w-full max-w-lg overflow-hidden transform transition-all">
+<!-- Modal Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low/60 flex items-center justify-between border-b border-surface-container-high">
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">Assign Project</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Select studio talent to execute voice capture</span>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="closeModal('assign-modal')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<!-- Current User Banner -->
+<div class="p-space-sm bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-outline">Current:</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-title-md text-title-md font-medium text-on-surface" id="modal-current-user-display">John Mathews</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Active Task Lead</span>
+</div>
+<!-- Search Input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline pointer-events-none">search</span>
+<input class="w-full bg-surface-container-low pl-9 pr-space-md py-2 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all" id="user-filter-input" onkeyup="filterUserList()" placeholder="Search by name, username or email..." type="text">
+</div>
+<!-- Radio User Selection List -->
+<div class="flex flex-col gap-2 max-h-60 overflow-y-auto" id="user-selection-list">
+<!-- Option 1: John Mathews -->
+<label class="flex items-center justify-between p-space-sm rounded-xl border border-primary bg-primary/5 cursor-pointer transition-colors user-row" data-username="john mathews john.mathews@voiceflow.internal">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-4 h-4 text-primary accent-primary cursor-pointer" name="assigned_user_radio" onchange="onRadioChange('John Mathews')" type="radio" value="John Mathews">
+<div class="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="John Mathews headshot smiling in voice recording studio booth with sound isolation equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAprSjjq7JqFq_n2n3Kpt8jiqfo_t4azY1-2HkhDtGRXsmXvxIrYVJEKC6AOu23uVP2KIf362x9rp8D5GosfLz-Te3ZRzm8mqmQwTylWq_IRnQpSvcl5YEKbZfONX0G5dzqAd6D8V3SxCFvOs0QW1rCGy2lK9MFSQMlIO97tYEdGm-_bUZHSENjvq3KDtHGBUL_UKtUX-c9cchdR-w3gL_wwRR6kIUL9np1-ZxY8uA">
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-medium text-on-surface">John Mathews</span>
+<span class="font-label-sm text-label-sm text-outline">john.mathews@voiceflow.internal</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">2 Active</span>
+</label>
+<!-- Option 2: Sarah Williams -->
+<label class="flex items-center justify-between p-space-sm rounded-xl border border-transparent hover:bg-surface-container-low cursor-pointer transition-colors user-row" data-username="sarah williams sarah.w@voiceflow.internal">
+<div class="flex items-center gap-space-sm">
+<input class="w-4 h-4 text-primary accent-primary cursor-pointer" name="assigned_user_radio" onchange="onRadioChange('Sarah Williams')" type="radio" value="Sarah Williams">
+<div class="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Sarah Williams professional headshot, audio engineer in minimalist modern workspace with gentle lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTJDSwRtforQFsr72mgB1GfnO6DaoHdNrGl9hwVSL64Mxny3osFH-qm3C8Urr9P5n9vUmCUG6Q5ooa1DhJcpxi1n3RudtfqU40Fg1KUYsqyqq0GXjo5ByiFo7bdhjy2sKzrzJPQXphVU9C6rDho-R11S-sjbh6I2YZKaC4BrKmHLXAXH9t11rZ1ErPF3L9P0jChNsvonz4swoJGLyvvqaTbnQbQ4h-U49jyqb2uLE">
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-medium text-on-surface">Sarah Williams</span>
+<span class="font-label-sm text-label-sm text-outline">sarah.w@voiceflow.internal</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">1 Active</span>
+</label>
+<!-- Option 3: Alex Kumar -->
+<label class="flex items-center justify-between p-space-sm rounded-xl border border-transparent hover:bg-surface-container-low cursor-pointer transition-colors user-row" data-username="alex kumar alex.kumar@voiceflow.internal">
+<div class="flex items-center gap-space-sm">
+<input class="w-4 h-4 text-primary accent-primary cursor-pointer" name="assigned_user_radio" onchange="onRadioChange('Alex Kumar')" type="radio" value="Alex Kumar">
+<div class="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Alex Kumar portrait with audio production monitors and headphones in sound design studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMe1nwZgkVohN4yWWG-H0irJnQZY36gzgb6NPAOgD0RxxLWGDghWTIZ9AtMB1P5OmRAJAkAoU03wQFzvgOZbsLTFApLPau2_50eZGu2DuSR4ahw-0S1bCh-ZmHYG5nMVErMNoFz4znphlhsWMdSB5ucGdSsNt-w_XSfX-aQDiIpVZ9ZdJu1p-ZAFUcyDHsYd3sdV9HHewccHEMaWsRHzWGxiutTYABPi7Qom5110c">
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-medium text-on-surface">Alex Kumar</span>
+<span class="font-label-sm text-label-sm text-outline">alex.kumar@voiceflow.internal</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-secondary/15 text-secondary font-medium">Available</span>
+</label>
+</div>
+<!-- Modal Footer Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container-high mt-1">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-title-md text-title-md font-medium transition-colors" onclick="closeModal('assign-modal')">
+            Cancel
+          </button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-medium shadow-md transition-all active:scale-[0.99] flex items-center gap-1.5" onclick="confirmAssignment()">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span class="">Assign Project</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let currentSelectedUser = 'John Mathews';
+
+  function setScreenView(viewKey) {
+    // Hide all
+    document.getElementById('view-table').classList.add('hidden');
+    document.getElementById('view-detail').classList.add('hidden');
+    document.getElementById('view-empty').classList.add('hidden');
+
+    // Reset button styles
+    ['state-btn-table', 'state-btn-detail', 'state-btn-empty'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+        btn.classList.add('text-on-surface-variant');
+      }
+    });
+
+    if (viewKey === 'table') {
+      document.getElementById('view-table').classList.remove('hidden');
+      const activeBtn = document.getElementById('state-btn-table');
+      activeBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+      activeBtn.classList.remove('text-on-surface-variant');
+    } else if (viewKey === 'detail') {
+      document.getElementById('view-detail').classList.remove('hidden');
+      const activeBtn = document.getElementById('state-btn-detail');
+      activeBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+      activeBtn.classList.remove('text-on-surface-variant');
+    } else if (viewKey === 'empty') {
+      document.getElementById('view-empty').classList.remove('hidden');
+      const activeBtn = document.getElementById('state-btn-empty');
+      activeBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+      activeBtn.classList.remove('text-on-surface-variant');
+    }
+  }
+
+  function openProjectDetail(title, user, total, completed, remaining, percent) {
+    document.getElementById('detail-title').innerText = title;
+    document.getElementById('detail-user-name').innerText = user;
+    document.getElementById('modal-current-user-display').innerText = user;
+    document.getElementById('detail-metric-total').innerText = total;
+    document.getElementById('detail-metric-completed').innerText = completed;
+    document.getElementById('detail-metric-remaining').innerText = remaining;
+    document.getElementById('detail-metric-percent').innerText = percent;
+    document.getElementById('detail-metric-bar').style.width = percent;
+    setScreenView('detail');
+  }
+
+  function openModal(modalId) {
+    document.getElementById(modalId).classList.remove('hidden');
+    document.getElementById(modalId).classList.add('flex');
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+    document.getElementById(modalId).classList.remove('flex');
+  }
+
+  function onRadioChange(userName) {
+    currentSelectedUser = userName;
+    document.querySelectorAll('#user-selection-list .user-row').forEach(row => {
+      row.classList.remove('border-primary', 'bg-primary/5');
+      row.classList.add('border-transparent');
+    });
+    event.target.closest('.user-row').classList.add('border-primary', 'bg-primary/5');
+    event.target.closest('.user-row').classList.remove('border-transparent');
+  }
+
+  function filterUserList() {
+    const query = document.getElementById('user-filter-input').value.toLowerCase();
+    const rows = document.querySelectorAll('#user-selection-list .user-row');
+    rows.forEach(row => {
+      const data = row.getAttribute('data-username').toLowerCase();
+      if (data.includes(query)) {
+        row.classList.remove('hidden');
+        row.classList.add('flex');
+      } else {
+        row.classList.add('hidden');
+        row.classList.remove('flex');
+      }
+    });
+  }
+
+  function confirmAssignment() {
+    closeModal('assign-modal');
+    document.getElementById('detail-user-name').innerText = currentSelectedUser;
+    document.getElementById('modal-current-user-display').innerText = currentSelectedUser;
+    showToast('Success', `Project assigned to ${currentSelectedUser} successfully.`);
+  }
+
+  function handleCreateProject(e) {
+    e.preventDefault();
+    const name = document.getElementById('input-proj-name').value;
+    const user = document.getElementById('select-user-create').value;
+    closeModal('create-modal');
+    openProjectDetail(name, user, '24', '0', '24', '0%');
+    showToast('Project Created', `"${name}" configured and assigned to ${user}.`);
+  }
+
+  function showToast(title, desc) {
+    const toast = document.getElementById('status-toast');
+    document.getElementById('toast-title').innerText = title;
+    document.getElementById('toast-desc').innerText = desc;
+    toast.classList.remove('opacity-0', 'translate-y-[-100%]', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      hideToast();
+    }, 4000);
+  }
+
+  function hideToast() {
+    const toast = document.getElementById('status-toast');
+    toast.classList.add('opacity-0', 'translate-y-[-100%]', 'pointer-events-none');
+    toast.classList.remove('opacity-100', 'translate-y-0');
+  }
+
+  function filterTable(filterKey, buttonElem) {
+    // Button styling
+    document.querySelectorAll('#filter-tabs .filter-btn').forEach(b => {
+      b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm', 'font-medium');
+      b.classList.add('text-on-surface-variant');
+      const counter = b.querySelector('span');
+      if (counter) {
+        counter.classList.remove('opacity-80');
+        counter.classList.add('text-outline');
+      }
+    });
+
+    buttonElem.classList.add('bg-primary', 'text-on-primary', 'shadow-sm', 'font-medium');
+    buttonElem.classList.remove('text-on-surface-variant');
+    const activeCounter = buttonElem.querySelector('span');
+    if (activeCounter) {
+      activeCounter.classList.add('opacity-80');
+      activeCounter.classList.remove('text-outline');
+    }
+
+    const rows = document.querySelectorAll('#projects-table-body tr');
+    let visibleCount = 0;
+    rows.forEach(row => {
+      const status = row.getAttribute('data-status');
+      if (filterKey === 'all' || status === filterKey) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  function searchProjects() {
+    const query = document.getElementById('project-search-input').value.toLowerCase();
+    const rows = document.querySelectorAll('#projects-table-body tr');
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(query)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  function exportReport() {
+    showToast('Export Scheduled', 'Projects manifest CSV is compiling in the background.');
+  }
+</script></main></div>
+
+</body></html>

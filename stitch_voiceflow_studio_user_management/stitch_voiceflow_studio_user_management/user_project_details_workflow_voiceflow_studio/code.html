@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.60/css/jetbrains-mono.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#4f46e5", "secondary-container": "#6cf8bb", "on-surface-variant": "#464555", "tertiary": "#3a495f", "on-primary-container": "#dad7ff", "error": "#ba1a1a", "background": "#fcf8ff", "secondary-fixed": "#6ffbbe", "tertiary-fixed-dim": "#b7c8e1", "on-error": "#ffffff", "surface-container-low": "#f5f2ff", "inverse-surface": "#302f39", "primary": "#3525cd", "surface-container-high": "#eae6f4", "on-tertiary": "#ffffff", "surface-tint": "#4d44e3", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#d3e4fe", "on-background": "#1b1b24", "primary-fixed": "#e2dfff", "on-secondary-fixed-variant": "#005236", "inverse-on-surface": "#f3effc", "on-surface": "#1b1b24", "on-tertiary-fixed": "#0b1c30", "surface-variant": "#e4e1ee", "on-secondary": "#ffffff", "on-primary": "#ffffff", "surface-container": "#f0ecf9", "on-primary-fixed-variant": "#3323cc", "inverse-primary": "#c3c0ff", "secondary": "#006c49", "on-primary-fixed": "#0f0069", "on-secondary-container": "#00714d", "surface-dim": "#dcd8e5", "surface": "#fcf8ff", "on-tertiary-fixed-variant": "#38485d", "outline": "#777587", "tertiary-container": "#516177", "outline-variant": "#c7c4d8", "on-secondary-fixed": "#002113", "secondary-fixed-dim": "#4edea3", "primary-fixed-dim": "#c3c0ff", "surface-bright": "#fcf8ff", "surface-container-highest": "#e4e1ee", "on-error-container": "#93000a", "on-tertiary-container": "#ccdcf7", "error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "2rem", "space-xl": "2rem", "margin-mobile": "1rem", "gutter-sm": "1rem", "space-md": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem" }, "fontFamily": { "headline-md": ["Geist"], "title-md": ["Geist"], "label-sm": ["Geist"], "code-sm": ["JetBrains Mono"], "body-md": ["Geist"], "headline-lg": ["Geist"], "display-lg": ["Geist"], "label-md": ["Geist"], "body-lg": ["Geist"], "headline-lg-mobile": ["Geist"] }, "fontSize": { "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "code-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-lg": ["15px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }] } } } }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center gap-space-sm"><img alt="Brand logo. - Primary color: #4f46e5
+- Font: geist
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WNNQLfUtQGMuKSY9szov5vnGRda_EzUjrLSxKxoZIqPq1vD8fCcHPHWLxSPNa6_iZxZ6ZUrcAcwMY4KE21MlpMoG2NZXSx7KKyJ3w5rncKAhK3EQ7G5qLskKMwp1ndhymnISquw0Ttl8KuNNrbdLyR5-B9ufMrFGUo5Vl2vY5z3kkUDD0w3TUeXZbb1PC5RpmG3YOy8k0zEHcry7uXT73JH_oHnMbO747cDgFCdxFuLYfqDG5ZSeiW0Jg"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface truncate leading-none">VoiceFlow</span><span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold mt-space-xs">Voice Artist</span></div></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">home</span><span class="font-body-md text-body-md">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="my-projects" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_open</span><span class="font-body-md text-body-md">My Projects</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">4</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="font-body-md text-body-md">Notifications</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary">2</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="profile-settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">person</span><span class="font-body-md text-body-md">Profile &amp; Settings</span></div></a></nav></div><div class="mt-auto p-space-md flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-secondary-container/20"><span class="inline-block w-2 h-2 rounded-full bg-secondary"></span><span class="font-code-sm text-code-sm text-secondary font-medium truncate">Mic Ready · 48kHz</span></div><div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1U2_nhHtbA75bFPj8bk77ZMHFxXyWbUmMPoXpXP4T9rv0jyFzOWbsPPZrOJlQcMrK7sVi6wXfdS9fTXSXzTQAhSNOGzUDR7NxszO5BXThgetLknEcbNpa8_QGDr7UEZAGscTe6zBjVoVcNwlCl8KaNaOGg71c0lZuPl7nHmS_rw1U1sbEEHvV7T8qsvnbpTT6zM9pHfeuDQymgacexSP82LfkmJhHhMHUYTTQMf71cvIzctN_JjzISvAg"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate leading-tight">John Mathews</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Talent Pro</span></div></div><a class="p-1 text-on-surface-variant hover:text-error transition-colors" data-path="logout" href="#" title="Sign out"><span class="material-symbols-outlined text-[18px]">logout</span></a></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-16 px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-sm text-on-surface-variant font-label-md text-label-md"><span class="text-on-surface-variant">VoiceFlow Studio</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-semibold">Workspace</span></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container font-label-sm text-label-sm text-on-surface-variant"><span class="inline-block w-2 h-2 rounded-full bg-secondary"></span><span class="text-on-surface font-medium">Mic: USB Shure MV7</span><span class="text-secondary">● Connected</span></div><button aria-label="Notifications" class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U2_nhHtbA75bFPj8bk77ZMHFxXyWbUmMPoXpXP4T9rv0jyFzOWbsPPZrOJlQcMrK7sVi6wXfdS9fTXSXzTQAhSNOGzUDR7NxszO5BXThgetLknEcbNpa8_QGDr7UEZAGscTe6zBjVoVcNwlCl8KaNaOGg71c0lZuPl7nHmS_rw1U1sbEEHvV7T8qsvnbpTT6zM9pHfeuDQymgacexSP82LfkmJhHhMHUYTTQMf71cvIzctN_JjzISvAg"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div></div></div></header><main class="w-full pt-16 px-space-xl bg-surface min-h-screen"><div class="flex flex-col w-full pb-16 space-y-6">
+<!-- Top Navigation & Title Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex flex-col space-y-2">
+<a class="inline-flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md w-fit" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Back to My Projects
+      </a>
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Training Video Batch 04</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          In Progress
+        </span>
+<span class="px-2.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+          ID: PRJ-8842-EN
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Technical voice-over for enterprise cloud engineering series. Calibrated profile: Neutral American • Low Resonance.
+      </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm flex items-center gap-2" onclick="document.getElementById('state-stage').scrollIntoView({behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+        Workflow Sandbox
+      </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-all shadow-md hover:shadow-lg flex items-center gap-2 group" onclick="switchStudioState('recording')">
+<span>Continue Recording</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Metric Overview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Total Clips</span>
+<span class="material-symbols-outlined text-primary text-[20px]">library_music</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">24</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">48:30 total mins</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Completed</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">16</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">32:15 master audio</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Remaining</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">pending</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">~16:15 est. time</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Progress</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">68%</span>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-baseline justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">68%</span>
+<span class="text-primary font-medium">Next up: Clip 17</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Revisions Alert Banner -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pl-2">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-lg bg-error-container text-on-error-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold">Admin Revisions Requested</span>
+<span class="px-2 py-0.5 rounded-full bg-error/10 text-error font-label-sm text-label-sm font-bold">2 Clips Flagged</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+            Producer Sarah J. requested updates on pronunciation in <strong class="text-on-surface">Clip 04</strong> ("CIDR Block") and tone softness in <strong class="text-on-surface">Clip 12</strong>.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5" onclick="inspectRevision(4)">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+          Clip 04 Note
+        </button>
+<button class="px-3.5 py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-label-md text-label-md transition-all shadow-sm flex items-center gap-1.5" onclick="switchStudioState('recording')">
+<span class="material-symbols-outlined text-[16px]">replay</span>
+          Re-record Clip 04
+        </button>
+</div>
+</div>
+</div>
+<!-- Main Workspace: Clips Checklist (Left) & Workflow State Stage (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT: Clips Checklist (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl shadow-sm p-6 flex flex-col space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Project Clips</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">24</span>
+</div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Filter:</span>
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-medium">All</button>
+<button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface">Actionable</button>
+<button class="px-2.5 py-1 rounded-md text-on-surface-variant hover:text-on-surface">Done</button>
+</div>
+</div>
+<!-- Clips List -->
+<div class="flex flex-col space-y-2.5 divide-y-0">
+<!-- Clip 01: Completed -->
+<div class="group p-3.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface truncate">Clip 01: Course Overview</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">02:14</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Completed · Mastered 48kHz</span>
+</div>
+</div>
+<div class="flex items-center gap-1 opacity-80 group-hover:opacity-100">
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-colors" title="Play Master Take">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Clip Options">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Clip 02: Completed -->
+<div class="group p-3.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface truncate">Clip 02: Infrastructure Setup</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">01:45</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Completed · Mastered 48kHz</span>
+</div>
+</div>
+<div class="flex items-center gap-1 opacity-80 group-hover:opacity-100">
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Clip 03: Completed -->
+<div class="group p-3.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary/15 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface truncate">Clip 03: Virtual Networks</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">03:10</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Completed · Mastered 48kHz</span>
+</div>
+</div>
+<div class="flex items-center gap-1 opacity-80 group-hover:opacity-100">
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Clip 04: Revision Required -->
+<div class="p-3.5 rounded-lg bg-error-container/20 hover:bg-error-container/30 transition-all flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-error text-on-error flex items-center justify-center shrink-0 text-[13px] font-bold">
+                !
+              </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold truncate">Clip 04: Subnet Allocation</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">00:55</span>
+</div>
+<span class="font-label-sm text-label-sm text-error font-medium">Revision Requested · Sarah J. (10m ago)</span>
+</div>
+</div>
+<button class="px-3 py-1 rounded bg-error text-on-error hover:opacity-90 font-label-sm text-label-sm font-semibold transition-all" onclick="switchStudioState('recording')">
+              Re-record Take
+            </button>
+</div>
+<div class="bg-surface-container-lowest/80 p-2.5 rounded text-on-surface font-body-md text-body-md text-xs">
+<span class="font-semibold text-error">Feedback:</span> Please pronounce "CIDR" as "sigh-dur" instead of "c-eye-d-r". Cadence is otherwise stellar.
+          </div>
+</div>
+<!-- Collapsed Completed Summary for Clips 05 to 16 -->
+<div class="p-3 rounded-lg bg-surface-container/60 flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">done_all</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">Clips 05 through 16 Completed (12 Clips)</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:underline font-semibold">
+            Expand List
+          </button>
+</div>
+<!-- Clip 17: Current Active Recording Target -->
+<div class="p-4 rounded-xl bg-primary-container text-on-primary shadow-md flex items-center justify-between relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center gap-3.5 z-10 min-w-0">
+<div class="w-8 h-8 rounded-full bg-white text-primary flex items-center justify-center shrink-0 shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-primary font-bold truncate">Clip 17: Cloud Infrastructure</span>
+<span class="font-code-sm text-code-sm bg-black/20 text-on-primary px-2 py-0.5 rounded">03:00 Target</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary-container font-medium">Active Recording Target · Script ready</span>
+</div>
+</div>
+<button class="z-10 px-4 py-2 rounded-lg bg-white text-primary hover:bg-on-primary-container transition-colors font-label-md text-label-md font-bold shadow-sm flex items-center gap-1.5 shrink-0" onclick="switchStudioState('recording')">
+<span class="material-symbols-outlined text-[18px]">radio_button_checked</span>
+            Record Take
+          </button>
+</div>
+<!-- Clip 18 to 24: Queued neutral -->
+<div class="p-3 rounded-lg bg-surface-container-low text-on-surface-variant flex items-center justify-between opacity-80">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Clip 18: Security &amp; IAM Roles</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Queued · 02:40</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">Queued</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low text-on-surface-variant flex items-center justify-between opacity-70">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Clip 19: Storage Buckets &amp; Policies</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Queued · 01:50</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">Queued</span>
+</div>
+<div class="p-2.5 text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">+ 5 more clips queued in batch (Clips 20–24)</span>
+</div>
+</div>
+</div>
+<!-- RIGHT: Interactive Workflow States Sandbox & Live Preview Stage (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col space-y-4" id="state-stage">
+<!-- Studio Workflow Stage Switcher Header -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">developer_board</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Workflow State Preview</h3>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Interactive Controls</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs">
+          Select a state below to preview how VoiceFlow handles real-time audio sessions, warnings, permissions, and submissions:
+        </p>
+<!-- Workflow State Pills Switcher -->
+<div class="grid grid-cols-2 gap-2">
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center gap-1.5 transition-all" id="btn-state-permission" onclick="switchStudioState('permission')">
+<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+            1. Mic Access
+          </button>
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-primary-container text-on-primary flex items-center gap-1.5 transition-all shadow-sm" id="btn-state-recording" onclick="switchStudioState('recording')">
+<span class="material-symbols-outlined text-[16px]">fiber_manual_record</span>
+            2. Recording Active
+          </button>
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center gap-1.5 transition-all" id="btn-state-paused" onclick="switchStudioState('paused')">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">pause_circle</span>
+            3. Recording Paused
+          </button>
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center gap-1.5 transition-all" id="btn-state-saved" onclick="switchStudioState('saved')">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+            4. Take Saved
+          </button>
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center gap-1.5 transition-all" id="btn-state-unsaved" onclick="switchStudioState('unsaved')">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+            5. Unsaved Alert
+          </button>
+<button class="px-2.5 py-1.5 rounded-lg text-left font-label-sm text-label-sm bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center gap-1.5 transition-all" id="btn-state-completion" onclick="switchStudioState('completion')">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+            6. Project Complete
+          </button>
+</div>
+</div>
+<!-- DYNAMIC STATE CONTAINER -->
+<div class="relative" id="dynamic-state-viewport">
+<!-- STATE 1: Microphone Permission Modal / Card -->
+<div class="state-panel hidden bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-permission">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">mic_off</span>
+</div>
+<div class="flex flex-col space-y-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Microphone Access Required</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              VoiceFlow needs hardware microphone access to record your voice-over at 48kHz / 24-bit studio quality.
+            </p>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Detected: USB Shure MV7</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Hardware ID #04E8-VFLOW</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold transition-colors shadow-sm text-center" onclick="switchStudioState('recording')">
+              Allow Microphone
+            </button>
+<button class="py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors text-center" onclick="switchStudioState('paused')">
+              Cancel
+            </button>
+</div>
+</div>
+<!-- STATE 2: Recording State (Active) -->
+<div class="state-panel bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-recording">
+<!-- Live Indicator Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-block w-3 h-3 rounded-full bg-error animate-ping"></span>
+<span class="font-title-md text-title-md font-bold text-error">Recording Live</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold">
+              Clip 17: Take 01
+            </span>
+</div>
+<!-- Big Timecode -->
+<div class="flex flex-col items-center justify-center py-4 bg-surface-container-low rounded-xl">
+<span class="font-code-sm text-[32px] leading-none text-on-surface font-bold tracking-tight">00:02:18</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2 font-medium">Target: 03:00 · Shure MV7 (48kHz)</span>
+</div>
+<!-- Animated Audio Waveform SVG Display -->
+<div class="w-full h-16 bg-surface-container rounded-lg p-2 flex items-center justify-between gap-1 overflow-hidden">
+<div class="flex-1 bg-primary-container/80 h-4 rounded-full animate-pulse"></div>
+<div class="flex-1 bg-primary-container h-8 rounded-full animate-pulse" style="animation-delay: 100ms"></div>
+<div class="flex-1 bg-primary-container h-12 rounded-full animate-pulse" style="animation-delay: 200ms"></div>
+<div class="flex-1 bg-primary-container h-6 rounded-full animate-pulse" style="animation-delay: 150ms"></div>
+<div class="flex-1 bg-primary-container h-14 rounded-full animate-pulse" style="animation-delay: 300ms"></div>
+<div class="flex-1 bg-primary-container h-10 rounded-full animate-pulse" style="animation-delay: 250ms"></div>
+<div class="flex-1 bg-primary-container h-16 rounded-full animate-pulse" style="animation-delay: 400ms"></div>
+<div class="flex-1 bg-primary-container h-9 rounded-full animate-pulse" style="animation-delay: 200ms"></div>
+<div class="flex-1 bg-primary-container h-13 rounded-full animate-pulse" style="animation-delay: 350ms"></div>
+<div class="flex-1 bg-primary-container h-7 rounded-full animate-pulse" style="animation-delay: 100ms"></div>
+<div class="flex-1 bg-primary-container h-11 rounded-full animate-pulse" style="animation-delay: 180ms"></div>
+<div class="flex-1 bg-primary-container h-5 rounded-full animate-pulse" style="animation-delay: 80ms"></div>
+<div class="flex-1 bg-primary-container/60 h-3 rounded-full animate-pulse" style="animation-delay: 50ms"></div>
+</div>
+<!-- Recording Controls -->
+<div class="flex items-center gap-3">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2" onclick="switchStudioState('paused')">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+              Pause
+            </button>
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all shadow-sm flex items-center justify-center gap-2" onclick="switchStudioState('saved')">
+<span class="material-symbols-outlined text-[18px]">stop</span>
+              Stop &amp; Save
+            </button>
+</div>
+</div>
+<!-- STATE 3: Paused State -->
+<div class="state-panel hidden bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-paused">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">pause_circle</span>
+<span class="font-title-md text-title-md font-bold text-on-surface">Recording Paused</span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">Hold position</span>
+</div>
+<div class="flex flex-col items-center justify-center py-4 bg-surface-container-low rounded-xl">
+<span class="font-code-sm text-[32px] leading-none text-on-surface-variant font-bold tracking-tight">00:02:18</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2">Buffer holds 12.4 MB PCM</span>
+</div>
+<!-- Static Frozen Waveform -->
+<div class="w-full h-12 bg-surface-container rounded-lg p-2 flex items-center justify-between gap-1 opacity-50">
+<div class="flex-1 bg-outline h-3 rounded-full"></div>
+<div class="flex-1 bg-outline h-6 rounded-full"></div>
+<div class="flex-1 bg-outline h-8 rounded-full"></div>
+<div class="flex-1 bg-outline h-4 rounded-full"></div>
+<div class="flex-1 bg-outline h-10 rounded-full"></div>
+<div class="flex-1 bg-outline h-6 rounded-full"></div>
+<div class="flex-1 bg-outline h-8 rounded-full"></div>
+<div class="flex-1 bg-outline h-5 rounded-full"></div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm" onclick="switchStudioState('recording')">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+              Resume
+            </button>
+<button class="py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-error font-label-md text-label-md transition-colors flex items-center justify-center gap-1.5" onclick="switchStudioState('unsaved')">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+              Discard Take
+            </button>
+</div>
+</div>
+<!-- STATE 4: Recording Saved State -->
+<div class="state-panel hidden bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-saved">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/40 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">check_circle</span>
+</div>
+<div class="flex flex-col space-y-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Recording Saved!</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Duration: <strong class="text-on-surface">02:46</strong> · Audio rendering and level normalization completed at -16 LUFS.
+            </p>
+</div>
+<!-- Mini Audio Player Preview -->
+<div class="bg-surface-container-low p-3.5 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm hover:opacity-90">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Clip_17_Take_01_Master.wav</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">48kHz · 24-bit · 31.4 MB</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">02:46</span>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-2" onclick="alert('Playing back clip 17 review monitor...')">
+<span class="material-symbols-outlined text-[18px]">headset</span>
+              Review Clip
+            </button>
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-colors shadow-sm flex items-center justify-center gap-2" onclick="switchStudioState('completion')">
+<span>Next Clip</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STATE 5: Unsaved Recording Warning Modal -->
+<div class="state-panel hidden bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-unsaved">
+<div class="w-12 h-12 rounded-xl bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">warning</span>
+</div>
+<div class="flex flex-col space-y-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Unsaved Recording</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              You have a take for <strong class="text-on-surface">Clip 17 (02:18)</strong> that hasn't been saved. Navigating away will delete your audio buffer.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-2.5 px-4 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold transition-colors shadow-sm" onclick="switchStudioState('saved')">
+              Save Recording Now
+            </button>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors text-center" onclick="switchStudioState('recording')">
+                Continue Working
+              </button>
+<button class="flex-1 py-2 px-3 rounded-lg bg-error/10 hover:bg-error/20 text-error font-label-md text-label-md transition-colors text-center font-semibold" onclick="switchStudioState('recording')">
+                Discard Take
+              </button>
+</div>
+</div>
+</div>
+<!-- STATE 6: Project Completion & Submit Confirmation Modal -->
+<div class="state-panel hidden bg-surface-container-lowest p-6 rounded-xl shadow-md flex flex-col space-y-5 animate-fadeIn" id="state-card-completion">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">task_alt</span>
+</div>
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">All Clips Completed!</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-code-sm text-code-sm font-bold">24 / 24 • 100%</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Submit <strong class="text-on-surface">Training Video Batch 04</strong> for final client QA? Once submitted, clip editing and re-recording will be locked.
+            </p>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg text-on-surface-variant font-label-sm text-label-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">info</span>
+<span>Files will be bundled into a ProRes 48kHz audio stem package and sent to Master Engineering review.</span>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold transition-colors shadow-sm flex items-center justify-center gap-1.5" onclick="alert('Batch 04 submitted successfully for final client QA!')">
+<span class="material-symbols-outlined text-[18px]">send</span>
+              Submit Project
+            </button>
+<button class="py-2.5 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="switchStudioState('recording')">
+              Back to Clips
+            </button>
+</div>
+</div>
+</div>
+<!-- Quick Script Teleprompter Card -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">Teleprompter &amp; Script</span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface">Font Size: 18px</span>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low font-body-lg text-body-lg text-on-surface leading-relaxed italic border-l-2 border-primary-container">
+          "Now that the virtual network is fully instantiated, we must configure our primary subnet boundaries. Ensure your CIDR notation strictly reflects the non-overlapping address space allocated in Module Two..."
+        </div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Target Pacing: 135 WPM</span>
+<span class="text-primary font-medium">Estimated Reading Time: 02:45</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive State Switcher Script -->
+<script>
+    function switchStudioState(stateName) {
+      // Hide all panels
+      const panels = document.querySelectorAll('.state-panel');
+      panels.forEach(p => p.classList.add('hidden'));
+
+      // Remove active button styling
+      const buttons = [
+        'permission', 'recording', 'paused', 'saved', 'unsaved', 'completion'
+      ];
+      buttons.forEach(btnKey => {
+        const btn = document.getElementById('btn-state-' + btnKey);
+        if (btn) {
+          btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          btn.classList.add('bg-surface-container', 'text-on-surface');
+        }
+      });
+
+      // Show selected panel
+      const targetPanel = document.getElementById('state-card-' + stateName);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+      }
+
+      // Highlight active button
+      const activeBtn = document.getElementById('btn-state-' + stateName);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-container', 'text-on-surface');
+        activeBtn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+      }
+    }
+
+    function inspectRevision(clipNumber) {
+      alert('Opening Producer Sarah J. feedback and revision history for Clip ' + clipNumber);
+    }
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed": "#d3e4fe",
+          "on-secondary-container": "#00714d",
+          "on-tertiary-fixed-variant": "#38485d",
+          "on-surface": "#1b1b24",
+          "on-tertiary": "#ffffff",
+          "outline-variant": "#c7c4d8",
+          "on-primary-container": "#dad7ff",
+          "on-tertiary-container": "#ccdcf7",
+          "on-error-container": "#93000a",
+          "surface-container-highest": "#e4e1ee",
+          "primary-fixed-dim": "#c3c0ff",
+          "primary-fixed": "#e2dfff",
+          "on-tertiary-fixed": "#0b1c30",
+          "surface-container-low": "#f5f2ff",
+          "error-container": "#ffdad6",
+          "error": "#ba1a1a",
+          "on-secondary-fixed-variant": "#005236",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary": "#ffffff",
+          "on-primary-fixed-variant": "#3323cc",
+          "surface-container-high": "#eae6f4",
+          "on-primary-fixed": "#0f0069",
+          "surface-dim": "#dcd8e5",
+          "inverse-surface": "#302f39",
+          "surface-tint": "#4d44e3",
+          "on-background": "#1b1b24",
+          "tertiary-fixed-dim": "#b7c8e1",
+          "secondary-fixed": "#6ffbbe",
+          "tertiary-container": "#516177",
+          "surface-variant": "#e4e1ee",
+          "primary": "#3525cd",
+          "tertiary": "#3a495f",
+          "inverse-on-surface": "#f3effc",
+          "secondary-container": "#6cf8bb",
+          "background": "#fcf8ff",
+          "secondary-fixed-dim": "#4edea3",
+          "secondary": "#006c49",
+          "outline": "#777587",
+          "surface": "#fcf8ff",
+          "surface-bright": "#fcf8ff",
+          "on-primary": "#ffffff",
+          "surface-container": "#f0ecf9",
+          "inverse-primary": "#c3c0ff",
+          "primary-container": "#4f46e5",
+          "on-surface-variant": "#464555",
+          "on-secondary-fixed": "#002113",
+          "on-error": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "margin": "2rem",
+          "gutter-sm": "1rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "margin-mobile": "1rem",
+          "space-xs": "0.25rem",
+          "space-lg": "1.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-md": [
+            "Geist"
+          ],
+          "headline-lg": [
+            "Geist"
+          ],
+          "label-sm": [
+            "Geist"
+          ],
+          "body-lg": [
+            "Geist"
+          ],
+          "body-md": [
+            "Geist"
+          ],
+          "headline-lg-mobile": [
+            "Geist"
+          ],
+          "label-md": [
+            "Geist"
+          ],
+          "title-md": [
+            "Geist"
+          ],
+          "display-lg": [
+            "Geist"
+          ],
+          "code-sm": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-md": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg-mobile": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "title-md": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "display-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "code-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col pt-space-md pb-space-lg"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="VoiceFlow Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WNNQLfUtQGMuKSY9szov5vnGRda_EzUjrLSxKxoZIqPq1vD8fCcHPHWLxSPNa6_iZxZ6ZUrcAcwMY4KE21MlpMoG2NZXSx7KKyJ3w5rncKAhK3EQ7G5qLskKMwp1ndhymnISquw0Ttl8KuNNrbdLyR5-B9ufMrFGUo5Vl2vY5z3kkUDD0w3TUeXZbb1PC5RpmG3YOy8k0zEHcry7uXT73JH_oHnMbO747cDgFCdxFuLYfqDG5ZSeiW0Jg"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold leading-tight">VoiceFlow</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Studio Admin</span></div></div><div class="px-space-md mb-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs rounded-lg bg-surface-container-low"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><span class="material-symbols-outlined text-outline text-[16px]">unfold_more</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Overview</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary font-medium rounded-lg shadow-sm" data-path="users" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Users</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="videos-and-projects" href="#"><span class="material-symbols-outlined text-[20px]">video_library</span><span class="font-body-md text-body-md">Videos &amp; Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a></nav><div class="px-space-md mt-auto pt-space-md"><div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Engine Live</span></div><span class="font-code-sm text-code-sm text-outline">12ms</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="font-label-md text-label-md text-outline">Workspaces</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><nav class="hidden md:flex items-center gap-space-xs" data-active-classes="bg-primary text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="overview" href="#">Overview</a><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-primary text-on-primary font-medium rounded-lg shadow-sm" data-path="users" href="#">Users</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="videos-and-projects" href="#">Videos &amp; Projects</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="settings" href="#">Settings</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-outline hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-md text-label-md">Quick search...</span><kbd class="font-code-sm text-code-sm bg-surface-container-highest px-1 py-0.5 rounded text-on-surface-variant">⌘K</kbd></div><button aria-label="Notifications" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT6FPjWKonKoF0zVqBaZAED4bxmu8HHsvDZufnsnRjqJlqZqq87L-HwpRb7jCSCive6SbZ8XUc4TYpYyxp1twkMcBZSdc74REGi48U-HHgQLjRXdWVO1JlC5751XTyLZwSzLuxHWeq3TYhG7OwIK8OV_QxWwLWE_ePIHrL0iQ3nkwGfj04zTna6ER6xemJ8pigokrf-wervRBZBDUINaGnnngbPxP1inAmJnh-Mh_QuKH6WDdO6lAk"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span></div><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-medium leading-none">Alex Morgan (Admin)</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight mt-0.5">Studio Lead</span></div></div></div></header><main class="relative pt-16 w-full px-space-lg py-space-lg bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Toast Notification Container -->
+<div class="fixed top-20 right-8 z-[100] transform transition-all duration-300 translate-y-[-20px] opacity-0 pointer-events-none" id="toastNotification">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-xl">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium" id="toastMessage">Work assigned successfully.</span>
+<span class="font-label-sm text-label-sm text-outline">VoiceFlow Studio synchronization live</span>
+</div>
+<button class="text-outline hover:text-on-surface ml-space-sm transition-colors" onclick="hideToast()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- State Switcher Bar (Reviewer Testing Toolbar) -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-lg p-space-sm bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">State Inspector:</span>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="px-space-sm py-0.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all" id="btnStateLive" onclick="switchViewState('live')">Live Table</button>
+<button class="px-space-sm py-0.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btnStateEmptySearch" onclick="switchViewState('empty-search')">Empty Search</button>
+<button class="px-space-sm py-0.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btnStateEmpty" onclick="switchViewState('empty-state')">Empty State</button>
+<button class="px-space-sm py-0.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="btnStateSkeleton" onclick="switchViewState('skeleton')">Skeleton Loading</button>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline">Active View:</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium" id="activeViewBadge">Table View</span>
+</div>
+</div>
+<!-- MAIN USERS LIST VIEW -->
+<div class="flex flex-col w-full space-y-space-lg" id="usersListView">
+<!-- Header Section -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Users</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Manage users and their assigned work.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-title-md text-title-md hover:bg-primary-container shadow-sm active:scale-[0.99] transition-all" onclick="openModal('addUserModal')">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Add User</span>
+</button>
+</div>
+<!-- Search & Filter Controls -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-space-md py-2 text-on-surface placeholder:text-outline bg-surface-container-low rounded-lg font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" id="userSearchInput" oninput="handleSearch(this.value)" placeholder="Search by name, username or email..." type="text"/>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-1.5 p-1 bg-surface-container-low rounded-lg self-start md:self-auto">
+<button class="filter-pill px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm font-semibold transition-all" id="filterAll" onclick="filterStatus('all')">
+          All <span class="ml-1 text-outline font-normal">(24)</span>
+</button>
+<button class="filter-pill px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="filterActive" onclick="filterStatus('active')">
+          Active <span class="ml-1 text-outline font-normal">(21)</span>
+</button>
+<button class="filter-pill px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="filterDisabled" onclick="filterStatus('disabled')">
+          Disabled <span class="ml-1 text-outline font-normal">(3)</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Table: Live State -->
+<div class="overflow-x-auto" id="tableWrapperLive">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-outline uppercase tracking-wider font-label-sm text-label-sm">
+<th class="py-3.5 px-space-lg font-semibold" scope="col">User</th>
+<th class="py-3.5 px-space-md font-semibold" scope="col">Email</th>
+<th class="py-3.5 px-space-md font-semibold text-center" scope="col">Assigned</th>
+<th class="py-3.5 px-space-md font-semibold" scope="col">Progress</th>
+<th class="py-3.5 px-space-md font-semibold" scope="col">Status</th>
+<th class="py-3.5 px-space-lg font-semibold text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface" id="userTableBody">
+<!-- Row 1: John Mathews -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="john@example.com" data-name="John Mathews" data-status="active" data-user="@jmathews">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-title-md text-title-md font-semibold">JM</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface truncate">John Mathews</span>
+<span class="font-label-sm text-label-sm text-outline">@jmathews</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">john@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-on-surface">12</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 68%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">68%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Active
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('John Mathews', '@jmathews', 'john@example.com', 'active', 12, 7, 68)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-jm')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-jm">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('John Mathews', '@jmathews', 'john@example.com', 'active')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-error hover:bg-error-container/40 flex items-center gap-2" onclick="openDisableModal('John Mathews')">
+<span class="material-symbols-outlined text-[16px]">block</span> Disable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2: Sarah Williams -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="sarah@example.com" data-name="Sarah Williams" data-status="active" data-user="@swilliams">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-title-md text-title-md font-semibold">SW</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface truncate">Sarah Williams</span>
+<span class="font-label-sm text-label-sm text-outline">@swilliams</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">sarah@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-on-surface">8</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 42%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">42%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Active
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('Sarah Williams', '@swilliams', 'sarah@example.com', 'active', 8, 3, 42)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-sw')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-sw">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('Sarah Williams', '@swilliams', 'sarah@example.com', 'active')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-error hover:bg-error-container/40 flex items-center gap-2" onclick="openDisableModal('Sarah Williams')">
+<span class="material-symbols-outlined text-[16px]">block</span> Disable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3: David Chen -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="david.chen@example.com" data-name="David Chen" data-status="active" data-user="@dchen">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-title-md text-title-md font-semibold">DC</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface truncate">David Chen</span>
+<span class="font-label-sm text-label-sm text-outline">@dchen</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">david.chen@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-on-surface">15</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 93%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">93%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Active
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('David Chen', '@dchen', 'david.chen@example.com', 'active', 15, 14, 93)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-dc')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-dc">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('David Chen', '@dchen', 'david.chen@example.com', 'active')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-error hover:bg-error-container/40 flex items-center gap-2" onclick="openDisableModal('David Chen')">
+<span class="material-symbols-outlined text-[16px]">block</span> Disable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 4: Elena Rostova -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="elena@example.com" data-name="Elena Rostova" data-status="active" data-user="@erostova">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-title-md text-title-md font-semibold">ER</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface truncate">Elena Rostova</span>
+<span class="font-label-sm text-label-sm text-outline">@erostova</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">elena@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-on-surface">6</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">100%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Active
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('Elena Rostova', '@erostova', 'elena@example.com', 'active', 6, 6, 100)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-er')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-er">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('Elena Rostova', '@erostova', 'elena@example.com', 'active')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-error hover:bg-error-container/40 flex items-center gap-2" onclick="openDisableModal('Elena Rostova')">
+<span class="material-symbols-outlined text-[16px]">block</span> Disable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 5: Marcus Vance (Disabled) -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="marcus.v@example.com" data-name="Marcus Vance" data-status="disabled" data-user="@marcusv">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-outline flex items-center justify-center font-title-md text-title-md font-semibold">MV</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface-variant truncate">Marcus Vance</span>
+<span class="font-label-sm text-label-sm text-outline">@marcusv</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-outline">marcus.v@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-outline">0</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-outline h-1.5 rounded-full" style="width: 0%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-medium">0%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Disabled
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('Marcus Vance', '@marcusv', 'marcus.v@example.com', 'disabled', 0, 0, 0)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-mv')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-mv">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('Marcus Vance', '@marcusv', 'marcus.v@example.com', 'disabled')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openDisableModal('Marcus Vance')">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Enable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 6: Priya Patel -->
+<tr class="user-row hover:bg-surface-container-low/40 transition-colors" data-email="priya@example.com" data-name="Priya Patel" data-status="active" data-user="@ppatel">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-title-md text-title-md font-semibold">PP</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md font-semibold text-on-surface truncate">Priya Patel</span>
+<span class="font-label-sm text-label-sm text-outline">@ppatel</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant">priya@example.com</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center min-w-[28px] px-2 py-0.5 rounded-full bg-surface-container-high font-label-md text-label-md font-semibold text-on-surface">11</span>
+</td>
+<td class="py-space-md px-space-md min-w-[170px]">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 55%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">55%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Active
+                </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="inline-flex items-center gap-space-xs">
+<button class="px-space-sm py-1 font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors" onclick="viewUserDetails('Priya Patel', '@ppatel', 'priya@example.com', 'active', 11, 6, 55)">View</button>
+<div class="relative inline-block text-left">
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleActionMenu('menu-pp')">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+<div class="action-dropdown hidden absolute right-0 mt-1 w-36 rounded-lg bg-surface-container-lowest shadow-xl py-1 z-30" id="menu-pp">
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-2" onclick="openEditModal('Priya Patel', '@ppatel', 'priya@example.com', 'active')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit
+                      </button>
+<button class="w-full text-left px-3 py-1.5 font-body-md text-body-md text-error hover:bg-error-container/40 flex items-center gap-2" onclick="openDisableModal('Priya Patel')">
+<span class="material-symbols-outlined text-[16px]">block</span> Disable
+                      </button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- State: Empty Search Result -->
+<div class="hidden p-space-xl flex flex-col items-center justify-center text-center" id="stateEmptySearch">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">search_off</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">No users match your query</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mt-1 mb-space-md">We couldn't find any team members matching your search criteria. Check your spelling or clear filters.</p>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-title-md text-title-md hover:bg-surface-container-highest transition-colors" onclick="resetSearch()">Clear Search Filters</button>
+</div>
+<!-- State: Empty State (Zero Users) -->
+<div class="hidden p-space-xl flex flex-col items-center justify-center text-center" id="stateEmptyList">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[30px]">group_add</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">No users in this workspace</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-1 mb-space-lg">Start building your production workflow by adding video editors, audio engineers, and reviewers.</p>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-title-md text-title-md hover:bg-primary-container shadow-sm transition-all" onclick="openModal('addUserModal')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+          Add First User
+        </button>
+</div>
+<!-- State: Skeleton Loading -->
+<div class="hidden p-space-lg space-y-space-md animate-pulse" id="stateSkeleton">
+<div class="h-4 bg-surface-container-highest rounded w-1/4 mb-space-md"></div>
+<div class="space-y-4">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div class="space-y-1.5 flex-1">
+<div class="h-3.5 bg-surface-container-highest rounded w-3/4"></div>
+<div class="h-2.5 bg-surface-container-highest rounded w-1/2"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-highest rounded w-1/5"></div>
+<div class="h-3.5 bg-surface-container-highest rounded w-16"></div>
+<div class="h-2 bg-surface-container-highest rounded w-24"></div>
+<div class="h-6 bg-surface-container-highest rounded-full w-20"></div>
+<div class="h-4 bg-surface-container-highest rounded w-12"></div>
+</div>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div class="space-y-1.5 flex-1">
+<div class="h-3.5 bg-surface-container-highest rounded w-2/3"></div>
+<div class="h-2.5 bg-surface-container-highest rounded w-1/3"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-highest rounded w-1/5"></div>
+<div class="h-3.5 bg-surface-container-highest rounded w-16"></div>
+<div class="h-2 bg-surface-container-highest rounded w-24"></div>
+<div class="h-6 bg-surface-container-highest rounded-full w-20"></div>
+<div class="h-4 bg-surface-container-highest rounded w-12"></div>
+</div>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-1/3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+<div class="space-y-1.5 flex-1">
+<div class="h-3.5 bg-surface-container-highest rounded w-4/5"></div>
+<div class="h-2.5 bg-surface-container-highest rounded w-2/5"></div>
+</div>
+</div>
+<div class="h-3.5 bg-surface-container-highest rounded w-1/5"></div>
+<div class="h-3.5 bg-surface-container-highest rounded w-16"></div>
+<div class="h-2 bg-surface-container-highest rounded w-24"></div>
+<div class="h-6 bg-surface-container-highest rounded-full w-20"></div>
+<div class="h-4 bg-surface-container-highest rounded w-12"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- USER DETAILS VIEW (Inline screen toggleable via 'View' button) -->
+<div class="hidden flex flex-col w-full space-y-space-lg" id="userDetailsView">
+<!-- Back button & Breadcrumb -->
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-title-md text-title-md transition-colors shadow-sm" onclick="backToUsersList()">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Users</span>
+</button>
+<span class="text-outline font-label-sm">/</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium" id="detailBreadcrumbName">John Mathews</span>
+</div>
+<!-- User Profile Header Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<div class="w-16 h-16 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-display-lg text-display-lg font-semibold" id="detailAvatarInitials">JM</div>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h2 class="font-headline-lg text-headline-lg text-on-surface" id="detailUserName">John Mathews</h2>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold" id="detailStatusBadge">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Active
+            </span>
+</div>
+<div class="flex items-center gap-space-md text-outline font-body-md text-body-md mt-1">
+<span class="flex items-center gap-1 text-on-surface-variant" id="detailUserEmail">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+              john@example.com
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+              Assigned to VoiceFlow Studio
+            </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-title-md text-title-md transition-colors" onclick="openModal('editUserModal')">
+          Edit Profile
+        </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary font-title-md text-title-md hover:bg-primary-container shadow-sm active:scale-[0.99] transition-all" onclick="openModal('assignWorkModal')">
+<span class="material-symbols-outlined text-[18px]">assignment_add</span>
+          Assign Work
+        </button>
+</div>
+</div>
+<!-- Summary Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<!-- Metric 1: Assigned -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Assigned Projects</span>
+<span class="material-symbols-outlined text-[20px] text-primary">folder_special</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface" id="detailMetricAssigned">12</span>
+<span class="font-label-sm text-label-sm text-outline">active tracks</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-2">Total video projects assigned</span>
+</div>
+<!-- Metric 2: Completed -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Completed</span>
+<span class="material-symbols-outlined text-[20px] text-secondary">verified</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface" id="detailMetricCompleted">7</span>
+<span class="font-label-sm text-label-sm text-outline">delivered</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-2">Verified deliveries ready for mastering</span>
+</div>
+<!-- Metric 3: Overall Progress -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Overall Throughput</span>
+<span class="material-symbols-outlined text-[20px] text-primary">monitoring</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-display-lg text-display-lg font-bold text-on-surface" id="detailMetricProgress">68%</span>
+<div class="flex-1 bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-2 rounded-full transition-all duration-500" id="detailProgressBar" style="width: 68%;"></div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-2">Aggregated render and review completion</span>
+</div>
+</div>
+<!-- Assigned Work Section & Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-md flex items-center justify-between bg-surface-container-low/50">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[20px]">video_library</span>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">Assigned Work Packages</h3>
+</div>
+<button class="font-title-md text-title-md text-primary hover:text-primary-container font-semibold transition-colors flex items-center gap-1" onclick="openModal('assignWorkModal')">
+<span class="material-symbols-outlined text-[16px]">add</span>
+          Add Package
+        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/30 text-outline uppercase tracking-wider font-label-sm text-label-sm">
+<th class="py-3 px-space-lg font-semibold">Project</th>
+<th class="py-3 px-space-md font-semibold">Clips</th>
+<th class="py-3 px-space-md font-semibold">Progress</th>
+<th class="py-3 px-space-lg font-semibold text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Project 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-lg font-semibold text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">movie</span>
+                Training Video 01
+              </td>
+<td class="py-space-md px-space-md text-on-surface-variant font-code-sm text-code-sm">12 clips</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">100%</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Completed
+                </span>
+</td>
+</tr>
+<!-- Project 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-lg font-semibold text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">movie</span>
+                Training Video 02
+              </td>
+<td class="py-space-md px-space-md text-on-surface-variant font-code-sm text-code-sm">18 clips</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 65%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">65%</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> In Progress
+                </span>
+</td>
+</tr>
+<!-- Project 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-lg font-semibold text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">movie</span>
+                Product Demo 03
+              </td>
+<td class="py-space-md px-space-md text-on-surface-variant font-code-sm text-code-sm">10 clips</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-outline h-1.5 rounded-full" style="width: 0%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-semibold">0%</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                  Assigned
+                </span>
+</td>
+</tr>
+<!-- Project 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-lg font-semibold text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">movie</span>
+                Marketing Reel 04
+              </td>
+<td class="py-space-md px-space-md text-on-surface-variant font-code-sm text-code-sm">8 clips</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-24 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%;"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">88%</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> In Progress
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- MODALS SECTION -->
+<!-- ========================================================================= -->
+<!-- Modal A: Add User Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm" id="addUserModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<div class="p-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">person_add</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Add User</h3>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="closeModal('addUserModal')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-space-md" onsubmit="handleCreateUser(event)">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Full Name</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="inputNewFullName" placeholder="e.g. Jordan Hayes" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Username</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline font-body-md text-body-md">@</span>
+<input class="w-full pl-8 pr-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="inputNewUsername" placeholder="jhayes" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Email Address</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="inputNewEmail" placeholder="jordan@voiceflow.com" required="" type="email"/>
+</div>
+<p class="font-label-sm text-label-sm text-outline flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+            An invitation email will be sent to the user.
+          </p>
+<div class="flex items-center justify-end gap-space-sm pt-space-md">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high font-title-md text-title-md text-on-surface transition-colors" onclick="closeModal('addUserModal')" type="button">Cancel</button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md shadow-sm transition-colors" type="submit">Create User</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Modal B: Edit User Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm" id="editUserModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl overflow-hidden">
+<div class="p-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">edit</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Edit User</h3>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="closeModal('editUserModal')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-space-md" onsubmit="handleSaveEditUser(event)">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Full Name</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="editFullName" required="" type="text" value="John Mathews"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Username</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="editUsername" required="" type="text" value="@jmathews"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Email Address</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" id="editEmail" required="" type="email" value="john@example.com"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium mb-1.5">Account Status</label>
+<select class="w-full px-space-md py-2 rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all cursor-pointer" id="editStatusSelect">
+<option value="active">Active (Access to VoiceFlow Studio)</option>
+<option value="disabled">Disabled (Revoke Work Access)</option>
+</select>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-md">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high font-title-md text-title-md text-on-surface transition-colors" onclick="closeModal('editUserModal')" type="button">Cancel</button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md shadow-sm transition-colors" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Modal C: Disable User Confirmation Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm" id="disableUserModal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl shadow-xl overflow-hidden">
+<div class="p-space-lg text-center">
+<div class="w-12 h-12 rounded-full bg-error-container text-error mx-auto flex items-center justify-center mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">warning</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Disable User?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-space-lg" id="disableModalPrompt">
+          John Mathews will no longer be able to access assigned work.
+        </p>
+<div class="flex items-center justify-center gap-space-sm">
+<button class="flex-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high font-title-md text-title-md text-on-surface transition-colors" onclick="closeModal('disableUserModal')" type="button">Cancel</button>
+<button class="flex-1 px-space-md py-2 rounded-lg bg-error hover:opacity-90 text-on-error font-title-md text-title-md transition-all" onclick="confirmDisableUser()" type="button">Disable User</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal D: Assign Work Modal -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm" id="assignWorkModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl overflow-hidden">
+<div class="p-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Assign Work to John Mathews</h3>
+<p class="font-label-sm text-label-sm text-outline">Select voice and video rendering packages</p>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="closeModal('assignWorkModal')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Search Projects inside Modal -->
+<div class="relative mb-space-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-primary transition-all" placeholder="Search videos or projects..." type="text"/>
+</div>
+<!-- Checkbox List -->
+<div class="space-y-2 mb-space-lg max-h-56 overflow-y-auto pr-1">
+<label class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors border-0">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-title-md text-title-md text-on-surface">Training Video 01</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">12 clips</span>
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors border-0">
+<div class="flex items-center gap-space-sm">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-title-md text-title-md text-on-surface">Product Demo 02</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">6 clips</span>
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors border-0">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-title-md text-title-md text-on-surface">Training Batch 03</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">15 clips</span>
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors border-0">
+<div class="flex items-center gap-space-sm">
+<input class="w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="font-title-md text-title-md text-on-surface">Customer Onboarding Q3</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">22 clips</span>
+</label>
+</div>
+<div class="flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high font-title-md text-title-md text-on-surface transition-colors" onclick="closeModal('assignWorkModal')" type="button">Cancel</button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md shadow-sm transition-colors" onclick="submitAssignWork()" type="button">Assign</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // State Tracker
+    let currentFilter = 'all';
+    let userToDisable = 'John Mathews';
+
+    // Global Modal Functions
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Toast Functions
+    let toastTimeout;
+    function triggerToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      if (message) toastMsg.innerText = message;
+      
+      toast.classList.remove('translate-y-[-20px]', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 4000);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById('toastNotification');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-[-20px]', 'opacity-0', 'pointer-events-none');
+    }
+
+    // Toggle Action Menus in Table
+    function toggleActionMenu(menuId) {
+      document.querySelectorAll('.action-dropdown').forEach(d => {
+        if (d.id !== menuId) d.classList.add('hidden');
+      });
+      const el = document.getElementById(menuId);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // Close menus on outside click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.action-dropdown') && !e.target.closest('button[onclick^="toggleActionMenu"]')) {
+        document.querySelectorAll('.action-dropdown').forEach(d => d.classList.add('hidden'));
+      }
+    });
+
+    // Screen View Toggle: Users List vs User Details
+    function viewUserDetails(name, username, email, status, assigned, completed, progress) {
+      document.getElementById('usersListView').classList.add('hidden');
+      document.getElementById('userDetailsView').classList.remove('hidden');
+
+      // Populate details view
+      document.getElementById('detailBreadcrumbName').innerText = name;
+      document.getElementById('detailUserName').innerText = name;
+      document.getElementById('detailUserEmail').innerHTML = `<span class="material-symbols-outlined text-[16px]">mail</span>` + email;
+      
+      const initials = name.split(' ').map(n => n[0]).join('');
+      document.getElementById('detailAvatarInitials').innerText = initials;
+      
+      document.getElementById('detailMetricAssigned').innerText = assigned;
+      document.getElementById('detailMetricCompleted').innerText = completed;
+      document.getElementById('detailMetricProgress').innerText = progress + '%';
+      document.getElementById('detailProgressBar').style.width = progress + '%';
+
+      const statusBadge = document.getElementById('detailStatusBadge');
+      if (status === 'active') {
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active';
+      } else {
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>Disabled';
+      }
+
+      document.getElementById('activeViewBadge').innerText = 'User Details: ' + name;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function backToUsersList() {
+      document.getElementById('userDetailsView').classList.add('hidden');
+      document.getElementById('usersListView').classList.remove('hidden');
+      document.getElementById('activeViewBadge').innerText = 'Table View';
+    }
+
+    // Modal Actions
+    function openEditModal(name, username, email, status) {
+      document.querySelectorAll('.action-dropdown').forEach(d => d.classList.add('hidden'));
+      document.getElementById('editFullName').value = name;
+      document.getElementById('editUsername').value = username;
+      document.getElementById('editEmail').value = email;
+      document.getElementById('editStatusSelect').value = status;
+      openModal('editUserModal');
+    }
+
+    function openDisableModal(name) {
+      document.querySelectorAll('.action-dropdown').forEach(d => d.classList.add('hidden'));
+      userToDisable = name;
+      document.getElementById('disableModalPrompt').innerText = `${name} will no longer be able to access assigned work.`;
+      openModal('disableUserModal');
+    }
+
+    function confirmDisableUser() {
+      closeModal('disableUserModal');
+      triggerToast(`${userToDisable} has been disabled.`);
+    }
+
+    function handleCreateUser(e) {
+      e.preventDefault();
+      const name = document.getElementById('inputNewFullName').value;
+      closeModal('addUserModal');
+      triggerToast(`User ${name} created and invited.`);
+      e.target.reset();
+    }
+
+    function handleSaveEditUser(e) {
+      e.preventDefault();
+      closeModal('editUserModal');
+      triggerToast(`User settings saved successfully.`);
+    }
+
+    function submitAssignWork() {
+      closeModal('assignWorkModal');
+      triggerToast(`Work assigned successfully.`);
+    }
+
+    // Real-time Search Filter
+    function handleSearch(query) {
+      const q = query.toLowerCase().trim();
+      const rows = document.querySelectorAll('.user-row');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const name = row.getAttribute('data-name').toLowerCase();
+        const user = row.getAttribute('data-user').toLowerCase();
+        const email = row.getAttribute('data-email').toLowerCase();
+        const status = row.getAttribute('data-status');
+
+        const matchesQuery = name.includes(q) || user.includes(q) || email.includes(q);
+        const matchesStatus = (currentFilter === 'all') || (status === currentFilter);
+
+        if (matchesQuery && matchesStatus) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const emptySearchState = document.getElementById('stateEmptySearch');
+      if (visibleCount === 0 && q.length > 0) {
+        emptySearchState.classList.remove('hidden');
+      } else {
+        emptySearchState.classList.add('hidden');
+      }
+    }
+
+    function resetSearch() {
+      document.getElementById('userSearchInput').value = '';
+      filterStatus('all');
+    }
+
+    // Status Filter Tabs
+    function filterStatus(status) {
+      currentFilter = status;
+
+      // Update button styles
+      const pills = [
+        { id: 'filterAll', type: 'all' },
+        { id: 'filterActive', type: 'active' },
+        { id: 'filterDisabled', type: 'disabled' }
+      ];
+
+      pills.forEach(p => {
+        const btn = document.getElementById(p.id);
+        if (p.type === status) {
+          btn.className = 'filter-pill px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-sm font-semibold transition-all';
+        } else {
+          btn.className = 'filter-pill px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all';
+        }
+      });
+
+      // Apply filter
+      const searchVal = document.getElementById('userSearchInput').value;
+      handleSearch(searchVal);
+    }
+
+    // Reviewer Inspector Toolbar State Switcher
+    function switchViewState(state) {
+      const liveTable = document.getElementById('tableWrapperLive');
+      const emptySearch = document.getElementById('stateEmptySearch');
+      const emptyList = document.getElementById('stateEmptyList');
+      const skeleton = document.getElementById('stateSkeleton');
+
+      // Return to user list if in details view
+      backToUsersList();
+
+      // Reset state displays
+      liveTable.classList.add('hidden');
+      emptySearch.classList.add('hidden');
+      emptyList.classList.add('hidden');
+      skeleton.classList.add('hidden');
+
+      // Reset toolbar button classes
+      const stateButtons = ['btnStateLive', 'btnStateEmptySearch', 'btnStateEmpty', 'btnStateSkeleton'];
+      stateButtons.forEach(id => {
+        const b = document.getElementById(id);
+        b.className = 'px-space-sm py-0.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all';
+      });
+
+      if (state === 'live') {
+        liveTable.classList.remove('hidden');
+        document.getElementById('btnStateLive').className = 'px-space-sm py-0.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all';
+        document.getElementById('activeViewBadge').innerText = 'Table View (Live)';
+        filterStatus('all');
+      } else if (state === 'empty-search') {
+        liveTable.classList.remove('hidden');
+        emptySearch.classList.remove('hidden');
+        document.getElementById('userSearchInput').value = 'unknown query string xyz';
+        document.querySelectorAll('.user-row').forEach(r => r.style.display = 'none');
+        document.getElementById('btnStateEmptySearch').className = 'px-space-sm py-0.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all';
+        document.getElementById('activeViewBadge').innerText = 'Empty Search Result';
+      } else if (state === 'empty-state') {
+        emptyList.classList.remove('hidden');
+        document.getElementById('btnStateEmpty').className = 'px-space-sm py-0.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all';
+        document.getElementById('activeViewBadge').innerText = 'Workspace Zero-State';
+      } else if (state === 'skeleton') {
+        skeleton.classList.remove('hidden');
+        document.getElementById('btnStateSkeleton').className = 'px-space-sm py-0.5 rounded-md font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm font-semibold transition-all';
+        document.getElementById('activeViewBadge').innerText = 'Loading Skeletons';
+      }
+    }
+  </script>
+</div></main></div></body></html>

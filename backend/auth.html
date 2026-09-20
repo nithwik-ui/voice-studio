@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceStudio Google Drive Auth</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; max-width: 500px; }
+        a { display: inline-block; background-color: #4285f4; color: white; padding: 16px 32px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 8px; margin-top: 20px; transition: background 0.2s; }
+        a:hover { background-color: #3367d6; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>VoiceStudio Google Drive Auth</h2>
+        <p>Click the button below to authorize the application. This will securely pass all the correct parameters to Google.</p>
+        <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=934037758088-bvdb3d1d43d6decd1s5er12jrosbco7h.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata&state=8RMRXuioel5Cg6AYRG5nqlUVrZ20ho&code_challenge=MkIhRF9AP1v3wKMfaa1SxbFyzyspoBo9_EMg265uDEs&code_challenge_method=S256&access_type=offline" target="_blank">
+            Authorize with Google
+        </a>
+    </div>
+</body>
+</html>

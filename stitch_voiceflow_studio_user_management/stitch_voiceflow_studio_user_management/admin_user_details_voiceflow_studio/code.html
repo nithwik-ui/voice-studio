@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#006c49",
+            "primary": "#3525cd",
+            "surface-container-high": "#eae6f4",
+            "surface-container": "#f0ecf9",
+            "tertiary": "#3a495f",
+            "secondary-fixed-dim": "#4edea3",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#4f46e5",
+            "on-tertiary-container": "#ccdcf7",
+            "error": "#ba1a1a",
+            "primary-fixed": "#e2dfff",
+            "tertiary-fixed": "#d3e4fe",
+            "surface-bright": "#fcf8ff",
+            "on-background": "#1b1b24",
+            "surface-variant": "#e4e1ee",
+            "secondary-container": "#6cf8bb",
+            "on-surface": "#1b1b24",
+            "on-tertiary-fixed-variant": "#38485d",
+            "tertiary-container": "#516177",
+            "on-secondary-fixed": "#002113",
+            "inverse-surface": "#302f39",
+            "on-primary-container": "#dad7ff",
+            "on-secondary-fixed-variant": "#005236",
+            "inverse-on-surface": "#f3effc",
+            "error-container": "#ffdad6",
+            "background": "#fcf8ff",
+            "surface-container-highest": "#e4e1ee",
+            "on-secondary": "#ffffff",
+            "outline": "#777587",
+            "outline-variant": "#c7c4d8",
+            "on-secondary-container": "#00714d",
+            "tertiary-fixed-dim": "#b7c8e1",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#3323cc",
+            "surface": "#fcf8ff",
+            "inverse-primary": "#c3c0ff",
+            "surface-container-low": "#f5f2ff",
+            "surface-dim": "#dcd8e5",
+            "on-primary-fixed": "#0f0069",
+            "on-tertiary-fixed": "#0b1c30",
+            "surface-tint": "#4d44e3",
+            "secondary-fixed": "#6ffbbe",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-surface-variant": "#464555"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "space-xl": "2rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "title-md": ["Geist", "sans-serif"],
+            "headline-lg": ["Geist", "sans-serif"],
+            "body-md": ["Geist", "sans-serif"],
+            "code-sm": ["JetBrains Mono", "monospace"],
+            "label-sm": ["Geist", "sans-serif"],
+            "headline-lg-mobile": ["Geist", "sans-serif"],
+            "body-lg": ["Geist", "sans-serif"],
+            "headline-md": ["Geist", "sans-serif"],
+            "display-lg": ["Geist", "sans-serif"],
+            "label-md": ["Geist", "sans-serif"]
+          },
+          fontSize: {
+            "title-md": ["16px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "500" }],
+            "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "body-md": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "code-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.03em", fontWeight: "600" }],
+            "headline-lg-mobile": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "body-lg": ["15px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.025em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "500" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Left Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col pt-space-md pb-space-lg">
+<div class="px-space-lg mb-space-lg flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-title-md text-title-md text-on-surface font-bold leading-tight tracking-tight">VoiceFlow</span>
+<span class="text-xs font-semibold text-outline">Studio</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Studio Admin</span>
+</div>
+</div>
+<!-- Workspace Switcher Pill -->
+<div class="px-space-md mb-space-sm">
+<div class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Workspace</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">unfold_more</span>
+</div>
+</div>
+<!-- Sidebar Navigation -->
+<nav class="flex-1 px-space-md flex flex-col gap-1">
+<a class="flex items-center gap-space-sm px-space-sm py-2 bg-primary-container/10 text-primary font-medium rounded-lg transition-colors" data-path="overview" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="font-body-md text-body-md font-semibold">Overview</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="users" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="videos-and-projects" href="#">
+<span class="material-symbols-outlined text-[20px]">video_library</span>
+<span class="font-body-md text-body-md">Videos &amp; Projects</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="settings" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<!-- Sidebar Footer -->
+<div class="px-space-md mt-auto pt-space-md">
+<div class="px-3 py-2 rounded-lg bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary ring-2 ring-secondary/20"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Engine Live</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-medium">12ms</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="pl-64">
+<!-- Top Header -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-high z-40 flex items-center justify-between px-space-lg">
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-md text-label-md text-outline">Workspaces</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Workspace</span>
+</div>
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-3 py-1.5 bg-primary-container text-on-primary font-semibold text-body-md rounded-lg shadow-sm" data-path="overview" href="#">Overview</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="users" href="#">Users</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="videos-and-projects" href="#">Videos &amp; Projects</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="settings" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-outline hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span class="font-label-md text-label-md">Quick search...</span>
+<kbd class="font-code-sm text-code-sm bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface-variant font-medium">⌘K</kbd>
+</div>
+<button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-space-xs border-l border-surface-container-high">
+<div class="relative flex items-center">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT6FPjWKonKoF0zVqBaZAED4bxmu8HHsvDZufnsnRjqJlqZqq87L-HwpRb7jCSCive6SbZ8XUc4TYpYyxp1twkMcBZSdc74REGi48U-HHgQLjRXdWVO1JlC5751XTyLZwSzLuxHWeq3TYhG7OwIK8OV_QxWwLWE_ePIHrL0iQ3nkwGfj04zTna6ER6xemJ8pigokrf-wervRBZBDUINaGnnngbPxP1inAmJnh-Mh_QuKH6WDdO6lAk"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="hidden lg:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-none">Alex Morgan (Admin)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight mt-0.5">Studio Lead</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Page Body -->
+<main class="relative pt-20 px-space-lg py-space-lg bg-background min-h-screen"><div class="flex flex-col w-full gap-space-lg pb-12">
+<!-- Top Breadcrumb & Metadata Line -->
+<div class="flex items-center justify-between">
+<a class="group inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors" data-path="users" href="#">
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-0.5">arrow_back</span>
+<span class="font-body-md text-body-md font-medium">Back to Users</span>
+</a>
+<div class="flex items-center gap-3">
+<span class="font-code-sm text-code-sm text-outline px-2.5 py-1 bg-surface-container rounded">UID-70492-VF</span>
+<span class="font-code-sm text-code-sm text-outline">Last synced 4m ago</span>
+</div>
+</div>
+<!-- User Profile Header Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 relative overflow-hidden">
+<!-- Subtle top accent highlight -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/60 to-secondary"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pt-1">
+<div class="flex items-start sm:items-center gap-5">
+<!-- User Avatar with Status Indicator -->
+<div class="relative shrink-0">
+<img class="w-20 h-20 rounded-full object-cover shadow-sm ring-4 ring-surface-container-low" data-alt="Close up studio portrait photo of John Mathews, an audio engineer and voice talent in modern recording booth, soft ambient indigo lighting, clean modern studio headphones draped over shoulder, crisp focus, cinematic clarity, light minimal aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4eckvXTprUQq3zOpkUJyXUC1BmDGDN4KGmHJAl0Ky_AjgkT5bNhcZJ3-4M32dFNgGrfe4_2BoTEN09nT7k3ZWIWBIloiCCSpvpLbgt85cCcL0gri4Jd8nJINE8DjUIQQ9jiIpQ0f7_9MYLRnIRVXx66_pte7lnaqndZirciMIEnRMJgksCuKuGnMPNFtaTIMXQgPi3ggILvWGdKhCMrJizoK_aapoY3eQU0DIdzCeaNUUooez2ntx"/>
+<span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-secondary ring-2 ring-surface-container-lowest flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary animate-pulse"></span>
+</span>
+</div>
+<!-- Details & Badges -->
+<div class="flex flex-col gap-1.5">
+<div class="flex flex-wrap items-center gap-2.5">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">John Mathews</h1>
+<!-- Status Badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold tracking-wide uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Active
+            </span>
+<!-- Role Pill -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[14px]">mic</span>
+              Voice Talent
+            </span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-on-surface-variant font-body-md text-body-md">
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[17px]">mail</span>
+              john@example.com
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[17px]">schedule</span>
+              UTC-05:00 (New York)
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[17px]">verified_user</span>
+              Level 3 Verified Specialist
+            </span>
+</div>
+</div>
+</div>
+<!-- Actions CTA Group -->
+<div class="flex flex-wrap items-center gap-2.5 pt-2 lg:pt-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-title-md text-title-md transition-colors shadow-sm" id="btn-edit-user">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit User</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-title-md text-title-md shadow-sm transition-all active:scale-[0.99]" id="btn-open-assign-modal">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>Assign Work</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-error-container/40 hover:bg-error-container text-error font-title-md text-title-md transition-colors" id="btn-disable-user">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+<span>Disable User</span>
+</button>
+</div>
+</div>
+<!-- Secondary Waveform Micro-Banner -->
+<div class="mt-6 pt-4 bg-surface-container-low rounded-lg p-3 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Active Audio Profile: Neumann U87 / Avalon 737</span>
+<span class="font-code-sm text-code-sm text-outline">Calibration: 24-bit / 48kHz Mastered • Low floor noise (-74dB)</span>
+</div>
+</div>
+<!-- Inline Audio Waveform SVG Data Viz -->
+<div class="w-full md:w-56 h-7 flex items-center gap-0.5 px-2 bg-surface-container-lowest rounded">
+<span class="h-2 w-1 rounded-full bg-primary/40"></span>
+<span class="h-3 w-1 rounded-full bg-primary/60"></span>
+<span class="h-5 w-1 rounded-full bg-primary"></span>
+<span class="h-6 w-1 rounded-full bg-primary"></span>
+<span class="h-4 w-1 rounded-full bg-primary/70"></span>
+<span class="h-2 w-1 rounded-full bg-primary/40"></span>
+<span class="h-4 w-1 rounded-full bg-primary/60"></span>
+<span class="h-7 w-1 rounded-full bg-primary"></span>
+<span class="h-5 w-1 rounded-full bg-primary/80"></span>
+<span class="h-3 w-1 rounded-full bg-primary/50"></span>
+<span class="h-5 w-1 rounded-full bg-primary"></span>
+<span class="h-6 w-1 rounded-full bg-primary"></span>
+<span class="h-4 w-1 rounded-full bg-primary/60"></span>
+<span class="h-2 w-1 rounded-full bg-primary/40"></span>
+<span class="h-4 w-1 rounded-full bg-primary/80"></span>
+<span class="h-6 w-1 rounded-full bg-primary"></span>
+<span class="h-3 w-1 rounded-full bg-primary/50"></span>
+<span class="h-2 w-1 rounded-full bg-primary/30"></span>
+<span class="h-5 w-1 rounded-full bg-primary/90"></span>
+<span class="h-7 w-1 rounded-full bg-primary"></span>
+<span class="h-4 w-1 rounded-full bg-primary/70"></span>
+<span class="h-2 w-1 rounded-full bg-primary/40"></span>
+</div>
+</div>
+</div>
+<!-- Summary Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1: Assigned Projects -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Assigned Projects</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">12</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary inline-flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +2 this wk
+            </span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">folder_special</span>
+</div>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/60 rounded-lg px-3 py-2 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Across 3 client organizations</span>
+<span class="font-code-sm text-code-sm text-outline font-medium">Enterprise Tier</span>
+</div>
+</div>
+<!-- Card 2: Completed Projects -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Completed Projects</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">7</span>
+<span class="font-label-sm text-label-sm font-semibold text-outline">/ 12 total</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-secondary-container/40 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/60 rounded-lg px-3 py-2 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">100% on-time delivery</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Zero SLA flags</span>
+</div>
+</div>
+<!-- Card 3: Overall Completion -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Overall Completion</span>
+<div class="flex items-baseline gap-2 mt-1.5">
+<span class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">68%</span>
+<span class="font-label-md text-label-md text-outline">pace: optimal</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[22px]">donut_large</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-2">
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 68%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span>4 active in progress</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">1 pending QA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Studio Snapshot Banner with Visual Assets -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[26px]">mic_external_on</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Studio Audio Profile &amp; Reel</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Approved tone ranges: Explainer, Corporate Narrative, Technical Documentation.</p>
+</div>
+</div>
+<!-- Quick Audio Mini Player Mockup -->
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-lg">
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center hover:scale-105 transition-transform shadow-sm" id="btn-demo-play">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Voice_Demo_English_US_Neutral.wav</span>
+<span class="font-code-sm text-code-sm text-outline">00:24 / 01:15 • 320kbps</span>
+</div>
+<div class="h-6 w-px bg-surface-container-high mx-1"></div>
+<span class="material-symbols-outlined text-outline hover:text-on-surface cursor-pointer text-[20px]">volume_up</span>
+</div>
+</div>
+<!-- Assigned Projects Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Header with Filters & Search -->
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Assigned Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Projects currently assigned to John Mathews across active client workspaces</p>
+</div>
+<!-- Quick Action Controls -->
+<div class="flex items-center gap-2.5">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">filter_list</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface outline-none cursor-pointer">
+<option>All Statuses (12)</option>
+<option>In Progress (4)</option>
+<option>Completed (7)</option>
+<option>Assigned (1)</option>
+</select>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-semibold hover:bg-primary transition-colors shadow-sm" id="btn-quick-assign">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Assign New</span>
+</button>
+</div>
+</div>
+<!-- Clean Projects Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-outline uppercase font-label-sm text-label-sm tracking-wider">
+<th class="py-3 px-5 font-semibold">Project</th>
+<th class="py-3 px-5 font-semibold">Clips &amp; Duration</th>
+<th class="py-3 px-5 font-semibold">Progress</th>
+<th class="py-3 px-5 font-semibold">Status</th>
+<th class="py-3 px-5 font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40 text-body-md font-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/40 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">movie</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate">Training Video Batch 04</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-code-sm text-code-sm text-outline font-medium">PRJ-2025-048</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Global Logistics Inc.</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">24 clips</span>
+<span class="font-code-sm text-code-sm text-outline">48m 12s total</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="w-44 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm font-semibold">
+<span class="text-on-surface">68%</span>
+<span class="font-code-sm text-code-sm text-outline">16/24</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 68%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed/50 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                In Progress
+              </span>
+</td>
+<td class="py-4 px-5 text-right">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors">
+                View
+              </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/40 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">smart_display</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate">Product Demo 02</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-code-sm text-code-sm text-outline font-medium">PRJ-2025-052</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SaaS Platform Core</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">18 clips</span>
+<span class="font-code-sm text-code-sm text-outline">32m 45s total</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="w-44 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm font-semibold">
+<span class="text-secondary">100%</span>
+<span class="font-code-sm text-code-sm text-secondary font-medium">Complete</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/40 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Completed
+              </span>
+</td>
+<td class="py-4 px-5 text-right">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors">
+                View
+              </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">videocam</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate">Security Compliance 2025</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-code-sm text-code-sm text-outline font-medium">PRJ-2025-061</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">FinCorp International</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">14 clips</span>
+<span class="font-code-sm text-code-sm text-outline">19m 10s total</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="w-44 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm font-semibold">
+<span class="text-on-surface">25%</span>
+<span class="font-code-sm text-code-sm text-outline">4/14</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 25%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Assigned
+              </span>
+</td>
+<td class="py-4 px-5 text-right">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors">
+                View
+              </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/40 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-primary transition-colors truncate">Onboarding Walkthrough Ep 1-3</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-code-sm text-code-sm text-outline font-medium">PRJ-2025-067</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SaaS Platform Core</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold">9 clips</span>
+<span class="font-code-sm text-code-sm text-outline">12m 30s total</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<div class="w-44 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm font-semibold">
+<span class="text-on-surface">44%</span>
+<span class="font-code-sm text-code-sm text-outline">4/9</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 44%;"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed/50 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                In Progress
+              </span>
+</td>
+<td class="py-4 px-5 text-right">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors">
+                View
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer with Pagination Controls -->
+<div class="px-5 py-3.5 bg-surface-container-low/40 flex items-center justify-between text-on-surface-variant">
+<span class="font-label-md text-label-md text-outline">Showing 4 of 12 assigned projects</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-md text-label-md text-on-surface disabled:opacity-40" disabled="">Previous</button>
+<span class="px-2 font-code-sm text-code-sm text-outline">1 of 3</span>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high font-label-md text-label-md text-on-surface">Next</button>
+</div>
+</div>
+</div>
+<!-- Studio Activity & Audio Delivery Feed Card -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- Left: Activity Log -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Recent Voice Work Delivery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Audit stream of uploads and clip approvals</p>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-medium">Realtime Feed</span>
+</div>
+<div class="flex flex-col gap-3.5">
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-secondary-container/40 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Clip 04 ('Intro Overview') approved by QA</span>
+<span class="font-code-sm text-code-sm text-outline">28m ago</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Training Video Batch 04 • Audio mastered at 48kHz without revisions</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-primary-fixed/60 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+</div>
+<div class="flex-1 flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Submitted 6 takes for Security Compliance 2025</span>
+<span class="font-code-sm text-code-sm text-outline">3h ago</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Total length 08:44 • Synced with script revision v2.4</span>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-tertiary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">assignment_turned_in</span>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Assigned to 'Onboarding Walkthrough Ep 1-3'</span>
+<span class="font-code-sm text-code-sm text-outline">Yesterday</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Assigned by Alex Morgan (Admin) • High priority SLA: 48h</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Studio Performance Radar & Skills -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Talent Metric Scores</h3>
+<span class="material-symbols-outlined text-outline text-[18px]">equalizer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Voice fidelity, timing accuracy, and client sentiment index.</p>
+<div class="space-y-3.5">
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-medium">Pronunciation &amp; Cadence</span>
+<span class="font-bold text-primary font-code-sm text-code-sm">99.4%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 99.4%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-medium">Pacing Compliance</span>
+<span class="font-bold text-secondary font-code-sm text-code-sm">96.8%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 96.8%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-medium">Revision Rate</span>
+<span class="font-bold text-outline font-code-sm text-code-sm">2.1% (Ultra-low)</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 8%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 bg-surface-container-low rounded-lg p-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Available for New Projects</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-medium">Cap: 4 active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Assign Work Modal (Backdrop + Dialog) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-on-background/40 backdrop-blur-sm hidden transition-opacity" id="assign-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-lg mx-4 overflow-hidden transform transition-transform">
+<div class="p-5 flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">assignment_add</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Assign Work to John Mathews</h3>
+</div>
+<button class="text-outline hover:text-on-surface p-1 rounded-lg hover:bg-surface-container-high transition-colors" id="btn-close-modal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-6 flex flex-col gap-4" id="assign-form">
+<div>
+<label class="block font-label-md text-label-md font-semibold text-on-surface mb-1.5">Select Video / Project</label>
+<select class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none" id="modal-project-select">
+<option value="PRJ-2025-072">Executive Keynote 2025 (PRJ-2025-072) - 16 clips</option>
+<option value="PRJ-2025-075">Cloud Architecture Walkthrough (PRJ-2025-075) - 30 clips</option>
+<option value="PRJ-2025-080">VoiceFlow 4.0 Feature Release (PRJ-2025-080) - 8 clips</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md font-semibold text-on-surface mb-1.5">Voice Style Tag</label>
+<select class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary outline-none">
+<option>Warm / Informative</option>
+<option>Dynamic / Upbeat</option>
+<option>Solemn / Serious</option>
+<option>Conversational Casual</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md font-semibold text-on-surface mb-1.5">Delivery Deadline</label>
+<input class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary outline-none" type="date" value="2025-03-01"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md font-semibold text-on-surface mb-1.5">Session Instructions</label>
+<textarea class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary outline-none" placeholder="Provide notes regarding cadence, accents, or audio sample matching..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-3 pt-4 bg-surface-container-lowest">
+<button class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-title-md text-title-md font-semibold transition-colors" id="btn-cancel-modal" type="button">
+            Cancel
+          </button>
+<button class="px-5 py-2 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-title-md text-title-md font-semibold shadow-sm transition-all active:scale-[0.99]" type="submit">
+            Confirm Assignment
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Toast Notification -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none" id="toast-notify">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed" id="toast-icon">check_circle</span>
+<span class="font-body-md text-body-md font-medium" id="toast-message">Assignment successfully dispatched to John Mathews</span>
+</div>
+</div>
+<script>
+  (function() {
+    const modal = document.getElementById('assign-modal');
+    const openBtn = document.getElementById('btn-open-assign-modal');
+    const quickAssignBtn = document.getElementById('btn-quick-assign');
+    const closeBtn = document.getElementById('btn-close-modal');
+    const cancelBtn = document.getElementById('btn-cancel-modal');
+    const assignForm = document.getElementById('assign-form');
+    const toast = document.getElementById('toast-notify');
+    const toastMsg = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+    const disableBtn = document.getElementById('btn-disable-user');
+    const editBtn = document.getElementById('btn-edit-user');
+    const demoPlayBtn = document.getElementById('btn-demo-play');
+
+    function showToast(message, isError) {
+      toastMsg.textContent = message;
+      if (isError) {
+        toastIcon.textContent = 'error';
+        toastIcon.className = 'material-symbols-outlined text-[20px] text-error-container';
+      } else {
+        toastIcon.textContent = 'check_circle';
+        toastIcon.className = 'material-symbols-outlined text-[20px] text-secondary-fixed';
+      }
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(function() {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    function openModal() {
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (quickAssignBtn) quickAssignBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (assignForm) {
+      assignForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        closeModal();
+        showToast('New project assigned to John Mathews. Push notification sent.');
+      });
+    }
+
+    if (disableBtn) {
+      disableBtn.addEventListener('click', function() {
+        const confirmDisable = confirm('Are you sure you want to disable John Mathews? Active recording pipelines will be paused.');
+        if (confirmDisable) {
+          showToast('User John Mathews has been disabled.', true);
+        }
+      });
+    }
+
+    if (editBtn) {
+      editBtn.addEventListener('click', function() {
+        showToast('Opening user permission settings editor...');
+      });
+    }
+
+    let isPlaying = false;
+    if (demoPlayBtn) {
+      demoPlayBtn.addEventListener('click', function() {
+        isPlaying = !isPlaying;
+        const icon = demoPlayBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = isPlaying ? 'pause' : 'play_arrow';
+        }
+        showToast(isPlaying ? 'Playing studio audio sample...' : 'Audio paused.');
+      });
+    }
+  })();
+</script></main>
+</div>
+<!-- Tab Switch Script -->
+<script>
+    (function() {
+      const tabs = document.querySelectorAll('#tab-overview, #tab-storage, #tab-activity');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => {
+            t.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+            t.classList.add('text-on-surface-variant', 'font-medium');
+          });
+          this.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+          this.classList.remove('text-on-surface-variant', 'font-medium');
+        });
+      });
+    })();
+  </script>
+</body></html>

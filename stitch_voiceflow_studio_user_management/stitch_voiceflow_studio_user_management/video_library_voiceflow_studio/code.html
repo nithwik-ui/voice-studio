@@ -1,0 +1,1053 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#516177",
+          "on-surface": "#1b1b24",
+          "surface": "#fcf8ff",
+          "on-error": "#ffffff",
+          "inverse-on-surface": "#f3effc",
+          "on-tertiary-fixed-variant": "#38485d",
+          "surface-tint": "#4d44e3",
+          "surface-variant": "#e4e1ee",
+          "secondary-fixed": "#6ffbbe",
+          "tertiary-fixed": "#d3e4fe",
+          "surface-bright": "#fcf8ff",
+          "outline-variant": "#c7c4d8",
+          "surface-dim": "#dcd8e5",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#002113",
+          "tertiary": "#3a495f",
+          "on-primary-container": "#dad7ff",
+          "surface-container-highest": "#e4e1ee",
+          "on-background": "#1b1b24",
+          "outline": "#777587",
+          "surface-container-high": "#eae6f4",
+          "secondary-fixed-dim": "#4edea3",
+          "on-primary": "#ffffff",
+          "surface-container": "#f0ecf9",
+          "surface-container-low": "#f5f2ff",
+          "secondary-container": "#6cf8bb",
+          "on-tertiary-container": "#ccdcf7",
+          "on-secondary-container": "#00714d",
+          "background": "#fcf8ff",
+          "secondary": "#006c49",
+          "on-surface-variant": "#464555",
+          "tertiary-fixed-dim": "#b7c8e1",
+          "on-secondary-fixed-variant": "#005236",
+          "on-primary-fixed": "#0f0069",
+          "inverse-surface": "#302f39",
+          "on-tertiary": "#ffffff",
+          "primary": "#3525cd",
+          "inverse-primary": "#c3c0ff",
+          "primary-fixed": "#e2dfff",
+          "primary-fixed-dim": "#c3c0ff",
+          "on-secondary": "#ffffff",
+          "on-primary-fixed-variant": "#3323cc",
+          "primary-container": "#4f46e5",
+          "on-tertiary-fixed": "#0b1c30"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "gutter-sm": "1rem",
+          "margin-mobile": "1rem",
+          "space-lg": "1.5rem",
+          "margin": "2rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-lg-mobile": [
+            "Geist"
+          ],
+          "headline-md": [
+            "Geist"
+          ],
+          "display-lg": [
+            "Geist"
+          ],
+          "label-sm": [
+            "Geist"
+          ],
+          "label-md": [
+            "Geist"
+          ],
+          "body-md": [
+            "Geist"
+          ],
+          "code-sm": [
+            "JetBrains Mono"
+          ],
+          "headline-lg": [
+            "Geist"
+          ],
+          "title-md": [
+            "Geist"
+          ],
+          "body-lg": [
+            "Geist"
+          ]
+        },
+        "fontSize": {
+          "headline-lg-mobile": [
+            "22px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "36px",
+            {
+              "lineHeight": "44px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "28px",
+            {
+              "lineHeight": "36px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "title-md": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col pt-space-md pb-space-lg"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="VoiceFlow Studio Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WNNQLfUtQGMuKSY9szov5vnGRda_EzUjrLSxKxoZIqPq1vD8fCcHPHWLxSPNa6_iZxZ6ZUrcAcwMY4KE21MlpMoG2NZXSx7KKyJ3w5rncKAhK3EQ7G5qLskKMwp1ndhymnISquw0Ttl8KuNNrbdLyR5-B9ufMrFGUo5Vl2vY5z3kkUDD0w3TUeXZbb1PC5RpmG3YOy8k0zEHcry7uXT73JH_oHnMbO747cDgFCdxFuLYfqDG5ZSeiW0Jg"><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface font-semibold leading-tight">VoiceFlow</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Studio Admin</span></div></div><div class="px-space-md mb-space-sm"><div class="flex items-center justify-between px-space-sm py-space-xs rounded-lg bg-surface-container-low"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><span class="material-symbols-outlined text-outline text-[16px]">unfold_more</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="overview" href="#">Overview</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="users" href="#">Users</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="videos-and-projects" href="#">Videos &amp; Projects</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="submissions" href="#">Submissions</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="storage" href="#">Storage</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors font-body-md text-body-md" data-path="settings" href="#">Settings</a></nav><div class="px-space-md mt-auto pt-space-md"><div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Engine Live</span></div><span class="font-code-sm text-code-sm text-outline">12ms</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="font-label-md text-label-md text-outline">Workspaces</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="font-label-md text-label-md text-on-surface font-medium">Studio Workspace</span></div><nav class="hidden md:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg shadow-sm"><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="overview" href="#">Overview</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="users" href="#">Users</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="videos-and-projects" href="#">Videos &amp; Projects</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="submissions" href="#">Submissions</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="storage" href="#">Storage</a><a class="px-space-sm py-space-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-body-md text-body-md rounded-lg transition-colors" data-path="settings" href="#">Settings</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-outline hover:text-on-surface transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-md text-label-md">Quick search...</span><kbd class="font-code-sm text-code-sm bg-surface-container-highest px-1 py-0.5 rounded text-on-surface-variant">⌘K</kbd></div><button aria-label="Notifications" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="relative flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT6FPjWKonKoF0zVqBaZAED4bxmu8HHsvDZufnsnRjqJlqZqq87L-HwpRb7jCSCive6SbZ8XUc4TYpYyxp1twkMcBZSdc74REGi48U-HHgQLjRXdWVO1JlC5751XTyLZwSzLuxHWeq3TYhG7OwIK8OV_QxWwLWE_ePIHrL0iQ3nkwGfj04zTna6ER6xemJ8pigokrf-wervRBZBDUINaGnnngbPxP1inAmJnh-Mh_QuKH6WDdO6lAk"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span></div><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface font-medium leading-none">Alex Morgan (Admin)</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight mt-0.5">Studio Lead</span></div></div></div></header><main class="relative pt-16 w-full px-space-lg py-space-lg bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive View Switcher Bar (Studio Tooling Mode) -->
+<div class="w-full mb-space-lg flex flex-wrap items-center justify-between gap-space-sm p-space-xs rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px] ml-space-xs">tune</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold mr-space-xs">Preview State:</span>
+<div class="inline-flex p-0.5 rounded-lg bg-surface-container-highest">
+<button class="px-space-sm py-1 rounded-md text-on-primary bg-primary font-label-md text-label-md font-medium shadow-xs transition-all flex items-center gap-1.5" id="btn-state-table" onclick="switchState('table')">
+<span class="material-symbols-outlined text-[15px]">table_rows</span>
+          Live Library
+        </button>
+<button class="px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all flex items-center gap-1.5" id="btn-state-details" onclick="switchState('details')">
+<span class="material-symbols-outlined text-[15px]">movie</span>
+          Video Details Inspector
+        </button>
+<button class="px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all flex items-center gap-1.5" id="btn-state-processing" onclick="switchState('processing')">
+<span class="material-symbols-outlined text-[15px]">autorenew</span>
+          Processing Pipeline
+        </button>
+<button class="px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all flex items-center gap-1.5" id="btn-state-empty" onclick="switchState('empty')">
+<span class="material-symbols-outlined text-[15px]">folder_off</span>
+          Empty State
+        </button>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="">FFmpeg Cluster #4 Online</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-space-sm py-1 bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm hover:bg-surface-container-high transition-colors" onclick="toggleUploadModal(true)">
+<span class="material-symbols-outlined text-[16px]">cloud_upload</span>
+        Upload Modal Demo
+      </button>
+</div>
+</div>
+<!-- STATE 1: MAIN TABLE VIEW -->
+<div class="flex flex-col w-full space-y-space-lg" id="view-table">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Video Library</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Manage uploaded videos and their clips.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md rounded-lg shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+          Export Metadata
+        </button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-[0.99]" onclick="toggleUploadModal(true)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+          + Upload Videos
+        </button>
+</div>
+</div>
+<!-- Controls & Filters Strip -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<!-- Search -->
+<div class="relative w-full lg:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-space-xs bg-surface text-on-surface placeholder:text-outline font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search videos..." type="text">
+</div>
+<!-- Filter tabs -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md font-semibold whitespace-nowrap shadow-xs">
+          All <span class="ml-1 text-label-sm font-normal text-on-surface-variant">38</span>
+</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium whitespace-nowrap transition-colors">
+          Ready <span class="ml-1 text-label-sm font-normal text-outline">29</span>
+</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium whitespace-nowrap transition-colors">
+          Processing <span class="ml-1 text-label-sm font-normal text-outline">4</span>
+</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium whitespace-nowrap transition-colors">
+          Assigned <span class="ml-1 text-label-sm font-normal text-outline">22</span>
+</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium whitespace-nowrap transition-colors">
+          Unassigned <span class="ml-1 text-label-sm font-normal text-outline">16</span>
+</button>
+</div>
+<!-- View toggle -->
+<div class="flex items-center gap-space-xs self-end lg:self-auto">
+<div class="inline-flex p-0.5 rounded-lg bg-surface-container">
+<button class="p-1 rounded-md bg-surface-container-lowest text-on-surface shadow-xs transition-all" id="btn-view-table-mode" onclick="toggleLayoutMode('table')" title="Table View">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface transition-all" id="btn-view-grid-mode" onclick="toggleLayoutMode('grid')" title="Grid View">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden" id="container-table-layout">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-space-sm pl-space-md pr-space-xs w-10" scope="col">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Thumbnail</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Filename</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Duration</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Clips</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Assigned To</th>
+<th class="py-space-sm px-space-sm font-semibold" scope="col">Status</th>
+<th class="py-space-sm pr-space-md pl-space-sm text-right font-semibold" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<!-- Row 1: training_video_01.mp4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="relative w-24 h-14 rounded-lg overflow-hidden bg-surface-container-high group-hover:shadow-sm transition-all cursor-pointer" onclick="switchState('details')">
+<img class="w-full h-full object-cover" data-alt="High quality film still of a professional speaker in a sleek audio visual stage with deep indigo backlighting, crisp 4k cinematic frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOoNPwTfBV8_63d0fONdJqgXUb5aoxNiPBD1Z12-1u27ibQTnchZ_bXCXV9FAuIpzHkLP7QoP6NCi7O6gP50_4icddQ7VVmtUOsTfNRE4jMBCbPQRl5pczd5_dp8FsGMXiW4Bm7Y40cIaNOb54nMGppZf-GVTMJWJnzHlafJdoHYD5KpGFH6DZvl9QooM50qUh6zsvwAZq3gDsJgzGRd5d1uCsYmw6msxcSHwJ3BI">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+<span class="w-6 h-6 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+<span class="absolute bottom-1 right-1 px-1 py-0.2 bg-on-surface/80 text-surface font-code-sm text-[10px] rounded leading-none">1080p</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm font-medium text-on-surface">
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold hover:text-primary cursor-pointer transition-colors" onclick="switchState('details')">training_video_01.mp4</span>
+<span class="font-code-sm text-[11px] text-outline">1.2 GB • H.264 / AAC</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface font-code-sm text-code-sm">18:42</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">cut</span>
+                  7 clips
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="Corporate headshot portrait of John Mathews, male instructor in modern office studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP2WlQ_EMvwoHsVrQP83VHQdz7I9X5bDdsT4fv71RMLwm6dR6qsylcu0-QROW_g2MAzLCNH_mI1dky2-8tXbRdXNkkAU05t_GHTgt3ga98thntmbo4DV2U93-I5UOz2MAIshK3Y48ebpIa58fCK5JeEQxLOrXFoeFNwa8zdGfBWnjHAFm0ZbZuhqpCwZfbAAgjU2QURGZBMfe5U-fzZpXtq6AEPU5eKh4DFEIdUPg">
+<span class="font-body-md text-body-md text-on-surface font-medium">John Mathews</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Ready
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors" onclick="switchState('details')">
+                    View
+                  </button>
+<div class="relative group/menu inline-block">
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2: product_demo_02.mp4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="relative w-24 h-14 rounded-lg overflow-hidden bg-surface-container-high group-hover:shadow-sm transition-all cursor-pointer" onclick="switchState('processing')">
+<img class="w-full h-full object-cover" data-alt="Screenshot of high tech web interface being presented on an ultra wide monitor with subtle purple ambient bloom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw38VT-DpF7yXIlF9o7__mp1vbpPSJH7-7uO8o3XLh8Lbe3aMNLEpyj85Dz0XTpFDINVGGvHTy826HlszGsQKDLYK7i4kM7pQYqg2xXleEio7YhEv7kXbRcHFkhgKgzi2qeQErnx20GH4iVCV30s1jiY6tW5esIZIkhodsKACoiKgHggQAa8kae9Jlr_gRcXlLa0QmrE4Za-pMtjeg6nGf_pUZAsJcNj29GpNq-30">
+<div class="absolute inset-0 bg-on-surface/30 flex items-center justify-center">
+<span class="w-6 h-6 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center animate-spin">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</span>
+</div>
+<span class="absolute bottom-1 right-1 px-1 py-0.2 bg-primary/90 text-on-primary font-code-sm text-[10px] rounded leading-none">68%</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm font-medium text-on-surface">
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold hover:text-primary cursor-pointer transition-colors" onclick="switchState('processing')">product_demo_02.mp4</span>
+<span class="font-code-sm text-[11px] text-outline">840 MB • HEVC / 60fps</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface font-code-sm text-code-sm">12:30</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">cut</span>
+                  5 clips
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="Portrait photo of Sarah Williams, product manager smiling with clean soft studio key light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv5SeD8dsQ60ZTaV6-aJcLsRGao5pzl_6zUPUGMV2KfhmTfNs2hldiY4uO8whIefKacq-aa_tKLda606x3Og8-LJ87nc5DlcJxf94RHHdIL17vQwZ8cEw7vWkiKWORNOwllV7dNL81JycklP0XckF6mMrRC4Hl36iOPlUvOQfbyP5sgjlSPbeCtIzGLONzI8iWgyNBPgzDeQIQz5WsJBn9qBSFSx54XQmBU5WFvE4">
+<span class="font-body-md text-body-md text-on-surface font-medium">Sarah Williams</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold shadow-2xs">
+<span class="material-symbols-outlined text-[12px] animate-spin">progress_activity</span>
+                  Processing
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors" onclick="switchState('processing')">
+                    View
+                  </button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: training_batch_03.mp4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="relative w-24 h-14 rounded-lg overflow-hidden bg-surface-container-high group-hover:shadow-sm transition-all cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Detailed close up shot of sound engineering mixing console with glowing led meters and faders" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMwNhayItS3TZ1XWWOpTjlZNyRObXEW1j3QY4-sbnpHm5ySxnWkeij6L6gQs-HQAlJ9rZmP4Mvc0U5hsJDPJ5aEt8dCF9s89QT0_lPgJ41mG5ZKtyK7IDE-FkogtYJrOCimqNMQEiwjrOar5IBblJd1We9qSdrTxKOWGgSel3mJMEyeXAuhX4EvJCM7SW8DQ37-kr_GEvYxlN7KcGv6hK9b0IBshMgZWmAcqLUaUs">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+<span class="w-6 h-6 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm font-medium text-on-surface">
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold hover:text-primary cursor-pointer transition-colors">training_batch_03.mp4</span>
+<span class="font-code-sm text-[11px] text-outline">1.8 GB • H.264</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface font-code-sm text-code-sm">24:18</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">cut</span>
+                  9 clips
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container-high text-outline font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[13px]">person_off</span>
+                  Unassigned
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Ready
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors">
+                    View
+                  </button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: security_protocol_04.mp4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="relative w-24 h-14 rounded-lg overflow-hidden bg-surface-container-high group-hover:shadow-sm transition-all cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Modern corporate conference room display showcasing enterprise cloud compliance schemas and network nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKkvtc9fAm_WAQ-cHdBCkY2Yb3E9_urLPstC84xXpuJEuMWQV998ZBHsOc-KZK_jHuE3P6VBH4Qjd8wRB5_IByfr6JZURh304zJXqaJZHYHoCP8SSn_RrgRBciyEg3mJCqdFFEBYC7_SZitL2g4obVdt9NAkTRJb_lQ08B2F_FzbMN2aS2YRDe2p0mKkJlmLg5VVochrIUldoV27SpPAAyJIv2RNoD3sTsIfXla_4">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+<span class="w-6 h-6 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm font-medium text-on-surface">
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold hover:text-primary cursor-pointer transition-colors">security_protocol_04.mp4</span>
+<span class="font-code-sm text-[11px] text-outline">2.4 GB • 4K UHD</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface font-code-sm text-code-sm">31:05</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">cut</span>
+                  11 clips
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="Professional studio headshot of David Chen wearing dark navy crewneck with warm ambient sidelight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUDMGROgB59TKyJVQ8QGkJcNAyq6gY5-wz6SLTfr0ReWAkZZ-irolBiFxhpoQ7jT3QwXP4xYADci6Yr_JEHoygzys2It9LoHYyMYBl4cAcqWugU8sNDSR01kz-Rsk3wVA1u-H7P-eNT1c2htfIfcy2CvnZWs6QMVYUXzGAm08f-OkSX84UZeexeyqK9cg0ZDLVIv4K_xB8cks8e7K0RZygWLRhpDzxToGLVCS8wcE">
+<span class="font-body-md text-body-md text-on-surface font-medium">David Chen</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Ready
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors">
+                    View
+                  </button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: keynote_intro_2026.mp4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-space-sm pl-space-md pr-space-xs">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox">
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="relative w-24 h-14 rounded-lg overflow-hidden bg-surface-container-high group-hover:shadow-sm transition-all cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Auditorium stage with high definition LED keynote backdrop illuminated with sleek gradient typography and presenter silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW_rSeDyhvd-pvbE8BWo5Aljx7btD_LDUbiUiZ5ZMTFLa_jvK0ftR1t7IceTsJpjdONZg31n-bLkGGnd7DL7_Z8SUJV1uL8I1pPz1wGw0LLmVH4x-lEAdScqu2CXXCbun7oEIUTdGDUcWkHY9Muwwis9lhp2cjZMREpY8AosNazO9VyJEr8Gi-8CyBaxlZrSf4ymQ3HSJMfDLQIrHNSYNk2ODXP2faHUM0NY154-U">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity">
+<span class="w-6 h-6 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm font-medium text-on-surface">
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold hover:text-primary cursor-pointer transition-colors">keynote_intro_2026.mp4</span>
+<span class="font-code-sm text-[11px] text-outline">620 MB • 1080p</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-on-surface font-code-sm text-code-sm">08:15</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">cut</span>
+                  3 clips
+                </span>
+</td>
+<td class="py-space-sm px-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="Corporate headshot of Elena Rostova, creative lead with gentle confident expression and neutral daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzDIbkLC-T49YAQSwawcvTdZ-Rxqrvr6EDteBQQOiBHb6mi3IOiWaGM3IGYnDsCp8uFn0_i-yoDT8SBPBkmJScNKbybnQKnzXCWhqK-z8mf6KrOak70rI9iKRt8ANdzTTC9Ld7nQuW5BlXwjQDOMAXhFzZ31iKHxmF8t9At8HaBQERYp5qAdK5p3z_-DN4qLtJYcUEjcfAtKD0PVd3Rzs9C94Fv4tE9h_LyRehtAI">
+<span class="font-body-md text-body-md text-on-surface font-medium">Elena Rostova</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Ready
+                </span>
+</td>
+<td class="py-space-sm pr-space-md pl-space-sm text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md font-medium transition-colors">
+                    View
+                  </button>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Showing <span class="font-semibold text-on-surface">1–5</span> of <span class="font-semibold text-on-surface">38</span> videos</span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center">1</button>
+<button class="w-7 h-7 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md font-medium flex items-center justify-center transition-colors">2</button>
+<button class="w-7 h-7 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md font-medium flex items-center justify-center transition-colors">3</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Grid Layout View (Alternative mode toggled via UI) -->
+<div class="hidden w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md" id="container-grid-layout">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col space-y-space-sm hover:shadow-md transition-all">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container-high group cursor-pointer" onclick="switchState('details')">
+<img class="w-full h-full object-cover" data-alt="High quality film still of a professional speaker in a sleek audio visual stage with deep indigo backlighting, crisp 4k cinematic frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvk9S7KEuO3FWahZtUV4tvDYL-tLNmeE_0ShVbyCzSppJ18wKuFZzh5XyfOPX7qAz_9xVcgzN-Urkjp3qMgwLY878KamvlgmuA59nXOsV_PpmyvxaJNvxE_63IrFa43OQqxWCGOtVdZ3HCq0abkb3A9TDoKzGd3FmdwS1ENEiWeocCHPw70U8fPBdl8OsO6aBkA3cS74x3SGosKUq0VDr48R_NdV9uXpBlZIPhG5A">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="w-10 h-10 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/85 text-surface font-code-sm text-code-sm rounded">18:42</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">training_video_01.mp4</h3>
+<p class="font-code-sm text-[11px] text-outline">1.2 GB • 1080p</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold">
+            Ready
+          </span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Corporate headshot portrait of John Mathews, male instructor in modern office studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiDY3h0RJrdYlKU806l7Y2M-cipBcwha0S759EOjhjXHLCxNy06W55drq2XZrqwhF1suV88wvge-sOhYjjw95MZuh6ps3NMeUp7sI6Bp2S0jogFlWsESVWNLRqwRt1fK2X3qttNopCzgt-IEiQv-vd01h4NCij4PxvIZJ_URaYHhQjm9pzr0WOt3OtwJXBoMNAOzX9RQsnSWmSJK94MYX00heJ-CLa76EBWDz_dho">
+<span class="font-label-md text-label-md text-on-surface">John Mathews</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">7 clips</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col space-y-space-sm hover:shadow-md transition-all">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container-high group cursor-pointer" onclick="switchState('processing')">
+<img class="w-full h-full object-cover" data-alt="Screenshot of high tech web interface being presented on an ultra wide monitor with subtle purple ambient bloom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8FVvHUzpVAtMe9UzVCIJ2O2nxSKpBQzZdMIeaFhuk8OkxPy4BAMDR-lc01CoSbXR1GF8jNfCkvAVqR9-pYjHNgCOB6DnXQONQlVTLJ-Sz1PTnZ3kXvE1iTTatUinUdGGYNU43rYd370sMrO4CGkDDu72SSHoT6WiVMQVig_eZx8cK__q6JBiUdbY0OtczUG8KqcTjdCTMrBNTvf83J5XnQwO9XrYGERYOu36JKek">
+<div class="absolute inset-0 bg-on-surface/30 flex items-center justify-center">
+<span class="w-10 h-10 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center animate-spin">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</span>
+</div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 bg-primary/90 text-on-primary font-code-sm text-code-sm rounded">68% Processing</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">product_demo_02.mp4</h3>
+<p class="font-code-sm text-[11px] text-outline">840 MB • 60fps</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold">
+            Processing
+          </span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Portrait photo of Sarah Williams, product manager smiling with clean soft studio key light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcmSsdi_nMIfUXdzLPZphSMGs6RgshU3kNtW6pdLCz7MvwtBQXtPLPlEiOalW7n8XDVnhvZztFTL4_eoowj1xXXRdNH-Cb0jT4Qo-PlCro_1QjteOXd83mBHS39ZSQQgd3Qpzul7vKqX0Cb1_EKaO6A7if-zV8JNw79nKIroLAoag2621A8d3q6F0ouFJOpouftyI3vWEx8m5TpYLFxgZHsz2nb8n20_uWL48jG6g">
+<span class="font-label-md text-label-md text-on-surface">Sarah Williams</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">5 clips</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col space-y-space-sm hover:shadow-md transition-all">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container-high group cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Auditorium stage with high definition LED keynote backdrop illuminated with sleek gradient typography and presenter silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE3towhyB5uDduTfNDL02o6gFatkfvd4Gpfu-p73kgkY4h2GdFVEQkQ6XFZVX0leyk7MO7E5UXp7zXti-TulrszIW8EFE6dRjBzXaktCMyVB8APy6anGQjhgUYbW7u76990P7I5v3f3e_d5uheRivSfoozSf4URxKIn0l-F2_QFA06AWBGvo60FS6qPw76aPwJ53Ffbjt4V5TXSmJZEjxyrMGT4gwzVLTmUEF2R40">
+<div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="w-10 h-10 rounded-full bg-surface-container-lowest/90 text-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 bg-on-surface/85 text-surface font-code-sm text-code-sm rounded">08:15</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">keynote_intro_2026.mp4</h3>
+<p class="font-code-sm text-[11px] text-outline">620 MB • 1080p</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold">
+            Ready
+          </span>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<img class="w-5 h-5 rounded-full object-cover" data-alt="Corporate headshot of Elena Rostova, creative lead with gentle confident expression and neutral daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALcLBS3d-_VV6iebevdu62h0i-Rq4YPJ1jbTMpyniDeTD1YFcmBIDp2RPRcj5aMkj-j8gofBNwvnif3IMVjtEVFJ_fAg-c5kIIk-FV82Ebrky01Lv1vnbtqQ-lS8FHY3nvFgVQMWj1bp4q73n4JrQ-S_6NRYIviMRRKSnYkggjBLxPgAPEhKx0_Ko1fuxbjjT5yhEFnhUE6gzeOwYUhX0Pl_zjXe0mCvRDKI1FQNc">
+<span class="font-label-md text-label-md text-on-surface">Elena Rostova</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">3 clips</span>
+</div>
+</div>
+</div>
+</div>
+<!-- STATE 2: VIDEO DETAILS VIEW (INSPECTOR SCREEN) -->
+<div class="hidden flex-col w-full space-y-space-lg" id="view-details">
+<!-- Back breadcrumb navigation -->
+<div class="flex items-center justify-between"><div class="flex items-center gap-space-md"><button class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-medium" onclick="switchState('table')"><span class="material-symbols-outlined text-[18px]">arrow_back</span>Back to Video Library</button><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-2"><h1 class="font-headline-md text-headline-md font-semibold text-on-surface">Training Video 01</h1><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold shadow-2xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span></div></div><div class="flex items-center gap-space-xs"><button class="px-space-md py-space-xs bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded-lg shadow-sm hover:bg-surface-container-high transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">download</span>Download Master</button><button class="px-space-md py-space-xs bg-primary text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm hover:bg-primary-container transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">cut</span>Extract New Clip</button></div></div>
+<!-- Main details panel layout: 8 col / 4 col split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left 8 columns: Large Player & Clip Table -->
+<div class="lg:col-span-8 flex flex-col space-y-space-lg">
+<!-- Video Player Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-on-surface shadow-inner group">
+<img class="w-full h-full object-cover" data-alt="Cinematic production studio still frame showing speaker at glass desk with glowing blue accent light bars and audio meter graphics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4TkAsO4joxRI4Dt_Fl2J6xwR6UKizCyOo-ps7yN6Hz9UFlaV0GGgTh0Ft1N5IwobbEMxysidHRD2vDCEqItIS208YPAIhleVRV2nLA2_lGQyzl9hfX5tHfPE1adjDC_rXWqV_v-WOkGk8E1YL_nfciEz5HdzayUmgHp815So8icFY8FrbLL4LMSgbV8ln7keX38IBgyY1Eod_owRanm698nopnZY7BtGGxDb_nw">
+<!-- Custom Studio Player Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent flex flex-col justify-between p-space-md">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/80 backdrop-blur font-code-sm text-code-sm text-on-surface">MASTER PREVIEW</span>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-code-sm text-[11px]">1080p60</span>
+</div>
+<div class="flex flex-col space-y-2">
+<!-- Scrub Bar -->
+<div class="w-full h-1.5 bg-surface-container-lowest/30 rounded-full cursor-pointer relative overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[42%]"></div>
+</div>
+<div class="flex items-center justify-between text-surface-container-lowest font-code-sm text-code-sm">
+<div class="flex items-center gap-3">
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[24px]">play_arrow</span>
+</button>
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<span class="">07:51 / 18:42</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]">subtitles</span>
+</button>
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+<button class="hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Audio Node Latency & Specs Ribbon -->
+<div class="mt-space-md grid grid-cols-2 sm:grid-cols-4 gap-space-sm p-space-sm bg-surface-container-low rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Format</span>
+<p class="font-code-sm text-code-sm text-on-surface font-medium">MP4 (H.264)</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Resolution</span>
+<p class="font-code-sm text-code-sm text-on-surface font-medium">1920 × 1080</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Audio Stream</span>
+<p class="font-code-sm text-code-sm text-on-surface font-medium">Stereo 48kHz AAC</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase">Engine Latency</span>
+<p class="font-code-sm text-code-sm text-secondary font-medium">12ms realtime</p>
+</div>
+</div>
+</div>
+<!-- Clips extracted from this video -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-title-md text-title-md font-semibold text-on-surface">Extracted Clips (7)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Active segments linked to studio projects</p>
+</div>
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-surface-container text-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+              Auto-Segment AI
+            </button>
+</div>
+<div class="divide-y divide-surface-container-high"><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">01</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 01</p><p class="font-code-sm text-[11px] text-outline">00:00 – 03:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">02</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 02</p><p class="font-code-sm text-[11px] text-outline">03:00 – 06:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">03</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 03</p><p class="font-code-sm text-[11px] text-outline">06:00 – 09:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div></div>
+</div>
+</div>
+<!-- Right 4 columns: Inspector & Assignment Card -->
+<div class="lg:col-span-4 flex flex-col space-y-space-md">
+<!-- Assignment card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Assigned Creator</span>
+<span class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Assigned
+            </span>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-low">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Corporate headshot portrait of John Mathews, male instructor in modern office studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtj7h19BaZpDcPcXzyT65VGlGsf1ryQgzlu7pNF6KnF2DA0mjaSrHiLA76TfHMpN99nMwIqBkkVhQfMyU7S0XCZfews9dSc83neUu_QsQzZxVZU1scAGt5l5Dgv1ZZ7d4JAshaSFaRAIF6H-3UzSWuU_l4mFl1D_ywP2CyItlfz4rzMNXBXOkgGre2OgC9C0Fm5lXSIaQAyCJ7a-SELYUqZeI82v6yIxroxMPC0EY">
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-body-lg font-semibold text-on-surface truncate">John Mathews</span>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">john.mathews@voiceflow.ai</span>
+</div>
+</div>
+<button class="w-full py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+            Change Assignment
+          </button>
+</div>
+<!-- Metadata Specs Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">File Metadata</span>
+<dl class="divide-y divide-surface-container-high text-body-md"><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">01</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 01</p><p class="font-code-sm text-[11px] text-outline">00:00 – 03:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">02</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 02</p><p class="font-code-sm text-[11px] text-outline">03:00 – 06:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div><div class="py-3 flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><span class="w-6 h-6 rounded bg-surface-container-high text-outline flex items-center justify-center font-code-sm text-code-sm">03</span><div class="min-w-0"><p class="font-body-md text-body-md font-semibold text-on-surface truncate">Clip 03</p><p class="font-code-sm text-[11px] text-outline">06:00 – 09:00 • 3m 00s</p></div></div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-secondary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Ready</span><button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined text-[18px]">play_circle</span></button></div></div></dl>
+</div>
+<!-- Danger Zone Action -->
+<div class="p-space-md rounded-xl bg-error-container/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-md text-body-md font-semibold text-error">Delete Video</span>
+<span class="font-body-md text-label-md text-outline">Removes file and 7 extracted clips</span>
+</div>
+<button class="px-space-sm py-1 rounded-lg bg-error text-on-error font-label-md text-label-md font-medium hover:bg-error/90 transition-colors">
+            Delete
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- STATE 3: PROCESSING STATE VIEW -->
+<div class="hidden flex-col w-full max-w-3xl mx-auto space-y-space-lg py-space-md" id="view-processing">
+<div class="flex items-center justify-between">
+<button class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-medium" onclick="switchState('table')">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        Return to Video Library
+      </button>
+<span class="font-code-sm text-code-sm text-outline">Job ID: proc_9921_x64</span>
+</div>
+<!-- Processing Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm space-y-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px] animate-spin">autorenew</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Processing Video</h2>
+<p class="font-code-sm text-code-sm text-on-surface-variant">product_demo_02.mp4 • 840 MB</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-primary font-label-md text-label-md font-semibold">
+          68% Complete
+        </span>
+</div>
+<!-- Linear Progress Bar -->
+<div class="w-full space-y-1.5">
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 w-[68%]"></div>
+</div>
+<div class="flex justify-between text-outline font-label-sm text-label-sm">
+<span class="">Encoding clip matrix</span>
+<span class="">Estimated time remaining: 1m 45s</span>
+</div>
+</div>
+<!-- Vertical Stepper Workflow -->
+<div class="pt-space-md space-y-space-md">
+<!-- Step 1: Upload -->
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center">
+<span class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</span>
+<div class="w-0.5 h-8 bg-secondary"></div>
+</div>
+<div class="pt-0.5">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Upload complete</h4>
+<p class="font-label-sm text-label-sm text-outline">Transferred 840 MB via high-speed edge chunking</p>
+</div>
+</div>
+<!-- Step 2: Video validated -->
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center">
+<span class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</span>
+<div class="w-0.5 h-8 bg-primary"></div>
+</div>
+<div class="pt-0.5">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Video validated</h4>
+<p class="font-label-sm text-label-sm text-outline">Codecs matched: HEVC / AAC at 60.00 fps</p>
+</div>
+</div>
+<!-- Step 3: Creating clips (Active) -->
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center">
+<span class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center animate-pulse shadow-xs">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+</span>
+<div class="w-0.5 h-8 bg-surface-container-high"></div>
+</div>
+<div class="pt-0.5">
+<h4 class="font-body-md text-body-md font-semibold text-primary">Creating clips</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Segmenting 5 speech phrases with Whisper timestamps</p>
+</div>
+</div>
+<!-- Step 4: Generating thumbnails (Pending) -->
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center">
+<span class="w-7 h-7 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</span>
+<div class="w-0.5 h-8 bg-surface-container-high"></div>
+</div>
+<div class="pt-0.5">
+<h4 class="font-body-md text-body-md font-medium text-outline">Generating thumbnails</h4>
+<p class="font-label-sm text-label-sm text-outline">Extracting WebP keyframe strips</p>
+</div>
+</div>
+<!-- Step 5: Ready -->
+<div class="flex items-start gap-space-md">
+<div class="flex flex-col items-center">
+<span class="w-7 h-7 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+</span>
+</div>
+<div class="pt-0.5">
+<h4 class="font-body-md text-body-md font-medium text-outline">Ready</h4>
+<p class="font-label-sm text-label-sm text-outline">Video indexed and available to studio workspace</p>
+</div>
+</div>
+</div>
+<!-- Safe notice banner -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<span class="font-body-md text-body-md">Your video is being prepared. You can leave this page and return later.</span>
+</div>
+</div>
+</div>
+<!-- STATE 4: EMPTY STATE -->
+<div class="hidden flex-col items-center justify-center w-full py-16 bg-surface-container-lowest rounded-xl shadow-sm text-center px-space-lg" id="view-empty">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high text-outline flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[36px]">video_library</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">No videos yet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mt-1 mb-space-lg">
+      Upload your first MP4 videos to start creating projects.
+    </p>
+<button class="inline-flex items-center gap-2 px-space-lg py-space-xs bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold rounded-lg shadow-sm transition-all" onclick="toggleUploadModal(true)">
+<span class="material-symbols-outlined text-[18px]">add</span>
+      + Upload Videos
+    </button>
+</div>
+<!-- MODAL: UPLOAD VIDEOS (DRAWER / OVERLAY) -->
+<div class="fixed inset-0 z-50 hidden" id="upload-modal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-xs transition-opacity" onclick="toggleUploadModal(false)"></div>
+<!-- Modal Content -->
+<div class="relative min-h-screen flex items-center justify-center p-space-md">
+<div class="relative w-full max-w-xl bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden flex flex-col">
+<!-- Header -->
+<div class="p-space-lg flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">cloud_upload</span>
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-on-surface">Upload Videos</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Batch upload media for studio clipping</p>
+</div>
+</div>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleUploadModal(false)">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Body -->
+<div class="p-space-lg space-y-space-lg">
+<!-- Drop Area -->
+<div class="border-2 border-dashed border-outline-variant hover:border-primary rounded-xl p-space-xl text-center bg-surface flex flex-col items-center justify-center transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary-fixed text-primary flex items-center justify-center mb-space-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]">upload_file</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Drag &amp; Drop MP4 files here or <span class="text-primary hover:underline">Browse Files</span></p>
+<p class="font-label-sm text-label-sm text-outline mt-1">
+              Supported format: MP4 (up to 4K 60fps)
+            </p>
+</div>
+<!-- Upload Queue List -->
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="font-semibold uppercase tracking-wider">Upload Queue (3 files)</span>
+<span class="">10.4 MB/s</span>
+</div>
+<!-- Queue Item 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div class="truncate">
+<p class="font-body-md text-body-md font-medium text-on-surface truncate">training_01.mp4</p>
+<p class="font-code-sm text-[11px] text-outline">1.2 GB • Completed</p>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">100% Uploaded ✓</span>
+</div>
+<div class="w-full h-1 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary w-full"></div>
+</div>
+</div>
+<!-- Queue Item 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col space-y-2">
+<div class="flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-primary text-[20px] animate-spin">sync</span><div class="truncate"><p class="font-body-md text-body-md font-medium text-on-surface truncate">training_02.mp4</p><p class="font-code-sm text-[11px] text-outline">840 MB • Uploading chunk 42/60</p></div></div><div class="flex items-center gap-2"><span class="font-code-sm text-code-sm text-primary font-semibold">68% Uploading</span><button class="p-1 rounded text-outline hover:text-error hover:bg-surface-container-high transition-colors" title="Cancel upload"><span class="material-symbols-outlined text-[16px]">close</span></button></div></div>
+<div class="w-full h-1 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary w-[68%] transition-all duration-300"></div>
+</div>
+</div>
+<!-- Queue Item 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col space-y-2">
+<div class="flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-outline text-[20px]">hourglass_top</span><div class="truncate"><p class="font-body-md text-body-md font-medium text-on-surface truncate">training_03.mp4</p><p class="font-code-sm text-[11px] text-outline">1.1 GB • In queue</p></div></div><div class="flex items-center gap-2"><span class="font-code-sm text-code-sm text-outline font-medium">Processing...</span><button class="p-1 rounded text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Retry"><span class="material-symbols-outlined text-[16px]">refresh</span></button><button class="p-1 rounded text-outline hover:text-error hover:bg-surface-container-high transition-colors" title="Cancel"><span class="material-symbols-outlined text-[16px]">close</span></button></div></div>
+<div class="w-full h-1 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-outline/40 w-[15%]"></div>
+</div>
+</div>
+</div>
+<!-- Success summary badge -->
+<div class="p-space-sm rounded-lg bg-[#ECFDF5] text-secondary flex items-center gap-space-xs font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">12 videos uploaded successfully • 12 videos are now being processed</span>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md font-medium transition-colors" onclick="toggleUploadModal(false)">
+            Cancel
+          </button>
+<button class="px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-sm transition-all" onclick="toggleUploadModal(false)">
+            Done &amp; Close
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Script for UI State Switcher & Modals -->
+<script>
+    function switchState(state) {
+      const views = ['table', 'details', 'processing', 'empty'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+        
+        const btn = document.getElementById(`btn-state-${v}`);
+        if (btn) {
+          btn.className = "px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all flex items-center gap-1.5";
+        }
+      });
+
+      const activeView = document.getElementById(`view-${state}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      const activeBtn = document.getElementById(`btn-state-${state}`);
+      if (activeBtn) {
+        activeBtn.className = "px-space-sm py-1 rounded-md text-on-primary bg-primary font-label-md text-label-md font-medium shadow-xs transition-all flex items-center gap-1.5";
+      }
+    }
+
+    function toggleLayoutMode(mode) {
+      const tableLayout = document.getElementById('container-table-layout');
+      const gridLayout = document.getElementById('container-grid-layout');
+      const btnTable = document.getElementById('btn-view-table-mode');
+      const btnGrid = document.getElementById('btn-view-grid-mode');
+
+      if (mode === 'grid') {
+        tableLayout.classList.add('hidden');
+        gridLayout.classList.remove('hidden');
+        btnGrid.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+        btnGrid.classList.remove('text-outline');
+        btnTable.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+        btnTable.classList.add('text-outline');
+      } else {
+        tableLayout.classList.remove('hidden');
+        gridLayout.classList.add('hidden');
+        btnTable.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+        btnTable.classList.remove('text-outline');
+        btnGrid.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-xs');
+        btnGrid.classList.add('text-outline');
+      }
+    }
+
+    function toggleUploadModal(show) {
+      const modal = document.getElementById('upload-modal');
+      if (modal) {
+        if (show) modal.classList.remove('hidden');
+        else modal.classList.add('hidden');
+      }
+    }
+  </script>
+</div></main></div>
+
+</body></html>

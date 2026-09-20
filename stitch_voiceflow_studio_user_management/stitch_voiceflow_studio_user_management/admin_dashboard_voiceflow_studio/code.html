@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary": "#006c49",
+            "primary": "#3525cd",
+            "surface-container-high": "#eae6f4",
+            "surface-container": "#f0ecf9",
+            "tertiary": "#3a495f",
+            "secondary-fixed-dim": "#4edea3",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#4f46e5",
+            "on-tertiary-container": "#ccdcf7",
+            "error": "#ba1a1a",
+            "primary-fixed": "#e2dfff",
+            "tertiary-fixed": "#d3e4fe",
+            "surface-bright": "#fcf8ff",
+            "on-background": "#1b1b24",
+            "surface-variant": "#e4e1ee",
+            "secondary-container": "#6cf8bb",
+            "on-surface": "#1b1b24",
+            "on-tertiary-fixed-variant": "#38485d",
+            "tertiary-container": "#516177",
+            "on-secondary-fixed": "#002113",
+            "inverse-surface": "#302f39",
+            "on-primary-container": "#dad7ff",
+            "on-secondary-fixed-variant": "#005236",
+            "inverse-on-surface": "#f3effc",
+            "error-container": "#ffdad6",
+            "background": "#fcf8ff",
+            "surface-container-highest": "#e4e1ee",
+            "on-secondary": "#ffffff",
+            "outline": "#777587",
+            "outline-variant": "#c7c4d8",
+            "on-secondary-container": "#00714d",
+            "tertiary-fixed-dim": "#b7c8e1",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#3323cc",
+            "surface": "#fcf8ff",
+            "inverse-primary": "#c3c0ff",
+            "surface-container-low": "#f5f2ff",
+            "surface-dim": "#dcd8e5",
+            "on-primary-fixed": "#0f0069",
+            "on-tertiary-fixed": "#0b1c30",
+            "surface-tint": "#4d44e3",
+            "secondary-fixed": "#6ffbbe",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-surface-variant": "#464555"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "space-xl": "2rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
+          },
+          fontFamily: {
+            "title-md": ["Geist", "sans-serif"],
+            "headline-lg": ["Geist", "sans-serif"],
+            "body-md": ["Geist", "sans-serif"],
+            "code-sm": ["JetBrains Mono", "monospace"],
+            "label-sm": ["Geist", "sans-serif"],
+            "headline-lg-mobile": ["Geist", "sans-serif"],
+            "body-lg": ["Geist", "sans-serif"],
+            "headline-md": ["Geist", "sans-serif"],
+            "display-lg": ["Geist", "sans-serif"],
+            "label-md": ["Geist", "sans-serif"]
+          },
+          fontSize: {
+            "title-md": ["16px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "500" }],
+            "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "body-md": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "code-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.03em", fontWeight: "600" }],
+            "headline-lg-mobile": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "body-lg": ["15px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-lg": ["36px", { lineHeight: "44px", letterSpacing: "-0.025em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "500" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Left Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col pt-space-md pb-space-lg">
+<div class="px-space-lg mb-space-lg flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-title-md text-title-md text-on-surface font-bold leading-tight tracking-tight">VoiceFlow</span>
+<span class="text-xs font-semibold text-outline">Studio</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Studio Admin</span>
+</div>
+</div>
+<!-- Workspace Switcher Pill -->
+<div class="px-space-md mb-space-sm">
+<div class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:border-outline-variant/60 transition-colors cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">corporate_fare</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Workspace</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">unfold_more</span>
+</div>
+</div>
+<!-- Sidebar Navigation -->
+<nav class="flex-1 px-space-md flex flex-col gap-1">
+<a class="flex items-center gap-space-sm px-space-sm py-2 bg-primary-container/10 text-primary font-medium rounded-lg transition-colors" data-path="overview" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="font-body-md text-body-md font-semibold">Overview</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="users" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="videos-and-projects" href="#">
+<span class="material-symbols-outlined text-[20px]">video_library</span>
+<span class="font-body-md text-body-md">Videos &amp; Projects</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg transition-colors" data-path="settings" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<!-- Sidebar Footer -->
+<div class="px-space-md mt-auto pt-space-md">
+<div class="px-3 py-2 rounded-lg bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary ring-2 ring-secondary/20"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Engine Live</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-medium">12ms</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="pl-64">
+<!-- Top Header -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-high z-40 flex items-center justify-between px-space-lg">
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-md text-label-md text-outline">Workspaces</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Workspace</span>
+</div>
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-3 py-1.5 bg-primary-container text-on-primary font-semibold text-body-md rounded-lg shadow-sm" data-path="overview" href="#">Overview</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="users" href="#">Users</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="videos-and-projects" href="#">Videos &amp; Projects</a>
+<a class="px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-body-md rounded-lg transition-colors" data-path="settings" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-outline hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span class="font-label-md text-label-md">Quick search...</span>
+<kbd class="font-code-sm text-code-sm bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface-variant font-medium">⌘K</kbd>
+</div>
+<button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-space-xs border-l border-surface-container-high">
+<div class="relative flex items-center">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT6FPjWKonKoF0zVqBaZAED4bxmu8HHsvDZufnsnRjqJlqZqq87L-HwpRb7jCSCive6SbZ8XUc4TYpYyxp1twkMcBZSdc74REGi48U-HHgQLjRXdWVO1JlC5751XTyLZwSzLuxHWeq3TYhG7OwIK8OV_QxWwLWE_ePIHrL0iQ3nkwGfj04zTna6ER6xemJ8pigokrf-wervRBZBDUINaGnnngbPxP1inAmJnh-Mh_QuKH6WDdO6lAk"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="hidden lg:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-none">Alex Morgan (Admin)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight mt-0.5">Studio Lead</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Page Body -->
+<main class="relative pt-20 px-space-lg py-space-lg bg-background min-h-screen">
+<div class="flex flex-col w-full max-w-7xl mx-auto space-y-space-lg">
+<!-- Page Header & Action Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Dashboard</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-primary-fixed text-on-primary-fixed">v2.4 Live</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Overview of your video production work, live rendering pipelines, and team capacity.</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-surface-container-lowest border border-outline-variant/60 text-on-surface hover:bg-surface-container-low transition-all shadow-sm active:scale-[0.99] cursor-pointer">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">upload_file</span>
+<span class="font-label-md text-label-md font-semibold">Upload Videos</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all shadow-sm active:scale-[0.99] cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="font-label-md text-label-md font-semibold">Create Project</span>
+</button>
+</div>
+</div>
+<!-- 4 Bento Key Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Total Users -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Total Users</span>
+<span class="w-8 h-8 rounded-lg bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-display-lg text-display-lg text-on-surface font-bold">24</span>
+<span class="inline-flex items-center gap-0.5 text-label-sm font-label-sm font-semibold text-secondary">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +3 this week
+                </span>
+</div>
+</div>
+<div class="pt-2.5 mt-2 border-t border-surface-container-high flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Active: <strong class="text-on-surface font-semibold">21</strong></span>
+<span>•</span>
+<span>Disabled: <strong class="text-on-surface font-semibold">3</strong></span>
+<span>•</span>
+<a class="text-primary font-semibold hover:underline" href="#">Manage</a>
+</div>
+</div>
+<!-- Total Videos -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Total Videos</span>
+<span class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">movie</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-display-lg text-display-lg text-on-surface font-bold">148</span>
+<span class="font-code-sm text-code-sm text-outline">42 hrs raw</span>
+</div>
+</div>
+<div class="pt-2.5 mt-2 border-t border-surface-container-high flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> 89% Processed
+              </span>
+<span class="font-code-sm text-code-sm text-outline">16 pending</span>
+</div>
+</div>
+<!-- Active Projects -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Active Projects</span>
+<span class="w-8 h-8 rounded-lg bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-display-lg text-display-lg text-on-surface font-bold">18</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">across 6 teams</span>
+</div>
+</div>
+<div class="pt-2.5 mt-2 border-t border-surface-container-high flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="text-primary font-semibold">12 In Prog</span>
+<span>•</span>
+<span>4 Assigned</span>
+<span>•</span>
+<span>2 Reviewing</span>
+</div>
+</div>
+<!-- Pending Review -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Pending Review</span>
+<span class="w-8 h-8 rounded-lg bg-error-container/50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-display-lg text-display-lg text-on-surface font-bold">5</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-error-container text-on-error-container">
+                  Needs Lead QA
+                </span>
+</div>
+</div>
+<div class="pt-2.5 mt-2 border-t border-surface-container-high flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="text-error font-semibold">2 Overdue &gt; 24h</span>
+<a class="text-primary font-semibold hover:underline" href="#">Batch Inspect</a>
+</div>
+</div>
+</div>
+<!-- View Tabs & Filter Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-2">
+<div class="inline-flex p-1 rounded-xl bg-surface-container border border-outline-variant/30">
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md font-semibold bg-surface-container-lowest text-on-surface shadow-sm cursor-pointer transition-all" id="tab-overview">Overview View</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface cursor-pointer transition-all" id="tab-storage">Storage Snapshot</button>
+<button class="px-3.5 py-1.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface cursor-pointer transition-all" id="tab-activity">Activity Filter</button>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant self-end sm:self-auto">
+<span class="font-code-sm text-code-sm text-outline">Sync Pulse: Live</span>
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</div>
+</div>
+<!-- Recent Projects Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm p-space-md">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Recent Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Current production pipelines, render milestones, and clip allocations.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface text-label-sm font-label-sm font-medium transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter Status</span>
+</button>
+<button aria-label="Reload" class="p-1.5 rounded-lg border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-outline uppercase font-label-sm text-label-sm tracking-wider">
+<th class="py-3 px-space-md rounded-l-lg font-semibold">PROJECT NAME</th>
+<th class="py-3 px-space-md font-semibold">ASSIGNED USER</th>
+<th class="py-3 px-space-md font-semibold">CLIPS</th>
+<th class="py-3 px-space-md font-semibold">PROGRESS</th>
+<th class="py-3 px-space-md font-semibold">STATUS</th>
+<th class="py-3 px-space-md rounded-r-lg text-right font-semibold">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<!-- Row 1: Training Video Batch 04 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">smart_display</span>
+</div>
+<div class="min-w-0">
+<span class="font-body-md text-on-surface font-semibold block truncate">Training Video Batch 04</span>
+<span class="font-code-sm text-code-sm text-outline">PRJ-2025-048</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-2">
+<img alt="John Mathews" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArYrEtSi7rmxV8P9XPN-7CtfOIp94j3Q8Zw-EGCMpydThIe5fTZWi3RytERBuE45VY31rMOBGEZrEUEsSxzuq4af2EnzGazUqi3XmiahmvGnpXP6adgvKZRgEfVQTlwlYOjzuyIbcUrhxSuv0Xj-aWC3Vpscr3yxzM-uJblWjpYepHVgxlqw6voIXJsInsW3bZW_xMPuicLH1xngPWmCOa0ixg1Uha0iIiscxT7kM"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">John Mathews</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">18 / 24</span>
+</td>
+<td class="py-3.5 px-space-md min-w-[140px]">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 75%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">75%</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm font-semibold bg-secondary-container/40 text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      In Progress
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md font-semibold transition-colors cursor-pointer">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Product Demo Series - Q3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">video_camera_front</span>
+</div>
+<div class="min-w-0">
+<span class="font-body-md text-on-surface font-semibold block truncate">Product Demo Series - Q3</span>
+<span class="font-code-sm text-code-sm text-outline">PRJ-2025-052</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-2">
+<img alt="David Chen" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWrErBgw96TP3ZEknOKYzFm7n-zhGW_MBkrRtfiY7Zu1_DIZcWdiXYZ6eCw9BCr_obYXFIFORuStnfzKkeBC1I2DqCBERhqJ4QVX0zEzoJw06kJxzVBEzHKe_2Iw2R0929JlTlxS160dLC0W2HsWf7cOVkluODGVf6u4u1qIvef1czTU1v99UXds_Y_gEP0Ek_8porNazIukD0GobzAYDvhDWSsJSesfxTmiMy224"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">David Chen</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">32 / 32</span>
+</td>
+<td class="py-3.5 px-space-md min-w-[140px]">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">100%</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm font-semibold bg-tertiary-fixed text-on-tertiary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                      Under Review
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold transition-colors cursor-pointer shadow-sm">
+<span>Review</span>
+<span class="material-symbols-outlined text-[14px]">rate_review</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Security Compliance 2025 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-error-container/50 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="min-w-0">
+<span class="font-body-md text-on-surface font-semibold block truncate">Security Compliance 2025</span>
+<span class="font-code-sm text-code-sm text-outline">PRJ-2025-061</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-2">
+<img alt="Sarah Williams" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADY3k_BtgWtd-o03Xe_f4P2H2joNjxCv8Gk9v_a2FV_M5YN-L3dpDcneTXPc3s3_LUrGZekH9FDt4CN63Axm-qN5QnzEYixSrbQQzPtnSvbmPRnEwpjVyzY2FTwKLqWta4kO5S_tj18f4bOKSS8OwluPUx02KbthbRx-T1aykLDgoCAsmkT0hTjfFNCo7KJ95E9-FWX7k-133H3FGwWIqpTUSJhMmrPogn_P-K0Lg"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">Sarah Williams</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">09 / 14</span>
+</td>
+<td class="py-3.5 px-space-md min-w-[140px]">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 64%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-error font-semibold">64%</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm font-semibold bg-error-container text-on-error-container">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                      Revision Needed
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-low hover:bg-error-container hover:text-error text-on-surface-variant font-label-md text-label-md font-medium transition-colors cursor-pointer">
+<span>View Feedback</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Customer Support Onboarding -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div class="min-w-0">
+<span class="font-body-md text-on-surface font-semibold block truncate">Customer Support Onboarding</span>
+<span class="font-code-sm text-code-sm text-outline">PRJ-2025-063</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-2">
+<img alt="Elena Rostova" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkgUr-IH1wBtFC2ytLurlQaMZm039cilzC6Wg2dX7p9VhBJN9bTi_Pdos-ogpzysJl92BJ_d-1Hv6G7H37haRCmBQzkGB16RQhd2QXNSjD5X8UMqV1AQkKhfTRkgU0zM9oHx2mvltMiT_uZyFPaZ71-FVq22bGI5_dUZCBVpHHYw5_pVl70_UH6BeYFSH3oWzAwFli18_1b-rglH1Lzpizvs-ERa1OVyUXECx3Ie0"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">Elena Rostova</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">04 / 16</span>
+</td>
+<td class="py-3.5 px-space-md min-w-[140px]">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 25%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">25%</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm font-semibold bg-secondary-container/40 text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      In Progress
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-low hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md font-semibold transition-colors cursor-pointer">
+<span>View</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Executive Keynote Voiceover -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/40 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div class="min-w-0">
+<span class="font-body-md text-on-surface font-semibold block truncate">Executive Keynote Voiceover</span>
+<span class="font-code-sm text-code-sm text-outline">PRJ-2025-067</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-2">
+<img alt="Priya Patel" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr1IUAnFbc94l3Mitda2lyCwEix_zJl5PVyYAaUFuMTsVqAWR44LIFEAbeTsbJU2DDScHG0VGxtBW_KpWXa-8NXq8lFt3WMjDJvUL7Pldgxc_D379a_VNHLFY4B-Us50lEkgj5yXbi0OdG8U7taRuFsFQr3k_AAn_td3JamELy2xM89GB8YWqX73No7ZiFMI2KPdJMcoU0KzZ-bBq9vtihX33I-ci1pw8Cf2ppZhI"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">Priya Patel</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold bg-surface-container-low px-2 py-0.5 rounded border border-outline-variant/30">08 / 08</span>
+</td>
+<td class="py-3.5 px-space-md min-w-[140px]">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">100%</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm font-semibold bg-secondary-fixed/50 text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                      Approved
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-medium transition-colors cursor-pointer">
+<span>Deliverables</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom Grid (2-Column Bento Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Recent Activity Timeline -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Recent Activity</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">REALTIME STREAM</span>
+</div>
+<!-- Stream Entries -->
+<div class="space-y-space-sm">
+<!-- Item 1: John Mathews -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg hover:bg-surface-container-low/50 transition-colors">
+<img alt="John Mathews" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiiB2mTaJPLOYiPfGQmElbxqBt5jueF8fncSwUDhJ5CefR0ScWdefD2S1xteAr6-tG7Z2iKfhUrNDN8Zdc54PxiTtI6Uwu7YjQkG75Sosjun51vtDkmC0aPgVqtRbdmPSYIJQRWBxoGBS9aweqjf8lYC8oNnVzKZh2-UADBhrT1ETvisdCzOH8mn4ljjzc2tm68QBkHw7He2nNFBqO4TOc2hXT8zKH4STbMOLThK8"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">John Mathews</strong> completed <span class="font-code-sm text-code-sm bg-surface-container-low px-1.5 py-0.5 rounded text-primary font-semibold">Clip 12</span> for Training Video Batch 04
+                      </p>
+<span class="font-code-sm text-code-sm text-outline shrink-0 ml-2">10:42 AM</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-secondary font-semibold mt-0.5">Render Completed • 1080p60</span>
+</div>
+</div>
+<!-- Item 2: David Chen -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg hover:bg-surface-container-low/50 transition-colors">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">upload</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">David Chen</strong> submitted <span class="font-code-sm text-code-sm bg-surface-container-low px-1.5 py-0.5 rounded font-semibold">Project #1042</span> for final review
+                      </p>
+<span class="font-code-sm text-code-sm text-outline shrink-0 ml-2">10:31 AM</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-primary-container font-semibold mt-0.5">Awaiting QA Sign-off</span>
+</div>
+</div>
+<!-- Item 3: System Ingestion -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg hover:bg-surface-container-low/50 transition-colors">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">cloud_upload</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<strong class="font-semibold text-on-surface">System Ingestion:</strong> 12 raw studio videos uploaded to S3 bucket
+                      </p>
+<span class="font-code-sm text-code-sm text-outline shrink-0 ml-2">09:58 AM</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">Storage footprint +14.2 GB</span>
+</div>
+</div>
+<!-- Item 4: Sarah Williams -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg hover:bg-surface-container-low/50 transition-colors">
+<img alt="Sarah Williams" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgx7i_Aj25HEDOzUUtnJZS66ZyFNyQNw2eC35SXZdAsel_4PKwxho2jd4x8oncEUlDXAbQlFkQvoMn09PSugdbPrj5FnTFkNiCFpvEnvqqWDiYT8xk3EyKfmEEmJ91f-kpJqVu3YQrW_D57o11uR958x6aSPGDiMXu55vZquUl0TCTDjx1loJWnj7hSSlg7TOkyX4BE3aonyDFXtWS2kg7hi1zylDmMboqgMyra7Q"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+                        Project <span class="font-semibold text-on-surface">Security Compliance 2025</span> assigned to <strong class="font-semibold text-on-surface">Sarah Williams</strong>
+</p>
+<span class="font-code-sm text-code-sm text-outline shrink-0 ml-2">09:40 AM</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-outline font-medium mt-0.5">Assigned by Alex Morgan</span>
+</div>
+</div>
+<!-- Item 5: Revision Requested -->
+<div class="flex items-start gap-space-sm p-2 rounded-lg hover:bg-surface-container-low/50 transition-colors">
+<div class="w-8 h-8 rounded-full bg-error-container/50 flex items-center justify-center text-error shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+                        Revision requested for <span class="font-code-sm text-code-sm bg-surface-container-low px-1.5 py-0.5 rounded text-error font-semibold">Clip 04</span> in Security Series
+                      </p>
+<span class="font-code-sm text-code-sm text-outline shrink-0 ml-2">09:15 AM</span>
+</div>
+<span class="inline-block font-label-sm text-label-sm text-error font-semibold mt-0.5">Audio desync noticed at 02:14</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-high flex items-center justify-between">
+<a class="text-primary font-label-md text-label-md font-semibold hover:underline flex items-center gap-1" href="#">
+<span>View All 142 Today's Audit Logs</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+<span class="font-code-sm text-code-sm text-outline">Cluster us-east-1</span>
+</div>
+</div>
+<!-- Right Column: Storage & Production Widget -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Storage &amp; Production</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Active asset volumes and server partition limits.</p>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">hard_drive</span>
+</div>
+<!-- Storage Meter Box -->
+<div class="bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 mb-space-md">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Storage Used</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">36% Capacity</span>
+</div>
+<div class="flex items-baseline gap-1 mb-space-sm">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">1.8 TB</span>
+<span class="font-body-lg text-body-lg text-outline">/ 5.0 TB</span>
+</div>
+<!-- Multi-segmented Progress Bar -->
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full" style="width: 61%;" title="Original Videos: 1.1 TB"></div>
+<div class="bg-secondary h-full" style="width: 23%;" title="Processed Clips: 420 GB"></div>
+<div class="bg-primary-fixed-dim h-full" style="width: 16%;" title="Voice Takes: 280 GB"></div>
+</div>
+<!-- Segment Legend -->
+<div class="grid grid-cols-3 gap-2 mt-space-sm pt-space-xs text-left">
+<div>
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Raw Video</span>
+</div>
+<span class="font-code-sm text-code-sm font-bold text-on-surface block">1.1 TB</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Processed</span>
+</div>
+<span class="font-code-sm text-code-sm font-bold text-on-surface block">420 GB</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Takes</span>
+</div>
+<span class="font-code-sm text-code-sm font-bold text-on-surface block">280 GB</span>
+</div>
+</div>
+</div>
+<!-- Audio Node Mini-Card with Waveform -->
+<div class="bg-surface-container-low/70 rounded-lg p-3 border border-outline-variant/30 relative overflow-hidden mb-space-sm">
+<div class="h-1 bg-primary-container absolute top-0 left-0 right-0"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">graphic_eq</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Synthesis Node 01</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">12ms latency</span>
+</div>
+<!-- Audio Waveform Visual Bars -->
+<div class="flex items-center gap-1 h-6 w-full px-1 justify-between">
+<div class="w-1 bg-primary-container h-3 rounded-full animate-pulse"></div>
+<div class="w-1 bg-primary-container h-5 rounded-full"></div>
+<div class="w-1 bg-primary-container h-2 rounded-full"></div>
+<div class="w-1 bg-primary h-6 rounded-full"></div>
+<div class="w-1 bg-primary-container h-4 rounded-full"></div>
+<div class="w-1 bg-secondary h-5 rounded-full"></div>
+<div class="w-1 bg-secondary h-3 rounded-full"></div>
+<div class="w-1 bg-primary-container h-2 rounded-full"></div>
+<div class="w-1 bg-primary-container h-4 rounded-full"></div>
+<div class="w-1 bg-primary h-5 rounded-full"></div>
+<div class="w-1 bg-primary h-3 rounded-full"></div>
+<div class="w-1 bg-primary-container h-6 rounded-full"></div>
+<div class="w-1 bg-primary-container h-4 rounded-full"></div>
+<div class="w-1 bg-secondary h-2 rounded-full"></div>
+<div class="w-1 bg-secondary h-4 rounded-full"></div>
+<div class="w-1 bg-primary-container h-5 rounded-full"></div>
+<div class="w-1 bg-primary-container h-2 rounded-full"></div>
+<div class="w-1 bg-primary h-3 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-label-sm font-label-sm border-t border-surface-container-high">
+<span class="text-on-surface-variant flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px] text-secondary">cloud_done</span>
+                Auto-cleanup enabled (45d)
+              </span>
+<a class="text-primary font-semibold hover:underline" href="#">Manage Quotas</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Tab Switch Script -->
+<script>
+    (function() {
+      const tabs = document.querySelectorAll('#tab-overview, #tab-storage, #tab-activity');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => {
+            t.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+            t.classList.add('text-on-surface-variant', 'font-medium');
+          });
+          this.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+          this.classList.remove('text-on-surface-variant', 'font-medium');
+        });
+      });
+    })();
+  </script>
+</body></html>

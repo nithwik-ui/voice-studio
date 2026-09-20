@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.60/css/jetbrains-mono.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#4f46e5", "secondary-container": "#6cf8bb", "on-surface-variant": "#464555", "tertiary": "#3a495f", "on-primary-container": "#dad7ff", "error": "#ba1a1a", "background": "#fcf8ff", "secondary-fixed": "#6ffbbe", "tertiary-fixed-dim": "#b7c8e1", "on-error": "#ffffff", "surface-container-low": "#f5f2ff", "inverse-surface": "#302f39", "primary": "#3525cd", "surface-container-high": "#eae6f4", "on-tertiary": "#ffffff", "surface-tint": "#4d44e3", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#d3e4fe", "on-background": "#1b1b24", "primary-fixed": "#e2dfff", "on-secondary-fixed-variant": "#005236", "inverse-on-surface": "#f3effc", "on-surface": "#1b1b24", "on-tertiary-fixed": "#0b1c30", "surface-variant": "#e4e1ee", "on-secondary": "#ffffff", "on-primary": "#ffffff", "surface-container": "#f0ecf9", "on-primary-fixed-variant": "#3323cc", "inverse-primary": "#c3c0ff", "secondary": "#006c49", "on-primary-fixed": "#0f0069", "on-secondary-container": "#00714d", "surface-dim": "#dcd8e5", "surface": "#fcf8ff", "on-tertiary-fixed-variant": "#38485d", "outline": "#777587", "tertiary-container": "#516177", "outline-variant": "#c7c4d8", "on-secondary-fixed": "#002113", "secondary-fixed-dim": "#4edea3", "primary-fixed-dim": "#c3c0ff", "surface-bright": "#fcf8ff", "surface-container-highest": "#e4e1ee", "on-error-container": "#93000a", "on-tertiary-container": "#ccdcf7", "error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "2rem", "space-xl": "2rem", "margin-mobile": "1rem", "gutter-sm": "1rem", "space-md": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem" }, "fontFamily": { "headline-md": ["Geist"], "title-md": ["Geist"], "label-sm": ["Geist"], "code-sm": ["JetBrains Mono"], "body-md": ["Geist"], "headline-lg": ["Geist"], "display-lg": ["Geist"], "label-md": ["Geist"], "body-lg": ["Geist"], "headline-lg-mobile": ["Geist"] }, "fontSize": { "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "code-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-lg": ["15px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }] } } } }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center gap-space-sm"><img alt="Brand logo. - Primary color: #4f46e5
+- Font: geist
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WNNQLfUtQGMuKSY9szov5vnGRda_EzUjrLSxKxoZIqPq1vD8fCcHPHWLxSPNa6_iZxZ6ZUrcAcwMY4KE21MlpMoG2NZXSx7KKyJ3w5rncKAhK3EQ7G5qLskKMwp1ndhymnISquw0Ttl8KuNNrbdLyR5-B9ufMrFGUo5Vl2vY5z3kkUDD0w3TUeXZbb1PC5RpmG3YOy8k0zEHcry7uXT73JH_oHnMbO747cDgFCdxFuLYfqDG5ZSeiW0Jg"/><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-surface truncate leading-none">VoiceFlow</span><span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold mt-space-xs">Voice Artist</span></div></div><div class="px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">home</span><span class="font-body-md text-body-md">Dashboard</span></div></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="my-projects" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_open</span><span class="font-body-md text-body-md">My Projects</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">4</span></a><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-label-md" data-path="notifications" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">notifications</span><span class="font-body-md text-body-md">Notifications</span></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary">2</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="profile-settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">person</span><span class="font-body-md text-body-md">Profile & Settings</span></div></a></nav></div><div class="mt-auto p-space-md flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-secondary-container/20"><span class="inline-block w-2 h-2 rounded-full bg-secondary"></span><span class="font-code-sm text-code-sm text-secondary font-medium truncate">Mic Ready · 48kHz</span></div><div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1U2_nhHtbA75bFPj8bk77ZMHFxXyWbUmMPoXpXP4T9rv0jyFzOWbsPPZrOJlQcMrK7sVi6wXfdS9fTXSXzTQAhSNOGzUDR7NxszO5BXThgetLknEcbNpa8_QGDr7UEZAGscTe6zBjVoVcNwlCl8KaNaOGg71c0lZuPl7nHmS_rw1U1sbEEHvV7T8qsvnbpTT6zM9pHfeuDQymgacexSP82LfkmJhHhMHUYTTQMf71cvIzctN_JjzISvAg"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate leading-tight">John Mathews</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Talent Pro</span></div></div><a class="p-1 text-on-surface-variant hover:text-error transition-colors" data-path="logout" href="#" title="Sign out"><span class="material-symbols-outlined text-[18px]">logout</span></a></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-16 px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-sm text-on-surface-variant font-label-md text-label-md"><span class="text-on-surface-variant">VoiceFlow Studio</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-semibold">Workspace</span></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container font-label-sm text-label-sm text-on-surface-variant"><span class="inline-block w-2 h-2 rounded-full bg-secondary"></span><span class="text-on-surface font-medium">Mic: USB Shure MV7</span><span class="text-secondary">● Connected</span></div><button aria-label="Notifications" class="relative p-space-xs text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U2_nhHtbA75bFPj8bk77ZMHFxXyWbUmMPoXpXP4T9rv0jyFzOWbsPPZrOJlQcMrK7sVi6wXfdS9fTXSXzTQAhSNOGzUDR7NxszO5BXThgetLknEcbNpa8_QGDr7UEZAGscTe6zBjVoVcNwlCl8KaNaOGg71c0lZuPl7nHmS_rw1U1sbEEHvV7T8qsvnbpTT6zM9pHfeuDQymgacexSP82LfkmJhHhMHUYTTQMf71cvIzctN_JjzISvAg"/><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div></div></div></header><main class="w-full pt-16 px-space-xl bg-surface min-h-screen"><div class="flex flex-col w-full pb-16">
+<!-- Interactive View State Controller -->
+<div class="w-full flex flex-col gap-space-lg">
+<!-- Top Global Switcher & Sub-Navigation -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-md">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="font-code-sm text-code-sm uppercase tracking-widest text-primary font-bold">Studio Hub</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Production & Hardware Config</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Notifications & Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Stay updated on project assignments, review feedback, and configure audio node telemetry.</p>
+</div>
+<!-- Segmented Master Tab Bar -->
+<div class="flex items-center p-1 bg-surface-container-high rounded-xl self-start md:self-auto shadow-sm">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-label-md text-label-md transition-all" id="tab-btn-notifications" onclick="switchMainTab('notifications')">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+<span>Notifications & Revisions</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary">2</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" id="tab-btn-settings" onclick="switchMainTab('settings')">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Studio & Profile Settings</span>
+</button>
+</div>
+</div>
+<!-- TAB 1: NOTIFICATIONS & FEEDBACK REVISIONS -->
+<div class="flex flex-col gap-space-lg w-full" id="section-notifications">
+<!-- Sub-filter & Utility Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md transition-colors" id="filter-all" onclick="filterNotifications('all')">
+            All <span class="opacity-70 font-normal">(3)</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="filter-unread" onclick="filterNotifications('unread')">
+            Unread <span class="text-primary font-bold">(2)</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="filter-revisions" onclick="filterNotifications('revisions')">
+            Revisions <span class="text-error font-bold">(1)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm transition-colors" onclick="toggleEmptyState()" title="Toggle Empty Simulation">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span id="empty-state-toggle-label">Simulate Clean Inbox</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md transition-colors" onclick="markAllAsRead()">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>Mark all as read</span>
+</button>
+</div>
+</div>
+<!-- Feed Container -->
+<div class="flex flex-col gap-space-md" id="notifications-feed">
+<!-- 1. PRIORITY REVISION ALERT (Section 34, 35) -->
+<article class="notification-item flex flex-col bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="revisions" data-status="unread">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-error-container/30 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-[24px]">priority_high</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-bold">Action Required</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-code-sm">18 minutes ago</span>
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Revision Requested: Product Demo Series - Q3</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-3xl">
+<span class="font-semibold text-on-surface">Alex Morgan (Production Lead)</span> requested updates: 
+                  <span class="italic text-on-surface">"Please re-record Clip 04 and Clip 08 with lower background noise and slightly slower pace."</span>
+</p>
+</div>
+</div>
+<button class="self-start lg:self-center px-space-lg py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center gap-2 shadow-sm transition-all shrink-0">
+<span>Open Revision Workspace</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Affected Clips Sub-panel (Section 34) -->
+<div class="mt-space-md pt-space-md bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">2 Flagged Clips for Re-recording</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Project ID: #P-8830</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<!-- Clip 04 -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between gap-space-sm">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-semibold">Clip 04</span>
+<span class="font-title-md text-title-md text-on-surface font-medium">Intro Hook</span>
+</div>
+<p class="font-body-md text-body-md text-error mt-1 flex items-start gap-1">
+<span class="material-symbols-outlined text-[15px] shrink-0 mt-0.5">graphic_eq</span>
+<span>Admin: "Plosive noise on microphone at 0:42"</span>
+</p>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">0:58</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">mic</span>
+<span>48kHz / 24-bit</span>
+</div>
+<button class="px-space-md py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[16px]">mic</span>
+<span>Re-record Clip</span>
+</button>
+</div>
+</div>
+<!-- Clip 08 -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between gap-space-sm">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-semibold">Clip 08</span>
+<span class="font-title-md text-title-md text-on-surface font-medium">Pricing Table</span>
+</div>
+<p class="font-body-md text-body-md text-error mt-1 flex items-start gap-1">
+<span class="material-symbols-outlined text-[15px] shrink-0 mt-0.5">speed</span>
+<span>Admin: "Speed up pacing by ~10%"</span>
+</p>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">1:12</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">mic</span>
+<span>48kHz / 24-bit</span>
+</div>
+<button class="px-space-md py-1 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-md text-label-md flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[16px]">mic</span>
+<span>Re-record Clip</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- 2. NEW PROJECT ASSIGNED (Section 39) -->
+<article class="notification-item flex flex-col md:flex-row items-start justify-between gap-space-md bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="assignment" data-status="unread">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container"></div>
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">movie_edit</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-bold">New Assignment</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-code-sm">2 hours ago</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mt-1 font-semibold">New Project Assigned: Security Compliance 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                14 clips assigned to you by <span class="font-semibold text-on-surface">Alex Morgan</span>. Due <span class="text-on-surface font-medium">May 20, 2025</span>. Estimated session: 45 minutes.
+              </p>
+<!-- Quick meta tags -->
+<div class="flex items-center gap-space-sm mt-space-sm text-on-surface-variant font-code-sm text-code-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">format_list_numbered</span> 14 Script Nodes</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 18 min script</span>
+<span>•</span>
+<span class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[14px]">lock</span> Confidential NDA</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-center shrink-0">
+<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors">
+              Accept
+            </button>
+<button class="px-space-md py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary shadow-sm transition-all">
+              View Project
+            </button>
+</div>
+</article>
+<!-- 3. PROJECT APPROVED (Section 38, 40) -->
+<article class="notification-item flex flex-col md:flex-row items-start justify-between gap-space-md bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="approval" data-status="read">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/30 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold">Approved</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-code-sm">Yesterday at 4:30 PM</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mt-1 font-semibold">Project Approved: Executive Keynote Voiceover</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                All 6 clips were reviewed and approved by <span class="font-semibold text-on-surface">Studio Lead (Marcus Vance)</span>. Ready for final export. Great job!
+              </p>
+<!-- Quality Score telemetry inline badge -->
+<div class="flex items-center gap-space-md mt-space-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">QA Audio Score: <strong class="font-code-sm">99.4/100</strong></span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[16px]">payments</span>
+<span class="font-label-sm text-label-sm text-on-surface">Payout released: <strong class="font-code-sm">$450.00</strong></span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-center shrink-0">
+<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors">
+              Archive
+            </button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors">
+              Receipt & Summary
+            </button>
+</div>
+</article>
+</div>
+<!-- SECTION 45: All Caught Up Empty State (Toggled by Button / Auto) -->
+<div class="hidden flex-col items-center justify-center p-space-xl bg-surface-container-lowest rounded-xl shadow-sm text-center py-16" id="notifications-empty-state">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[36px]">mark_email_read</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">All Caught Up!</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-1">
+          No pending feedback, revision flags, or new assignments at this moment. Take a breather or review your studio equipment.
+        </p>
+<button class="mt-space-lg px-space-lg py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="toggleEmptyState()">
+          Show Notifications
+        </button>
+</div>
+</div>
+<!-- TAB 2: USER PROFILE & STUDIO RECORDING SETTINGS (Sections 41, 42, 43, 44) -->
+<div class="hidden flex-col gap-space-lg w-full" id="section-settings">
+<!-- Top Grid: Profile & Hardware Control -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- User Profile Card (Section 41) -->
+<div class="lg:col-span-5 flex flex-col bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-md mb-space-md bg-surface-container-low/50 -mx-space-lg -mt-space-lg p-space-lg rounded-t-xl">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Talent Profile</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              Active on Air
+            </span>
+</div>
+<div class="flex flex-col sm:flex-row items-center sm:items-start gap-space-md text-center sm:text-left">
+<div class="relative">
+<img alt="John Mathews Avatar" class="w-20 h-20 rounded-2xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1U2_nhHtbA75bFPj8bk77ZMHFxXyWbUmMPoXpXP4T9rv0jyFzOWbsPPZrOJlQcMrK7sVi6wXfdS9fTXSXzTQAhSNOGzUDR7NxszO5BXThgetLknEcbNpa8_QGDr7UEZAGscTe6zBjVoVcNwlCl8KaNaOGg71c0lZuPl7nHmS_rw1U1sbEEHvV7T8qsvnbpTT6zM9pHfeuDQymgacexSP82LfkmJhHhMHUYTTQMf71cvIzctN_JjzISvAg"/>
+<button class="absolute -bottom-1 -right-1 w-7 h-7 bg-primary rounded-full text-on-primary flex items-center justify-center shadow hover:scale-105 transition-transform" title="Update photo">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+</button>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">John Mathews</h2>
+<span class="font-code-sm text-code-sm text-primary">@jmathews</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">john@example.com</span>
+<div class="mt-2 inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">mic_external_on</span>
+<span>Senior Voice Artist (Tier 1 Roster)</span>
+</div>
+</div>
+</div>
+<!-- Quick Stats Matrix -->
+<div class="grid grid-cols-3 gap-space-xs mt-space-lg p-space-sm bg-surface-container-low rounded-xl text-center">
+<div class="p-space-xs">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Completed</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">142</div>
+</div>
+<div class="p-space-xs">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Avg Rating</div>
+<div class="font-headline-md text-headline-md text-secondary font-semibold">4.96</div>
+</div>
+<div class="p-space-xs">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Turnaround</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">4.2h</div>
+</div>
+</div>
+<!-- Public Portfolio Snippet -->
+<div class="mt-space-md pt-space-md flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Voice Reel Link</span>
+<button class="flex items-center gap-1 font-label-md text-label-md text-primary hover:underline">
+<span>voiceflow.studio/@jmathews</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Recording Hardware Settings (Section 42) -->
+<div class="lg:col-span-7 flex flex-col bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">settings_voice</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Studio Audio Hardware</h3>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-secondary-container/30 text-secondary font-code-sm text-code-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+<span>Direct I/O Active</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage interface inputs, direct driver telemetry, and noise gate chains.</p>
+<div class="flex flex-col gap-space-md mt-space-md">
+<!-- Microphone Input Select -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>Microphone Input Device</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">CoreAudio Driver</span>
+</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest py-2.5 px-space-md pr-10 rounded-lg text-body-md text-on-surface font-body-md focus:outline-none focus:bg-surface-container-low shadow-sm transition-all appearance-none cursor-pointer">
+<option selected="">USB Shure MV7 (Default Audio Input)</option>
+<option>Universal Audio Apollo Twin - Line 1</option>
+<option>Rode Wireless GO II Dual TX</option>
+<option>Built-in Studio Microphone (MacBook Pro)</option>
+</select>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant absolute right-3 top-3 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Real-time Audio Level Tester Bar -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Input Level Test</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant" id="meter-db-readout">-18 dB (Nominal)</span>
+</div>
+<!-- Meter Bar -->
+<div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden flex p-0.5 gap-0.5">
+<div class="h-full bg-secondary rounded-l-full transition-all duration-75" id="vu-green" style="width: 62%;"></div>
+<div class="h-full bg-amber-400 transition-all duration-75" id="vu-yellow" style="width: 14%;"></div>
+<div class="h-full bg-error rounded-r-full transition-all duration-75" id="vu-red" style="width: 0%;"></div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all" id="mic-test-toggle" onclick="simulateMicTest()">
+<span class="material-symbols-outlined text-[16px] text-primary">graphic_eq</span>
+<span id="mic-test-btn-text">Test Microphone</span>
+</button>
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm text-on-surface-variant">
+<span>-∞</span>
+<span>-24</span>
+<span class="text-secondary font-bold">-12</span>
+<span>-6</span>
+<span class="text-error">0 dB</span>
+</div>
+</div>
+</div>
+<!-- Hardware Toggle Switches -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+<!-- Toggle: Noise Suppression -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Hardware Noise Suppression</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">DSP High-Pass Filter 80Hz</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle: Studio Echo Cancellation -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Echo Cancellation</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Acoustic Feedback Trap</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Audio Sample Rate & Format -->
+<div class="flex flex-col sm:flex-row items-center justify-between p-space-sm rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">equalizer</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Audio Master Pipeline</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Lossless broadcast standard</div>
+</div>
+</div>
+<div class="px-space-md py-1 rounded bg-surface-container-lowest text-primary font-code-sm text-code-sm font-bold shadow-sm">
+                48.0 kHz · 24-bit PCM Broadcast
+              </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Grid: Preferences & Security Actions (Section 43 & 44) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Notification Preferences (Section 43) -->
+<div class="lg:col-span-7 flex flex-col bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_paused</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Notification & Delivery Preferences</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">Control trigger thresholds and instant notifications to keep your studio turnaround tight.</p>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">assignment_turned_in</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Email me when new video projects are assigned</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Includes production deadline, word count, and client pronunciation notes</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 ml-4">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[20px] mt-0.5">edit_notifications</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Email me when revision is requested</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Immediate priority alert with time-stamped audio wave markers</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 ml-4">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">verified</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Project approval alerts</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Instant notification when client gives final sign-off & releases payment</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0 ml-4">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Account Security & Logout (Section 44) -->
+<div class="lg:col-span-5 flex flex-col justify-between bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-tertiary text-[20px]">shield</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Account Security</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">Manage authentication tokens, biometric security, and active recording sessions.</p>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Two-Factor Auth (2FA)</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">● Enabled (Authenticator App)</span>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+                  Configure
+                </button>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Master Password</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-code-sm">Updated 42 days ago</span>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" onclick="openChangePasswordModal()">
+                  Change Password
+                </button>
+</div>
+</div>
+</div>
+<!-- Logout Area -->
+<div class="mt-space-lg pt-space-md bg-error-container/10 -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md text-error font-semibold block">Terminate Studio Session</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sign out of all workstation nodes</span>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-label-md text-label-md flex items-center gap-1.5 shadow-sm transition-opacity" onclick="openLogoutModal()">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Log out</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: Logout Confirmation Dialog (Section 44) -->
+<div class="fixed inset-0 z-50 hidden bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="logout-dialog">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-error-container/30 text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">logout</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Sign out of VoiceFlow Studio?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          Make sure any pending audio recordings in the workspace are uploaded. Any unsynced local scratchpad buffers will be securely cleared.
+        </p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-lg py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="closeLogoutModal()">
+          Cancel
+        </button>
+<button class="px-space-lg py-2 rounded-lg bg-error text-on-error hover:opacity-90 font-label-md text-label-md font-semibold transition-opacity" onclick="confirmLogout()">
+          Yes, Log Out
+        </button>
+</div>
+</div>
+</div>
+<!-- MODAL: Change Password Simulation -->
+<div class="fixed inset-0 z-50 hidden bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="password-dialog">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">lock_reset</span>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Update Master Password</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeChangePasswordModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Current Password</label>
+<input class="w-full bg-surface-container-low px-space-md py-2 rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest" type="password" value="••••••••••••"/>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">New Password</label>
+<input class="w-full bg-surface-container-low px-space-md py-2 rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest" placeholder="Minimum 12 characters" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md" onclick="closeChangePasswordModal()">
+          Cancel
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md" onclick="closeChangePasswordModal()">
+          Update Password
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Tab Switching Logic
+    function switchMainTab(tabKey) {
+      const notifSec = document.getElementById('section-notifications');
+      const settingsSec = document.getElementById('section-settings');
+      const notifBtn = document.getElementById('tab-btn-notifications');
+      const settingsBtn = document.getElementById('tab-btn-settings');
+
+      if (tabKey === 'notifications') {
+        notifSec.classList.remove('hidden');
+        settingsSec.classList.add('hidden');
+        notifBtn.className = "flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-label-md text-label-md transition-all";
+        settingsBtn.className = "flex items-center gap-space-xs px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all";
+      } else {
+        notifSec.classList.add('hidden');
+        settingsSec.classList.remove('hidden');
+        settingsBtn.className = "flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-label-md text-label-md transition-all";
+        notifBtn.className = "flex items-center gap-space-xs px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all";
+      }
+    }
+
+    // Filter Notifications
+    function filterNotifications(filter) {
+      const items = document.querySelectorAll('.notification-item');
+      const filterAllBtn = document.getElementById('filter-all');
+      const filterUnreadBtn = document.getElementById('filter-unread');
+      const filterRevBtn = document.getElementById('filter-revisions');
+
+      [filterAllBtn, filterUnreadBtn, filterRevBtn].forEach(b => {
+        b.className = "px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors";
+      });
+
+      if (filter === 'all') {
+        filterAllBtn.className = "px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md transition-colors";
+        items.forEach(el => el.classList.remove('hidden'));
+      } else if (filter === 'unread') {
+        filterUnreadBtn.className = "px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md transition-colors";
+        items.forEach(el => {
+          if (el.getAttribute('data-status') === 'unread') {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+      } else if (filter === 'revisions') {
+        filterRevBtn.className = "px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md transition-colors";
+        items.forEach(el => {
+          if (el.getAttribute('data-category') === 'revisions') {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+      }
+    }
+
+    // Mark All as Read
+    function markAllAsRead() {
+      const items = document.querySelectorAll('.notification-item');
+      items.forEach(el => {
+        el.setAttribute('data-status', 'read');
+        const pulseDot = el.querySelector('.animate-pulse');
+        if (pulseDot) pulseDot.remove();
+      });
+      const unreadBadge = document.querySelector('#tab-btn-notifications span:last-child');
+      if (unreadBadge) unreadBadge.textContent = '0';
+      const unreadFilterText = document.querySelector('#filter-unread span');
+      if (unreadFilterText) unreadFilterText.textContent = '(0)';
+    }
+
+    // Empty State Toggle Simulation (Section 45)
+    let isEmpty = false;
+    function toggleEmptyState() {
+      isEmpty = !isEmpty;
+      const feed = document.getElementById('notifications-feed');
+      const emptyBox = document.getElementById('notifications-empty-state');
+      const label = document.getElementById('empty-state-toggle-label');
+
+      if (isEmpty) {
+        feed.classList.add('hidden');
+        emptyBox.classList.remove('hidden');
+        emptyBox.classList.add('flex');
+        label.textContent = "Restore Sample Notifications";
+      } else {
+        feed.classList.remove('hidden');
+        emptyBox.classList.add('hidden');
+        emptyBox.classList.remove('flex');
+        label.textContent = "Simulate Clean Inbox";
+      }
+    }
+
+    // Microphone VU Meter Simulator
+    let testingMic = false;
+    let micInterval = null;
+    function simulateMicTest() {
+      const btnText = document.getElementById('mic-test-btn-text');
+      const greenBar = document.getElementById('vu-green');
+      const yellowBar = document.getElementById('vu-yellow');
+      const redBar = document.getElementById('vu-red');
+      const dbReadout = document.getElementById('meter-db-readout');
+
+      if (!testingMic) {
+        testingMic = true;
+        btnText.textContent = "Stop Metering";
+        micInterval = setInterval(() => {
+          const rand = Math.floor(Math.random() * 85) + 10;
+          if (rand < 60) {
+            greenBar.style.width = rand + '%';
+            yellowBar.style.width = '0%';
+            redBar.style.width = '0%';
+            dbReadout.textContent = (rand - 60) + ' dB (Clean)';
+          } else if (rand < 85) {
+            greenBar.style.width = '70%';
+            yellowBar.style.width = (rand - 60) + '%';
+            redBar.style.width = '0%';
+            dbReadout.textContent = (rand - 70) + ' dB (Hot)';
+          } else {
+            greenBar.style.width = '70%';
+            yellowBar.style.width = '20%';
+            redBar.style.width = (rand - 85) + '%';
+            dbReadout.textContent = '0.0 dB PEAK';
+          }
+        }, 110);
+      } else {
+        testingMic = false;
+        clearInterval(micInterval);
+        btnText.textContent = "Test Microphone";
+        greenBar.style.width = '62%';
+        yellowBar.style.width = '14%';
+        redBar.style.width = '0%';
+        dbReadout.textContent = "-18 dB (Nominal)";
+      }
+    }
+
+    // Logout Dialog Controls
+    function openLogoutModal() {
+      document.getElementById('logout-dialog').classList.remove('hidden');
+    }
+    function closeLogoutModal() {
+      document.getElementById('logout-dialog').classList.add('hidden');
+    }
+    function confirmLogout() {
+      closeLogoutModal();
+      window.location.reload();
+    }
+
+    // Password Dialog Controls
+    function openChangePasswordModal() {
+      document.getElementById('password-dialog').classList.remove('hidden');
+    }
+    function closeChangePasswordModal() {
+      document.getElementById('password-dialog').classList.add('hidden');
+    }
+  </script>
+</div></main></div></body></html>

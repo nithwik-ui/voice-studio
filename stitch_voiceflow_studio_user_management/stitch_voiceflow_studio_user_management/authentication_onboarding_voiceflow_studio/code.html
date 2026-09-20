@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication & Onboarding - VoiceFlow Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            surface: {
+              DEFAULT: '#fcf8ff',
+              dim: '#f3eef8',
+              card: '#ffffff',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#fcf8ff] text-slate-800 font-sans min-h-screen antialiased flex flex-col">
+
+  <!-- Top Persistent Bar -->
+  <header class="bg-white border-b border-slate-200/80 px-6 py-3.5 flex items-center justify-between sticky top-0 z-30 shadow-xs">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold shadow-xs">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5v14M7 8v8M22 10v4M2 10v4"/>
+        </svg>
+      </div>
+      <div>
+        <span class="text-base font-bold tracking-tight text-slate-900">VoiceFlow<span class="text-indigo-600 font-semibold text-xs ml-1 px-1.5 py-0.5 rounded bg-indigo-50 border border-indigo-100 uppercase">Auth Hub</span></span>
+      </div>
+    </div>
+
+    <!-- State Switcher Tabs -->
+    <div class="flex items-center bg-slate-100 p-1 rounded-lg text-xs font-medium text-slate-600">
+      <button id="tab-admin-btn" onclick="showAuthView('admin')" class="px-3 py-1.5 rounded-md font-semibold text-indigo-700 bg-white shadow-xs transition-all flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18M15 9h6M15 15h6"/></svg>
+        1. Admin Login
+      </button>
+      <button id="tab-user-btn" onclick="showAuthView('user')" class="px-3 py-1.5 rounded-md transition-all hover:text-slate-900 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        2. Talent Login
+      </button>
+      <button id="tab-forgot-btn" onclick="showAuthView('forgot')" class="px-3 py-1.5 rounded-md transition-all hover:text-slate-900 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        3. Forgot Password
+      </button>
+      <button id="tab-invite-btn" onclick="showAuthView('invite')" class="px-3 py-1.5 rounded-md transition-all hover:text-slate-900 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+        4. Invitation Setup
+      </button>
+    </div>
+
+    <div class="flex items-center gap-3 text-xs text-slate-500">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Auth Engine 256-bit SSL
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 flex items-center justify-center p-6 sm:p-10 relative overflow-hidden">
+    <!-- Subtle Background Ambient Accents -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- 1. ADMIN LOGIN VIEW -->
+    <div id="view-admin" class="w-full max-w-[440px] transition-all duration-300">
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-8 sm:p-10">
+        <!-- Brand Header -->
+        <div class="flex flex-col items-center text-center mb-8">
+          <div class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center text-white mb-4 shadow-md shadow-indigo-200">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5v14M7 8v8M22 10v4M2 10v4"/>
+            </svg>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-indigo-600 mb-1">VoiceFlow Studio Admin</span>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Welcome back</h1>
+          <p class="text-sm text-slate-500 mt-1">Sign in to manage your video projects.</p>
+        </div>
+
+        <!-- Form -->
+        <form onsubmit="event.preventDefault(); simulateLogin('admin')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Work Email</label>
+            <div class="relative">
+              <input type="email" value="alex.morgan@voiceflow.studio" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium pl-10">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider">Password</label>
+              <button type="button" onclick="showAuthView('forgot')" class="text-xs font-medium text-indigo-600 hover:text-indigo-700 hover:underline">Forgot password?</button>
+            </div>
+            <div class="relative">
+              <input type="password" value="••••••••••••" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium pl-10 pr-10">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <button type="button" class="absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300">
+              <span class="text-xs font-medium text-slate-600">Remember me for 30 days</span>
+            </label>
+            <span class="text-xs text-slate-400">SSO Enabled</span>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 mt-2">
+            <span>Sign In to Admin Console</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span>Voice Talent or Artist?</span>
+          <button onclick="showAuthView('user')" class="font-semibold text-indigo-600 hover:text-indigo-700 hover:underline">Switch to Talent Login →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. USER / TALENT LOGIN VIEW -->
+    <div id="view-user" class="w-full max-w-[440px] hidden transition-all duration-300">
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-8 sm:p-10">
+        <!-- Brand Header -->
+        <div class="flex flex-col items-center text-center mb-8">
+          <div class="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center text-white mb-4 shadow-md shadow-purple-200">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>
+            </svg>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-purple-600 mb-1">VoiceFlow Artist Portal</span>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Welcome back</h1>
+          <p class="text-sm text-slate-500 mt-1">Sign in to continue your assigned work.</p>
+        </div>
+
+        <!-- Form -->
+        <form onsubmit="event.preventDefault(); simulateLogin('user')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Email / Username</label>
+            <div class="relative">
+              <input type="text" value="john@example.com" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium pl-10">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider">Password</label>
+              <button type="button" onclick="showAuthView('forgot')" class="text-xs font-medium text-purple-600 hover:text-purple-700 hover:underline">Forgot password?</button>
+            </div>
+            <div class="relative">
+              <input type="password" value="••••••••••••" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium pl-10 pr-10">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" checked class="w-4 h-4 rounded text-purple-600 focus:ring-purple-500 border-slate-300">
+              <span class="text-xs font-medium text-slate-600">Keep me logged in</span>
+            </label>
+            <span class="text-xs text-slate-400">Microphone auto-detect</span>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 mt-2">
+            <span>Sign In to Recording Workspace</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span>Are you an Administrator?</span>
+          <button onclick="showAuthView('admin')" class="font-semibold text-indigo-600 hover:text-indigo-700 hover:underline">Admin Login →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FORGOT PASSWORD VIEW -->
+    <div id="view-forgot" class="w-full max-w-[440px] hidden transition-all duration-300">
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-8 sm:p-10">
+        <div class="flex flex-col items-center text-center mb-6">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Forgot your password?</h1>
+          <p class="text-sm text-slate-500 mt-1 max-w-xs">Enter your email and we'll send you a password reset link.</p>
+        </div>
+
+        <form id="forgot-form" onsubmit="event.preventDefault(); triggerResetSuccess()" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Registered Email</label>
+            <div class="relative">
+              <input type="email" id="reset-email" value="john@example.com" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium pl-10">
+              <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2">
+            <span>Send Reset Link</span>
+          </button>
+        </form>
+
+        <!-- Success Toast banner -->
+        <div id="reset-success-box" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
+          <div class="flex items-start gap-2.5">
+            <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <p class="font-bold text-emerald-900">Check your email</p>
+              <p class="mt-0.5 text-emerald-700">Password reset instructions have been sent to <span id="reset-target-email" class="font-semibold">john@example.com</span>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+          <button onclick="showAuthView('admin')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            Back to Login
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. INVITATION / ACCOUNT SETUP VIEW -->
+    <div id="view-invite" class="w-full max-w-[460px] hidden transition-all duration-300">
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-8 sm:p-10">
+        <div class="flex flex-col items-center text-center mb-6">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center mb-3">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="M19 8v6"/></svg>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 mb-1">Invitation Activated</span>
+          <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Welcome to VoiceFlow Studio</h1>
+          <p class="text-sm text-slate-500 mt-1">Your administrator has invited you to join the workspace.</p>
+        </div>
+
+        <!-- Invitee Context Pill -->
+        <div class="mb-5 p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-bold flex items-center justify-center text-sm shadow-xs">
+            JM
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-bold text-slate-900 truncate">John Mathews</p>
+            <p class="text-xs text-slate-500 truncate">john@example.com</p>
+          </div>
+          <span class="text-[11px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200">Voice Talent</span>
+        </div>
+
+        <form onsubmit="event.preventDefault(); simulateAccountCreated()" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Create Password</label>
+            <input type="password" placeholder="At least 8 characters" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Confirm Password</label>
+            <input type="password" placeholder="Re-type your password" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium">
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-lg text-xs text-slate-500 space-y-1">
+            <p class="font-medium text-slate-700">Password Requirements:</p>
+            <div class="grid grid-cols-2 gap-1 text-[11px]">
+              <span class="text-emerald-600 flex items-center gap-1">✓ 8+ characters</span>
+              <span class="text-emerald-600 flex items-center gap-1">✓ 1 uppercase letter</span>
+              <span class="text-slate-400 flex items-center gap-1">○ 1 number</span>
+              <span class="text-slate-400 flex items-center gap-1">○ 1 special symbol</span>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 mt-2">
+            <span>Create Account & Join Studio</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-t border-slate-200/60 text-center text-xs text-slate-400 bg-white/50 backdrop-blur-xs">
+    VoiceFlow Studio • Enterprise Audio Production & Synthesized Sync Pipeline • v2.4 Live
+  </footer>
+
+  <script>
+    function showAuthView(viewName) {
+      const views = ['admin', 'user', 'forgot', 'invite'];
+      views.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        const btn = document.getElementById('tab-' + v + '-btn');
+        if (v === viewName) {
+          el.classList.remove('hidden');
+          btn.className = "px-3 py-1.5 rounded-md font-semibold text-indigo-700 bg-white shadow-xs transition-all flex items-center gap-1.5";
+        } else {
+          el.classList.add('hidden');
+          btn.className = "px-3 py-1.5 rounded-md transition-all hover:text-slate-900 text-slate-600 flex items-center gap-1.5";
+        }
+      });
+    }
+
+    function triggerResetSuccess() {
+      const email = document.getElementById('reset-email').value;
+      document.getElementById('reset-target-email').innerText = email;
+      document.getElementById('reset-success-box').classList.remove('hidden');
+    }
+
+    function simulateLogin(role) {
+      alert(`Signed in successfully as ${role === 'admin' ? 'Studio Lead (Alex Morgan)' : 'Voice Talent (John Mathews)'}! Redirecting to workspace...`);
+    }
+
+    function simulateAccountCreated() {
+      alert("Account created successfully! Welcome to VoiceFlow Studio.");
+      showAuthView('user');
+    }
+  </script>
+</body>
+</html>
