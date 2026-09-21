@@ -2,13 +2,12 @@ import os
 import json
 import asyncio
 import socket
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
+from google.oauth2 import service_account
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
-SCOPES = ['https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive.metadata']
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly', 'https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive.metadata']
 
 class DriveStorageService:
     def __init__(self):
@@ -20,38 +19,31 @@ class DriveStorageService:
         creds = None
         
         # 1. Try to load from environment variable (for Render production)
-        token_env = os.getenv("GOOGLE_DRIVE_TOKEN_JSON")
+        token_env = os.getenv("GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON")
         if token_env:
             try:
                 import json
                 token_data = json.loads(token_env)
-                creds = Credentials.from_authorized_user_info(token_data, SCOPES)
-                if creds:
-                    pass
+                creds = service_account.Credentials.from_service_account_info(token_data, scopes=SCOPES)
             except Exception as e:
-                print(f"Error loading token from environment variable: {e}")
+                print(f"Error loading service account from environment variable: {e}")
 
         # 2. Try to load from file (for local development)
         if not creds:
             token_paths = [
-                os.path.join(os.path.dirname(__file__), "..", "token.json"),
-                os.path.join(os.getcwd(), "backend", "token.json"),
-                os.path.join(os.getcwd(), "token.json"),
-                "token.json"
+                os.path.join(os.path.dirname(__file__), "..", "service_account.json"),
+                os.path.join(os.getcwd(), "backend", "service_account.json"),
+                os.path.join(os.getcwd(), "service_account.json"),
+                "service_account.json"
             ]
             for p in token_paths:
                 if os.path.exists(p):
                     try:
-                        creds = Credentials.from_authorized_user_file(p, SCOPES)
+                        creds = service_account.Credentials.from_service_account_file(p, scopes=SCOPES)
                         if creds:
                             break
                     except Exception as e:
-                        print(f"Error loading token from {p}: {e}")
-        if creds and creds.expired and creds.refresh_token:
-            try:
-                creds.refresh(Request())
-            except Exception as e:
-                print(f"Error refreshing creds: {e}")
+                        print(f"Error loading service account from {p}: {e}")
         return creds
 
     def get_service(self):
