@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getDeterministicProgress, formatStatus } from '@/lib/projectProgress';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function UserProjectDetailsPage() {
   const { id } = useParams() as { id: string };
@@ -151,7 +152,7 @@ export default function UserProjectDetailsPage() {
       setShowSubmitModal(false);
       setSubmissionNotes("");
       await fetchFullProject();
-      alert("Version submitted successfully for Admin review!");
+      alert("Submission received. Your videos are being processed. You will be notified when they are ready for review.");
     } catch (err: any) {
       console.error("Submit error:", err);
       alert(`Submission error: ${err.message}`);
@@ -191,7 +192,8 @@ export default function UserProjectDetailsPage() {
   const progress = getDeterministicProgress(project.status);
   const statusInfo = formatStatus(project.status);
   const latestEdited = edited_videos?.[0];
-  const isUnderReview = project.status === 'UNDER_REVIEW' || project.status === 'SUBMITTED' || project.status === 'RESUBMITTED';
+  const isUnderReview = project.status === 'UNDER_REVIEW' || project.status === 'SUBMITTED' || project.status === 'RESUBMITTED' || project.status === 'READY_FOR_REVIEW';
+  const isProcessing = project.status === 'PROCESSING';
   const isRevisionRequired = project.status === 'REVISION_REQUIRED' || project.status === 'REVISION_REQUESTED';
   const isCompleted = project.status === 'COMPLETED' || project.status === 'APPROVED';
 
@@ -319,21 +321,12 @@ export default function UserProjectDetailsPage() {
               <span className="text-xs text-on-surface-variant font-medium">Source: Google Drive</span>
             </div>
 
-            {original_video?.drive_file_id ? (
-              <div className="relative rounded-lg overflow-hidden bg-black aspect-video flex items-center justify-center shadow-inner">
-                <video
-                  src={`${apiUrl}/api/videos/${original_video.drive_file_id}/stream`}
-                  controls
-                  preload="metadata"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            ) : (
-              <div className="aspect-video bg-surface-container rounded-lg flex flex-col items-center justify-center text-on-surface-variant p-6 text-center">
-                <span className="material-symbols-outlined text-4xl text-outline mb-2">videocam_off</span>
-                <p className="text-sm font-semibold">No original video linked.</p>
-              </div>
-            )}
+            <VideoPlayer
+              driveFileId={original_video?.drive_file_id}
+              token={session?.access_token}
+              label={original_video?.original_filename || 'Master Video File'}
+              wrapperClassName="w-full"
+            />
 
             <div className="mt-3 text-xs text-on-surface-variant flex items-center justify-between border-t border-surface-container-high/40 pt-2">
               <span className="truncate max-w-[240px]">
@@ -411,16 +404,16 @@ export default function UserProjectDetailsPage() {
                 <div className="pt-2 flex flex-col gap-2">
                   <button
                     onClick={() => setShowSubmitModal(true)}
-                    disabled={isUnderReview || isCompleted || uploading}
+                    disabled={isUnderReview || isCompleted || uploading || isProcessing || submitting}
                     className="w-full py-2.5 px-4 rounded-lg bg-primary hover:bg-primary/90 text-on-primary font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="material-symbols-outlined text-[16px]">send</span>
-                    {isUnderReview ? "Submitted & Awaiting Review" : "Submit for Review"}
+                    {submitting ? "Submitting..." : isProcessing ? "Processing videos..." : isUnderReview ? "Submitted & Awaiting Review" : "Submit for Review"}
                   </button>
 
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    disabled={uploading || isUnderReview}
+                    disabled={uploading || isUnderReview || isProcessing}
                     className="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50"
                   >
                     Upload New Version (v{(latestEdited.version || 1) + 1})
@@ -647,14 +640,13 @@ export default function UserProjectDetailsPage() {
                 <span className="material-symbols-outlined text-[20px]">close</span>
               </button>
             </div>
-            <div className="aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center">
-              <video
-                src={`${apiUrl}/api/videos/${activePreviewDriveId}/stream`}
-                controls
-                autoPlay
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <VideoPlayer
+              driveFileId={activePreviewDriveId}
+              token={session?.access_token}
+              autoPlay={true}
+              label={activePreviewTitle}
+              wrapperClassName="w-full"
+            />
           </div>
         </div>
       )}

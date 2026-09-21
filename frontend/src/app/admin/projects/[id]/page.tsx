@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { getDeterministicProgress, formatStatus } from '@/lib/projectProgress';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function AdminProjectReviewPage() {
   const { id } = useParams() as { id: string };
@@ -219,22 +220,12 @@ export default function AdminProjectReviewPage() {
             </div>
           </div>
 
-          <div className="bg-black rounded-lg aspect-video w-full overflow-hidden flex items-center justify-center relative shadow-inner">
-            {activeVideoDriveId ? (
-              <video
-                key={activeVideoDriveId}
-                src={`${apiUrl}/api/videos/${activeVideoDriveId}/stream`}
-                controls
-                className="w-full h-full object-contain"
-                preload="metadata"
-              />
-            ) : (
-              <div className="text-center p-8 text-on-surface-variant">
-                <span className="material-symbols-outlined text-4xl text-outline mb-2">videocam_off</span>
-                <p className="text-sm font-semibold">No video available for preview.</p>
-              </div>
-            )}
-          </div>
+          <VideoPlayer
+            driveFileId={activeVideoDriveId}
+            token={session?.access_token}
+            label={videoTab === "SUBMISSION" ? (latestEdited?.filename || "Latest Submission") : (original_video?.original_filename || "Original Master")}
+            wrapperClassName="w-full"
+          />
 
           <div className="mt-3 text-xs text-on-surface-variant flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-surface-container-high/40 pt-2.5">
             <div className="flex items-center gap-1.5 min-w-0">
@@ -254,14 +245,6 @@ export default function AdminProjectReviewPage() {
                 >
                   <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                   <span>Open in Drive</span>
-                </a>
-                <a
-                  href={`${apiUrl}/api/videos/${activeVideoDriveId}/stream`}
-                  download
-                  className="px-2.5 py-1 rounded-md bg-primary/10 hover:bg-primary/20 text-primary text-[11px] font-semibold flex items-center gap-1 transition-colors"
-                >
-                  <span className="material-symbols-outlined text-[14px]">download</span>
-                  <span>Export Video</span>
                 </a>
               </div>
             )}

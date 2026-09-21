@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/hooks/useAuth";
+import VideoPlayer from "@/components/VideoPlayer";
 
 export default function AdminSubmissionsPage() {
   const { session, profile, loading: authLoading } = useAuth();
@@ -294,18 +295,13 @@ export default function AdminSubmissionsPage() {
             </div>
 
             {/* Video player for the submitted asset */}
-            <div className="aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center shadow-inner">
-              {activeReviewSubmission.drive_file_id ? (
-                <video
-                  src={`${apiUrl}/api/videos/${activeReviewSubmission.drive_file_id}/stream`}
-                  controls
-                  autoPlay
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <p className="text-white text-xs">Drive File ID not found for this submission.</p>
-              )}
-            </div>
+            <VideoPlayer
+              driveFileId={activeReviewSubmission.drive_file_id}
+              token={session?.access_token}
+              autoPlay={true}
+              label={`v${activeReviewSubmission.version || 1} — ${activeReviewSubmission.projects?.name || 'Submission'}`}
+              wrapperClassName="w-full"
+            />
 
             {/* Actions / Decision Form */}
             {reviewAction === "REVISION" ? (

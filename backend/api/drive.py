@@ -224,6 +224,19 @@ class DriveStorageService:
             body=file_metadata,
             fields='id'
         )
+        result = await self._execute_with_retry(copy_req)
+        return result.get('id')
+
+    async def get_file_metadata(self, file_id: str) -> dict:
+        """Fetches metadata (name, mimeType, size) for a Drive file."""
+        try:
+            service = self.get_service()
+            req = service.files().get(fileId=file_id, fields='id,name,mimeType,size')
+            result = await self._execute_with_retry(req)
+            return result
+        except Exception as e:
+            print(f"Error fetching file metadata for {file_id}: {e}")
+            return {}
     async def _format_files(self, raw_files: list) -> list:
         videos = []
         for f in raw_files:
@@ -289,5 +302,16 @@ class DriveStorageService:
             print(f"Error querying folder videos: {e}")
             return []
 
-drive_service = DriveStorageService()
+    async def download_file(self, file_id: str, dest_path: str):
+        import io
+        from googleapiclient.http import MediaIoBaseDownload
+        service = self.get_service()
+        request = service.files().get_media(fileId=file_id)
+        fh = io.FileIO(dest_path, 'wb')
+        downloader = MediaIoBaseDownload(fh, request)
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+        return dest_path
 
+drive_service = DriveStorageService()

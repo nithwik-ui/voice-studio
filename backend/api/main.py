@@ -3,7 +3,7 @@ import uuid
 import asyncio
 from datetime import datetime, timezone
 from typing import List, Optional
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Header, Request
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Header, Request, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
@@ -639,45 +639,118 @@ async def upload_admin_video(
 
 # -------------------------------------------------------------------
 # Video Streaming Proxy (Authorized)
+# Accepts auth token via:
+#   1. Authorization: Bearer <token> header  (server-to-server / fetch calls)
+#   2. ?token=<jwt> query param              (HTML5 <video src="...?token=...">)
 # -------------------------------------------------------------------
 @app.get("/api/videos/{drive_file_id}/stream")
-async def stream_video(drive_file_id: str, request: Request):
-    """Streams a video from Google Drive by proxying the request."""
+async def stream_video(drive_file_id: str, request: Request, token: Optional[str] = None):
+    """
+    Securely streams a video from Google Drive.
+    Authenticates the caller via JWT (header or query param),
+    then proxies the Drive binary with Range support.
+    """
+    # 1. Resolve auth token — header takes priority, query param is fallback for <video> tags
+    auth_header = request.headers.get("authorization", "")
+    jwt_token = None
+    if auth_header.startswith("Bearer "):
+        jwt_token = auth_header[len("Bearer "):]
+    elif token:
+        jwt_token = token
+
+    if not jwt_token:
+        raise HTTPException(status_code=401, detail="Authentication required to stream video")
+
+    # 2. Validate the JWT
+    try:
+        user_response = supabase.auth.get_user(jwt_token)
+        if not user_response.user:
+            raise HTTPException(status_code=401, detail="Invalid authentication token")
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Token validation failed: {str(e)}")
+
+    # 3. Get and refresh Drive credentials
     creds = drive_service._get_credentials()
     if not creds:
-        raise HTTPException(status_code=404, detail="Drive credentials not configured")
-        
-    if creds.expired and creds.refresh_token:
-        from google.auth.transport.requests import Request as GoogleRequest
-        creds.refresh(GoogleRequest())
-        
-    url = f"https://www.googleapis.com/drive/v3/files/{drive_file_id}?alt=media"
-    headers = {"Authorization": f"Bearer {creds.token}"}
-    if "range" in request.headers:
-        headers["Range"] = request.headers["range"]
-        
-    client = httpx.AsyncClient()
-    req = client.build_request("GET", url, headers=headers)
-    response = await client.send(req, stream=True)
-    
-    resp_headers = {}
-    for k, v in response.headers.items():
-        if k.lower() in ["content-type", "content-length", "content-range", "accept-ranges"]:
-            resp_headers[k] = v
-            
-    async def generate():
-        try:
-            async for chunk in response.aiter_bytes(chunk_size=1024*1024):
-                yield chunk
-        finally:
+        raise HTTPException(status_code=503, detail="Google Drive credentials not configured")
+
+    try:
+        if not creds.valid or creds.expired:
+            from google.auth.transport.requests import Request as GoogleRequest
+            creds.refresh(GoogleRequest())
+    except Exception as e:
+        print(f"Warning: credential refresh failed: {e}")
+        # Try to continue with existing token
+
+    if not creds.token:
+        raise HTTPException(status_code=503, detail="Google Drive credentials could not be refreshed")
+
+    # 4. Build the proxied Drive request
+    drive_url = f"https://www.googleapis.com/drive/v3/files/{drive_file_id}?alt=media"
+    drive_headers = {"Authorization": f"Bearer {creds.token}"}
+
+    # Forward HTTP Range header for seek/partial content support
+    range_header = request.headers.get("range")
+    if range_header:
+        drive_headers["Range"] = range_header
+
+    # 5. Stream the response from Drive to the browser
+    client = httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=10.0))
+    try:
+        req = client.build_request("GET", drive_url, headers=drive_headers)
+        response = await client.send(req, stream=True)
+
+        if response.status_code == 404:
             await response.aclose()
             await client.aclose()
-            
-    return StreamingResponse(
-        generate(),
-        status_code=response.status_code,
-        headers=resp_headers
-    )
+            raise HTTPException(status_code=404, detail="Video file not found in Google Drive")
+
+        if response.status_code == 403:
+            await response.aclose()
+            await client.aclose()
+            raise HTTPException(status_code=403, detail="Access denied by Google Drive")
+
+        # Forward only safe headers; determine content type with fallback
+        resp_headers: dict = {}
+        content_type = response.headers.get("content-type", "")
+        if content_type and content_type != "application/octet-stream":
+            resp_headers["content-type"] = content_type
+        else:
+            resp_headers["content-type"] = "video/mp4"
+
+        for header_name in ["content-length", "content-range", "accept-ranges"]:
+            if header_name in response.headers:
+                resp_headers[header_name] = response.headers[header_name]
+
+        # Always advertise range support
+        resp_headers["accept-ranges"] = "bytes"
+
+        async def generate():
+            try:
+                async for chunk in response.aiter_bytes(chunk_size=512 * 1024):  # 512 KB chunks
+                    yield chunk
+            finally:
+                await response.aclose()
+                await client.aclose()
+
+        return StreamingResponse(
+            generate(),
+            status_code=response.status_code,
+            headers=resp_headers,
+            media_type=resp_headers.get("content-type", "video/mp4"),
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        try:
+            await client.aclose()
+        except Exception:
+            pass
+        print(f"Stream error for file {drive_file_id}: {e}")
+        raise HTTPException(status_code=502, detail=f"Failed to stream video: {str(e)}")
 
 # -------------------------------------------------------------------
 # Voice-Over Recording Upload
@@ -839,7 +912,7 @@ async def submit_project(
 ):
     """
     Submits a project for Admin review.
-    Creates a submission record and sends notification to Admin.
+    Creates a submission record, queues Celery processing job, and sends notification to Admin.
     """
     profile = get_user_profile(user.id)
     is_admin = profile.get("role") == "ADMIN"
@@ -852,7 +925,11 @@ async def submit_project(
     if not is_admin and project.get("assigned_user_id") != profile["id"]:
         raise HTTPException(status_code=403, detail="Not assigned to this project")
         
-    # Find latest edited video
+    # Get Original Video Drive ID
+    original_video_res = supabase.table("videos").select("drive_file_id").eq("id", project["video_id"]).execute()
+    original_drive_file_id = original_video_res.data[0]["drive_file_id"] if original_video_res.data else None
+        
+    # Find latest edited video (or fallback)
     latest_file = supabase.table("project_files").select("*").eq("project_id", project_id).order("version", desc=True).limit(1).execute()
     version = 1
     drive_file_id = None
@@ -860,23 +937,36 @@ async def submit_project(
         version = latest_file.data[0]["version"]
         drive_file_id = latest_file.data[0]["drive_file_id"]
     else:
-        # Fallback to recording or original video
         rec = supabase.table("recordings").select("*").eq("project_id", project_id).order("created_at", desc=True).limit(1).execute()
         if rec.data:
             drive_file_id = rec.data[0]["drive_file_id"]
 
-    # Update Project Status to UNDER_REVIEW (or RESUBMITTED if revision was requested)
-    supabase.table("projects").update({"status": "UNDER_REVIEW"}).eq("id", project_id).execute()
+    if not original_drive_file_id or not drive_file_id:
+        raise HTTPException(status_code=400, detail="Missing required original video or recording files.")
+
+    # Prevent duplicate active submissions (Idempotency)
+    existing = supabase.table("submissions").select("*").eq("project_id", project_id).in_("status", ["PENDING", "PROCESSING"]).execute()
+    if existing.data:
+        raise HTTPException(status_code=409, detail="A submission is already processing for this project.")
+
+    # Update Project Status to PROCESSING
+    supabase.table("projects").update({"status": "PROCESSING"}).eq("id", project_id).execute()
     
     # Create Submission Record
     submission = supabase.table("submissions").insert({
         "project_id": project_id,
         "submitted_by": profile["id"],
-        "status": "PENDING",
+        "status": "PROCESSING",
         "version": version,
         "drive_file_id": drive_file_id,
         "notes": notes
     }).execute()
+    
+    # Queue Celery Processing Job
+    from worker import celery_app
+    job = celery_app.send_task("worker.process_final_video", args=[project_id, submission.data[0]["id"], original_drive_file_id, drive_file_id, project["name"]])
+    
+    # Update submission with celery task id (if we had a field, otherwise we skip)
     
     # Notify Admin(s)
     try:
@@ -885,8 +975,8 @@ async def submit_project(
             supabase.table("notifications").insert({
                 "user_id": admin["id"],
                 "type": "SUBMISSION_RECEIVED",
-                "title": "Project Submitted for Review",
-                "message": f"'{project['name']}' (v{version}) was submitted for review by {profile['full_name']}.",
+                "title": "Project Processing Started",
+                "message": f"'{project['name']}' (v{version}) has been submitted and is processing.",
                 "entity_type": "PROJECT",
                 "entity_id": project_id,
                 "read": False

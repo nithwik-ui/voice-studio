@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useNavigationGuard } from '@/hooks/useNavigationGuard';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
+import VideoPlayer from '@/components/VideoPlayer';
 
 type RecordingState = 
   | 'IDLE' 
@@ -435,43 +436,25 @@ export default function RecordingWorkspace() {
               <span className="text-xs text-on-surface-variant font-medium">Google Drive Stream</span>
             </div>
 
-            <div className="bg-black rounded-lg aspect-video w-full overflow-hidden flex items-center justify-center relative shadow-inner">
-              {activeVideo?.drive_file_id || activeVideo?.id ? (
-                <video 
-                  key={activeVideo?.drive_file_id || activeVideo?.id}
-                  ref={videoRef}
-                  className="w-full h-full object-contain"
-                  controls={state !== 'RECORDING' && state !== 'PAUSED'} 
-                  preload="metadata"
-                  src={`${apiUrl}/api/videos/${activeVideo?.drive_file_id || activeVideo?.id}/stream`}
-                  onError={() => setVideoError(true)}
-                />
-              ) : videoLoading ? (
-                <div className="flex flex-col items-center justify-center text-on-surface-variant p-8">
-                  <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin mb-2"></div>
-                  <p className="text-xs">Loading media stream from Google Drive...</p>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center text-on-surface-variant p-8 text-center">
-                  <span className="material-symbols-outlined text-4xl mb-2 text-outline">error</span>
-                  <p className="text-sm font-semibold">Unable to load the project video.</p>
-                  <button
-                    onClick={fetchProject}
-                    className="mt-3 px-3 py-1 bg-surface-container-high hover:bg-surface-container text-xs rounded-md font-semibold cursor-pointer"
-                  >
-                    Retry
-                  </button>
-                </div>
-              )}
+            <div className="relative w-full">
+              <VideoPlayer
+                ref={videoRef}
+                driveFileId={activeVideo?.drive_file_id || activeVideo?.id}
+                token={session?.access_token}
+                controls={state !== 'RECORDING' && state !== 'PAUSED'}
+                label={activeVideo?.name}
+                wrapperClassName="w-full"
+                onError={() => setVideoError(true)}
+              />
 
               {state === 'RECORDING' && (
-                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md z-10">
                   <span className="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
                   RECORDING
                 </div>
               )}
               {state === 'PAUSED' && (
-                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md">
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full text-white text-xs font-semibold backdrop-blur-md z-10">
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
                   PAUSED
                 </div>
